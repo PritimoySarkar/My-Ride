@@ -1,3 +1,24 @@
+<?php
+include ("php/connection.php");
+if($_SERVER['QUERY_STRING']==""){
+    ?><script type="text/javascript">window.location.href="drivers.php"</script><?php
+}
+else{
+    $dID=($_SERVER['QUERY_STRING']);
+    if($driver_detail=mysqli_query($conn,"select * from driver where did='$dID'")){
+        if(mysqli_num_rows($driver_detail)>0){
+            $view=mysqli_fetch_array($driver_detail);
+            $imagepath='admin/'.$view['pic'];
+        }
+        else{
+            ?><script type="text/javascript">window.location.href="drivers.php";alert("No driver found with this car ID");</script> <?php
+        }
+    }
+    else{
+        ?><script type="text/javascript">window.location.href="drivers.php";alert("Invalid URL for driver view");</script> <?php
+    }
+}
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -113,8 +134,36 @@
         </div>
     </div>
     
-    <div>
-        <h1>Blank Page</h1>
+    <div style="padding-top: 50px;padding-bottom: 50px;">
+        <div class="container">
+            <div class="row" style="text-align: center">
+                <div class="col">
+                    <img src="<?php echo $imagepath?>" class="img-fluid rounded-circle" alt="Responsive image" width="400px">
+                </div>
+                <div class="col" style="align-self: center">
+                    <table class="table table-borderless table-striped table-dark" style="text-align: center;font-size: x-large;color: #ccac4b;border-bottom-right-radius: 50px;border-top-left-radius: 50px;">
+                        <tbody>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <td><?php echo $view['dname']?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Adress</th>
+                            <td><?php echo $view['address']?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Age</th>
+                            <td><?php echo $view['age']?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gender</th>
+                            <td><?php echo $view['gender']?></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
 <footer>

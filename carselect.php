@@ -1,3 +1,6 @@
+<?php include("php/connection.php");
+    var_dump($_SERVER);
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>

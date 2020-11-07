@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="assets/css/responsive.css">
    </head>
 
-   <body>
+   <body style="background-color: #a7907b40">
        
     <!-- Preloader Start -->
     <div id="preloader-active">

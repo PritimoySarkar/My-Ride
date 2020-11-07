@@ -30,7 +30,7 @@
    <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 
-<body>
+<body style="background-color: #a7907b40">
 	
     <!-- Preloader Start -->
     <div id="preloader-active">
@@ -120,7 +120,7 @@
     <section class="room-area r-padding1">
         <div class="container" align="center">
             <?php
-            $drivers=mysqli_query($conn,"select dname,age,gender,pic from driver");
+            $drivers=mysqli_query($conn,"select dname,age,gender,pic,did from driver");
             if(mysqli_num_rows($drivers)>0){
                 ?>
                 <div class="row justify-content-center">
@@ -141,6 +141,8 @@
             while ($row=mysqli_fetch_array($drivers)){
 //                    var_dump($row['brand']);
                 $path = "admin/".$row['pic'];
+                $did=$row['did'];
+                $driverView='driverview.php?'.$did;
                 if($count%3==0){
                     ?><div class="row"><?php
                 }
@@ -149,10 +151,10 @@
                     <!-- Single Room -->
                     <div class="single-room mb-50" style="width: 70%;height: 70%">
                         <div class="room-img">
-                            <a href="cars.php"><img src="<?php echo $path ?>" alt=""></a>
+                            <a href=<?php echo $driverView?>><img src="<?php echo $path ?>" alt=""></a>
                         </div>
                         <div class="room-caption">
-                            <h3><a href="cars.php"><?php echo $row['dname'] ?></a></h3>
+                            <h3><a href=<?php echo $driverView?>><?php echo $row['dname'] ?></a></h3>
                             <div class="per-night">
                                     <span><u></u> <?php echo $row['age'] ?> <span> years old<span></span></span>
                             </div>

@@ -9,8 +9,15 @@ else{
     if($car_detail=mysqli_query($conn,"select * from car where cid='$carID'")){
         if(mysqli_num_rows($car_detail)>0){
             $view=mysqli_fetch_array($car_detail);
-
+            $did=$view['did'];
+            $driverlink="driverview.php?".$did;
+            if($driver=mysqli_query($conn,"select dname from driver where did='$did'")){
+                $driverfetch=mysqli_fetch_array($driver);
+            }
             $imagepath='admin/'.$view['pic'];
+        }
+        else{
+            ?><script type="text/javascript">window.location.href="cars.php";alert("No car found with this car ID");</script> <?php
         }
     }
     else{
@@ -47,9 +54,14 @@ else{
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        td{
+            style="text-align: left"
+        }
+    </style>
 </head>
 
-<body>
+<body style="background-color: #a7907b40">
 
 <!-- Preloader Start -->
 <div id="preloader-active">
@@ -136,26 +148,45 @@ else{
     </div>
     
     <div>
-        <h1>Blank Page</h1>
         <img src="<?php echo $imagepath?>" class="img-fluid" alt="Responsive image" width="100%">
-        <table class="table" width="100%">
-            <thead>
+        <div class="container">
+            <table class="table table-borderless table-striped table-dark" style="text-align: center;font-size: x-large;color: #ccac4b;border-bottom-right-radius: 50px;border-top-left-radius: 50px">
+                <tbody>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Brand</th>
+                <td><?php echo $view['brand']?></td>
             </tr>
-            </thead>
-            <tbody>
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row">Name</th>
+                <td><?php echo $view['cname']?></td>
             </tr>
+            <tr>
+                <th scope="row">Type</th>
+                <td><?php echo $view['ctype']?></td>
+            </tr>
+            <tr>
+                <th scope="row">Color</th>
+                <td><?php echo $view['ccolor']?></td>
+            </tr><tr>
+                <th scope="row">Passenger Capacity</th>
+                <td><?php echo $view['cseat']?></td>
+            </tr>
+            <tr>
+                <th scope="row">Driver</th>
+                <td><a style="color: #ccac4b" href=<?php echo $driverlink;?> ><?php echo $driverfetch['dname']?></a></td>
+            </tr>
+            <tr>
+                <th scope="row">Fare per Km</th>
+                <td><?php echo $view['farepkm']?> Rupees</td>
+            </tr>
+            <tr>
+                <th scope="row">Fare per day</th>
+                <td><?php echo $view['farepd']?> Rupees</td>
+            </tr>
+
             </tbody>
-        </table>
+            </table>
+        </div>
     </div>
 
 <footer>

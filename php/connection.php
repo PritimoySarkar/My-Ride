@@ -8,7 +8,7 @@ if(!$conn)
     echo '<script type="text/javascript">alert("Database connection error")</script>';
 }
 else{
-    echo '<script type="text/javascript">console.log("Database Connected")</script>';
+//    echo '<script type="text/javascript">console.log("Database Connected")</script>';
 }
 
 ?>

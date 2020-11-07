@@ -30,7 +30,7 @@
         <link rel="stylesheet" href="assets/css/responsive.css">
    </head>
 
-   <body>
+   <body style="background-color: #a7907b40">
        
     <!-- Preloader Start -->
     <div id="preloader-active">
@@ -151,7 +151,7 @@
                         <!-- Single Room -->
                         <div class="single-room mb-50">
                             <div class="room-img">
-                                <a href="carview.php"><img src="<?php echo $path ?>" alt=""></a>
+                                <a href=<?php echo $carview;?>><img src="<?php echo $path ?>" alt=""></a>
                             </div>
                             <div class="room-caption">
                                 <h3><a href=<?php echo $carview;?>><?php echo $row['brand']."-".$row['cname'] ?></a></h3>
