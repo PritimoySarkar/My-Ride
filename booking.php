@@ -119,7 +119,7 @@
             <div class="container">
                 <div class="row ">
                     <div class="col-12">
-                        <form method="POST" enctype="multipart/form-data" action="">
+                        <form method="POST" enctype="multipart/form-data" action="carselect.php">
                             <div class="booking-wrap d-flex justify-content-between align-items-center">
 
                                 <!-- select in date -->
@@ -187,28 +187,6 @@
 
                             </div>
                         </form>
-                        <?php
-                            if(isset($_POST['search'])){
-                                echo "POST is set<br>";
-                                $flag = 0;
-                                foreach ($_POST as $key => $value){
-//                                    echo $key." ".$value."<br>";
-                                    if(empty($value)){
-                                        $flag=1;
-                                        break;
-                                    }
-                                }
-                                if($flag==1){
-                                    echo '<script>alert("All field must be filled for searching")</script>';
-                                }
-                                else{
-                                    ?><script type="text/javascript">console.log("got all value to search")</script><?php
-                                    extract($_POST);
-                                    $qr="";
-                                }
-                            }
-                            else{echo "POST not set";}
-                        ?>
                     </div>
                 </div>
             </div>

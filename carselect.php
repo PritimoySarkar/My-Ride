@@ -1,5 +1,31 @@
 <?php include("php/connection.php");
-    var_dump($_SERVER);
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        if(isset($_POST['search'])){
+            $flag = 0;
+            foreach ($_POST as $key => $value){
+//                                    echo $key." ".$value."<br>";
+                if(empty($value)){
+                    $flag=1;
+                    break;
+                }
+            }
+            if($flag==1){
+                echo '<script>alert("All field must be filled for searching");window.location.href="booking.php"</script>';
+            }
+            else{
+                extract($_POST);
+                if($qr=mysqli_query($conn,"select * from car where cseat>=$headCount")){
+//                    while ($row=mysqli_fetch_array($qr)){
+//                        var_dump($row);
+//                        echo $row['pic'];
+//                    }
+                }
+            }
+        }
+    }
+    else{
+        ?><script>alert("No booking booking details given");window.location.href="cars.php";</script><?php
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -13,7 +39,8 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- Place favicon.ico in the root directory -->
-
+    <!-- Bootstrap Link here-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -64,7 +91,7 @@
                                 <ul id="navigation">
                                     <li><a href="index.html">Home</a></li>
                                     <li><a href="about.html">About</a></li>
-                                    <li><a href="booking.html">Booking</a></li>
+                                    <li><a href="booking.pho">Booking</a></li>
                                     <!--                                        <li><a href="blog.html">Blog</a>-->
                                     <!--                                            <ul class="submenu">-->
                                     <!--                                                <li><a href="blog.html">Blog</a></li>-->
@@ -116,8 +143,55 @@
         </div>
     </div>
     
-    <div>
-        <h1>Blank Page</h1>
+    <div class="container-fluid" style="padding-top: 50px;">
+        <table class="table table-striped center" style="font-size: x-large;text-align: center;">
+            <?php
+                if(mysqli_num_rows($qr)){
+                    ?>
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" width="20%">Car Photo</th>
+                        <th scope="col">Car Brand</th>
+                        <th scope="col">Car Model Name</th>
+                        <th scope="col">Car Type</th>
+                        <th scope="col">Car Color</th>
+                        <th scope="col">Car Driver</th>
+                        <th scope="col">Passenger Capacity</th>
+                        <th scope="col">Rate per Km</th>
+                        <th scope="col">Rate per Day</th>
+                        <th scope="col">Request for Booking</th>
+                    </tr>
+                    </thead>
+            <?php
+                }
+            ?>
+            <tbody>
+            <?php
+                while ($row=mysqli_fetch_array($qr)){
+                    $path="admin/".$row['pic'];
+                    $did=$row['did'];
+                    $driver=mysqli_query($conn,"Select dname,pic from driver where did=$did");
+                    $dpic = "admin/".mysqli_fetch_array($driver)['pic'];
+                    $dname= mysqli_fetch_array($driver)['dname'];
+                    echo $dname;
+            ?>
+            <tr>
+                <th scope="row"><img class="img-fluid" src="<?php echo $path?>"></th>
+                <td style="vertical-align: middle"><?php echo $row['brand']?></td>
+                <td style="vertical-align: middle"><?php echo $row['cname']?></td>
+                <td style="vertical-align: middle"><?php echo $row['ctype']?></td>
+                <td style="vertical-align: middle"><?php echo $row['ccolor']?></td>
+                <td style="vertical-align: middle"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px;height: 100px;" title="<?php echo $dname;?>"></td>
+                <td style="vertical-align: middle"><?php echo $row['cseat']?></td>
+                <td style="vertical-align: middle"><?php echo $row['farepkm']?></td>
+                <td style="vertical-align: middle"><?php echo $row['farepd']?></td>
+                <td style="vertical-align: middle"><button class="btn-outline-info" placeholder="Some" value="car" name="book">Book This Car</button></td>
+            </tr>
+            <?php
+                }
+            ?>
+            </tbody>
+        </table>
     </div>
 
 <footer>

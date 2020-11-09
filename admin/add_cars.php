@@ -219,7 +219,7 @@ $getDid=mysqli_query($conn,"select did from driver");
 <!--                            <div class="dropdown-divider"></div>-->
                             <a class="dropdown-item" href="overview.php"><i class="fas fa-code m-r-5 m-l-5"></i> Overview </a>
 <!--                            <div class="dropdown-divider"></div>-->
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                            <a class="dropdown-item" href="php/admin-logout.php"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                         </div>
                     </li>
                     <!-- ============================================================== -->

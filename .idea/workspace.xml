@@ -20,17 +20,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="407e96ea-3f5d-488a-b7d1-4b1be6bd0b5f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/carselect.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/driverview.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/php/checkadmin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blank.html" beforeDir="false" afterPath="$PROJECT_DIR$/blank.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/add_admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/add_cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_cars.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/add_drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_drivers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/add_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/approved.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/approved.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cars.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/drivers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/overview.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/overview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pending.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pending.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/php/admin-logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/php/admin-logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/rejected.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/rejected.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/remove_cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/remove_cars.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/remove_drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/remove_drivers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/remove_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/remove_routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/theme.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/theme.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/booking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/cars.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carview.php" beforeDir="false" afterPath="$PROJECT_DIR$/carview.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/drivers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/connection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carselect.php" beforeDir="false" afterPath="$PROJECT_DIR$/carselect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +100,9 @@
       <workItem from="1604254784260" duration="8734000" />
       <workItem from="1604660140280" duration="6451000" />
       <workItem from="1604722174226" duration="602000" />
-      <workItem from="1604740980228" duration="11917000" />
+      <workItem from="1604740980228" duration="12571000" />
+      <workItem from="1604857210392" duration="613000" />
+      <workItem from="1604932558099" duration="12484000" />
     </task>
     <servers />
   </component>
@@ -106,6 +119,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604722502026">
