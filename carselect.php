@@ -1,5 +1,7 @@
 <?php include("php/connection.php");
+include ('php/checkuser.php');
     if($_SERVER['REQUEST_METHOD']=="POST"){
+        $uid = $_SESSION['user']['uid'];
         if(isset($_POST['search'])){
             $flag = 0;
             foreach ($_POST as $key => $value){
@@ -168,12 +170,16 @@
             <tbody>
             <?php
                 while ($row=mysqli_fetch_array($qr)){
+                    $cid=$row['cid'];
+                    $cost=;
                     $path="admin/".$row['pic'];
                     $did=$row['did'];
                     $driver=mysqli_query($conn,"Select dname,pic from driver where did=$did");
-                    $dpic = "admin/".mysqli_fetch_array($driver)['pic'];
-                    $dname= mysqli_fetch_array($driver)['dname'];
-                    echo $dname;
+                    while ($drow=mysqli_fetch_array($driver)){
+                        $dpic = "admin/".$drow['pic'];
+                        $dname= $drow['dname'];
+                    }
+                    $dview='driverview.php?'.$did;
             ?>
             <tr>
                 <th scope="row"><img class="img-fluid" src="<?php echo $path?>"></th>
@@ -181,12 +187,23 @@
                 <td style="vertical-align: middle"><?php echo $row['cname']?></td>
                 <td style="vertical-align: middle"><?php echo $row['ctype']?></td>
                 <td style="vertical-align: middle"><?php echo $row['ccolor']?></td>
-                <td style="vertical-align: middle"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px;height: 100px;" title="<?php echo $dname;?>"></td>
+                <td style="vertical-align: middle"><a href="<?php echo $dview?>"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px;height: 100px;" title="<?php echo $dname;?>"></a></td>
                 <td style="vertical-align: middle"><?php echo $row['cseat']?></td>
                 <td style="vertical-align: middle"><?php echo $row['farepkm']?></td>
                 <td style="vertical-align: middle"><?php echo $row['farepd']?></td>
-                <td style="vertical-align: middle"><button class="btn-outline-info" placeholder="Some" value="car" name="book">Book This Car</button></td>
+                <td style="vertical-align: middle"><button class="btn-outline-info" placeholder="Some" value="car" name="book" onclick="booknow()">Book This Car</button></td>
             </tr>
+                    <script>
+                        function booknow(){
+                            if(confirm("Are you sure, that you want to book this car?")){
+                                alert("Confirmed");
+                                <?php
+                                    $boo_qr=($conn,"insert into pending values ($uid,$rid,$cid,$cost)");
+                                ?>
+                            }
+                            else{alert("canceled")}
+                        }
+                    </script>
             <?php
                 }
             ?>

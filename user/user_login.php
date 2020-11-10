@@ -175,7 +175,7 @@
                             # fetch user data
                             $user_data = mysqli_fetch_array($check);
                             $_SESSION['user'] = $user_data;
-//                            header("Location:../index.php");
+                            header("Location:../index.php");
                         }
                         else
                         {
