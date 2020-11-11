@@ -4,15 +4,7 @@
     <title></title>
 </head>
 <body>
-    <h1>Hey</h1>
-    <button onclick="myFunc()">Click</button>
-    <script type="text/javascript">
-        function myFunc() {
-            console.log("hey")
-            <?php
-                echo "hey";
-            ?>
-        }
-    </script>
+    <h1 style="text-align: center">Hey</h1>
+
 </body>
 </html>

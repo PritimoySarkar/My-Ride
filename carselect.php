@@ -171,7 +171,7 @@ include ('php/checkuser.php');
             <?php
                 while ($row=mysqli_fetch_array($qr)){
                     $cid=$row['cid'];
-                    $cost=;
+//                    $cost=;
                     $path="admin/".$row['pic'];
                     $did=$row['did'];
                     $driver=mysqli_query($conn,"Select dname,pic from driver where did=$did");
@@ -191,19 +191,30 @@ include ('php/checkuser.php');
                 <td style="vertical-align: middle"><?php echo $row['cseat']?></td>
                 <td style="vertical-align: middle"><?php echo $row['farepkm']?></td>
                 <td style="vertical-align: middle"><?php echo $row['farepd']?></td>
-                <td style="vertical-align: middle"><button class="btn-outline-info" placeholder="Some" value="car" name="book" onclick="booknow()">Book This Car</button></td>
+                <td style="vertical-align: middle"><button class="btn-outline-info btn btn-primary" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Book This Car</button></td>
             </tr>
-                    <script>
-                        function booknow(){
-                            if(confirm("Are you sure, that you want to book this car?")){
-                                alert("Confirmed");
-                                <?php
-                                    $boo_qr=($conn,"insert into pending values ($uid,$rid,$cid,$cost)");
-                                ?>
-                            }
-                            else{alert("canceled")}
-                        }
-                    </script>
+                    <!-- Button trigger modal -->
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header" style="text-align: center">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Confirm Registration</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="text-align: center">
+                                    Are you sure, you want to book this car?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Yes, Book Now</button>
+                                    <button type="button" class="btn btn-primary">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             <?php
                 }
             ?>

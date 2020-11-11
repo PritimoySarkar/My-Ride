@@ -1,4 +1,6 @@
-<?php include ("php/connection.php"); ?>
+<?php include ("php/connection.php");
+    $routes=mysqli_query($conn,"SELECT source FROM route UNION SELECT destination FROM route");
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -129,7 +131,13 @@
                                         <span> From Where:</span>
                                     </div>
                                     <div class="boking-datepicker">
-                                        <input id="source" name="sourcePlace" placeholder="Home Location" required/>
+                                        <select id="source" name="source">
+                                            <option value="" selected>Select Source</option>
+                                                <?php while($row=mysqli_fetch_array($routes)){
+                                                    ?><option value="<?php echo $row[0] ?>"> <?php echo $row[0] ?></option><?php
+                                                }
+                                                ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <!-- Single Select Box -->
@@ -139,7 +147,13 @@
                                         <span>To Where:</span>
                                     </div>
                                     <div class="boking-datepicker">
-                                        <input id="destination" name="destinationPlace" placeholder="Trip Ending Location" required/>
+                                        <select id="destination" name="destination">
+                                            <option value="" selected>Select Destination</option>
+                                            <?php while($row=mysqli_fetch_array($routes)){
+                                                ?><option value="<?php echo $row[0] ?>"> <?php echo $row[0] ?></option><?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <!-- Single Select Box -->
@@ -175,7 +189,41 @@
                                         <span>Head Count:</span>
                                     </div>
                                     <div class="select-this">
-                                        <input id="count" name="headCount" placeholder="Number of people" data-defaultValue=1 required/>
+                                        <select class="scrollable-menu" id="source" name="source">
+                                            <option value="" selected>Select Number of people (Passenger)</option>
+                                            <?php foreach (range(1,30) as $num){
+                                                ?><option value="<?php echo $num ?>"> <?php echo $num ?></option><?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Single Select Box -->
+                                <div class="single-select-box mb-30">
+                                    <!-- select out date -->
+                                    <div class="boking-tittle">
+                                        <span>Required Car Type:</span>
+                                    </div>
+                                    <div class="boking-datepicker">
+                                        <select id="type" name="type">
+                                            <option value="" selected>Select Car Type</option>
+                                            <option value="Commercial">Commercial</option>
+                                            <option value="Privet">Privet</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Single Select Box -->
+                                <div class="single-select-box mb-30">
+                                    <!-- select out date -->
+                                    <div class="boking-tittle">
+                                        <span>Drop off day release:</span>
+                                    </div>
+                                    <div class="boking-datepicker">
+                                        <select id="type" name="type">
+                                            <option value="" selected>Select Drop off service duration</option>
+                                            <option value="day">Whole Day</option>
+                                            <option value="noday">Release after journey completion</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <!-- Single Select Box -->
