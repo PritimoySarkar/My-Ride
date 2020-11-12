@@ -149,7 +149,9 @@
                                     <div class="boking-datepicker">
                                         <select id="destination" name="destination">
                                             <option value="" selected>Select Destination</option>
-                                            <?php while($row=mysqli_fetch_array($routes)){
+                                            <?php
+                                                $routes=mysqli_query($conn,"SELECT source FROM route UNION SELECT destination FROM route");
+                                                while($row=mysqli_fetch_array($routes)){
                                                 ?><option value="<?php echo $row[0] ?>"> <?php echo $row[0] ?></option><?php
                                             }
                                             ?>
@@ -189,7 +191,7 @@
                                         <span>Head Count:</span>
                                     </div>
                                     <div class="select-this">
-                                        <select class="scrollable-menu" id="source" name="source">
+                                        <select class="scrollable-menu" id="source" name="headCount">
                                             <option value="" selected>Select Number of people (Passenger)</option>
                                             <?php foreach (range(1,30) as $num){
                                                 ?><option value="<?php echo $num ?>"> <?php echo $num ?></option><?php

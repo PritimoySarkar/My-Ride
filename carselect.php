@@ -17,6 +17,7 @@ include ('php/checkuser.php');
             else{
                 extract($_POST);
                 if($qr=mysqli_query($conn,"select * from car where cseat>=$headCount")){
+//                    var_dump($_POST);
 //                    while ($row=mysqli_fetch_array($qr)){
 //                        var_dump($row);
 //                        echo $row['pic'];
@@ -209,9 +210,10 @@ include ('php/checkuser.php');
                                     Are you sure, you want to book this car?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Yes, Book Now</button>
-                                    <button type="button" class="btn btn-primary">No</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" name="yes" id="yes">Yes, Book Now</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
                                 </div>
+
                             </div>
                         </div>
                     </div>
