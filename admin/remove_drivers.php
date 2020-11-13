@@ -9,6 +9,12 @@
     }
     else{
 //        var_dump($_SESSION['admin']);
+        if($qr=mysqli_query($conn,"select * from driver")){
+
+        }
+        else{
+            ?><script>alert("Data fetching error")</script> <?php
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -62,7 +68,7 @@
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="../index.php">
                     <!-- Logo icon -->
                     <b class="logo-icon p-l-10">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -424,7 +430,69 @@
             <!--                Floating buttons End-->
             <!-- ============================================================== -->
             <div>
+                <div class="container-fluid" style="padding-top: 50px;">
+                    <table class="table table-striped center table-warning table-bordered" style="font-size: x-large;text-align: center;">
+                        <?php
+                        if(mysqli_num_rows($qr)){
+                            ?>
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" width="20%">Driver Photo</th>
+                                <th scope="col">Driver ID</th>
+                                <th scope="col">Driver Name</th>
+                                <th scope="col">Contact Number</th>
+                                <th scope="col">Licence Number</th>
+                                <th scope="col">Remove Button</th>
+                            </tr>
+                            </thead>
+                            <?php
+                        }
+                        ?>
+                        <tbody>
+                        <?php
+                        while ($row=mysqli_fetch_array($qr)){
+//                    $cost=;
+                            $path=$row['pic'];
+                            ?>
+                            <tr>
+                                <th scope="row"><img class="img-fluid" src="<?php echo $path?>" style="width: 100px"></th>
+                                <td style="vertical-align: middle"><?php echo $row['did']?></td>
+                                <td style="vertical-align: middle"><?php echo $row['dname']?></td>
+                                <td style="vertical-align: middle"><?php echo $row['phno']?></td>
+                                <td style="vertical-align: middle"><?php echo $row['lic']?></td>
+                                <td style="vertical-align: middle"><button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Remove this Driver</button></td>
+                            </tr>
+                            <!-- Button trigger modal -->
+                            <?php
 
+                            ?>
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="text-align: center">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete Driver</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" style="text-align: center">
+                                            Are you sure, you want to remove this driver?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" name="yes" id="yes">Yes, Delete</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
             <!-- ============================================================== -->

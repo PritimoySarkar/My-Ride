@@ -1,3 +1,21 @@
+<?php
+include ("php/connection.php");
+if(isset($_SESSION['user'])){
+    ?>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Change text of input button
+        $("#profile").attr("href", "user/profile.php");
+
+        // Change text of button element
+        $("#profile").html("My Profile");
+    });
+    </script>
+    <?php
+}
+?>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -51,7 +69,7 @@
                         <!-- logo -->
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                               <a href="index.html"><img src="assets/img/logo/myRIde_logo.png" alt=""></a>
+                               <a href="index.php"><img src="assets/img/logo/myRIde_logo.png" alt=""></a>
                             </div>
                         </div>
                     <div class="col-xl-8 col-lg-8">
@@ -59,8 +77,8 @@
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">                                                                                                                                     
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="index.php">Home</a></li>
+                                        <li><a href="about.php">About</a></li>
                                         <li><a href="booking.php">Booking</a></li>
 <!--                                        <li><a href="blog.html">Blog</a>-->
 <!--                                            <ul class="submenu">-->
@@ -74,7 +92,7 @@
                                                 <li><a href="drivers.php">Drivers</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="contact.php">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -82,7 +100,7 @@
                         <div class="col-xl-2 col-lg-2">
                             <!-- header-btn -->
                             <div class="header-btn">
-                                <a href="user/user_login.php" class="btn btn1 d-none d-lg-block ">Log In</a>
+                                <a href="user/user_login.php" class="btn btn1 d-none d-lg-block" id="profile">Log In</a>
                             </div>
                         </div>
                         <!-- Mobile Menu -->
@@ -226,7 +244,7 @@
                 <div class="row">
                    <div class="col-xl-5 col-lg-6">
                         <div class="customer-img mb-120">
-                            <img src="assets/img/customer/customar1.png" class="customar-img1" alt="">
+                            <img src="assets/img/gallery/better-journey.jpg" class="customar-img1" alt="">
                             <img src="assets/img/customer/customar2.png" class="customar-img2" alt="">
                             <div class="service-experience heartbeat">
                                 <h3>25 Years of Service<br>Experience</h3>
@@ -239,8 +257,8 @@
                             <h2>We are here to make your journey better</h2>
                             <div class="caption-details">
                                 <p class="pera-dtails">Your comfort and safety throughout the journey is our responsibility.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. </p>
-                                <a href="#" class="btn more-btn1">Learn More <i class="ti-angle-right"></i> </a>
+                                <p>Serving our customers with quality service since 25 years with 55000+ happy customers and 520+ drivers we are proud to provide you a proper hassle free smooth journey. We are happy to serve you. Our journey begins with you and it also ends with you only.</p>
+                                <a href="about.php" class="btn more-btn1">Learn More <i class="ti-angle-right"></i> </a>
                             </div>
                         </div>
                     </div>
@@ -248,116 +266,6 @@
             </div>
         </section>
         <!-- Make customer End-->
-
-        <!-- Room Start -->
-        <section class="room-area">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-8">
-                        <!--font-back-tittle  -->
-                        <div class="font-back-tittle mb-45">
-                            <div class="archivment-front">
-                                <h3>Our Rooms</h3>
-                            </div>
-                            <h3 class="archivment-back">Our Rooms</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="cars.php"><img src="assets/img/rooms/room1.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="cars.php">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="cars.php"><img src="assets/img/rooms/room2.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="cars.php">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="cars.php"> <img src="assets/img/rooms/room3.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="cars.php">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                                <a href="cars.php"><img src="assets/img/rooms/room4.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="cars.php">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                                <a href="cars.php"><img src="assets/img/rooms/room5.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="cars.php">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="cars.php"> <img src="assets/img/rooms/room6.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="cars.php">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="room-btn pt-70">
-                        <a href="#" class="btn view-btn1">View more  <i class="ti-angle-right"></i> </a>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <!-- Room End -->
 
         <!-- Dining Start -->
         <div class="dining-area dining-padding-top">
@@ -367,10 +275,10 @@
                     <div class="row justify-content-end">
                         <div class="col-lg-8 col-md-8">
                             <div class="dining-caption">
-                                <span>Our resturent</span>
-                                <h3>Dining & Drinks</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br> tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud.</p>
-                                <a href="#" class="btn border-btn">Learn More <i class="ti-angle-right"></i> </a>
+                                <span>Our cars</span>
+                                <h3>Ride our luxury wheels</h3>
+                                <p>We provide more than 700 cars including private and commercial types. Starting from a short quick ride to a long trip with friends and family as well as transporting huge amount of commercial material we got you covered.</p>
+                                <a href="cars.php" class="btn border-btn">All wheels<i class="ti-angle-right"></i> </a>
                             </div>
                         </div>
                     </div>
@@ -382,10 +290,10 @@
                     <div class="row justify-content-start">
                         <div class="col-lg-8 col-md-8">
                             <div class="dining-caption text-right">
-                                <span>Our Pool</span>
-                                <h3>Swimming Pool</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br> tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud.</p>
-                                <a href="#" class="btn border-btn">Learn More  <i class="ti-angle-right"></i></a>
+                                <span>Our Drivers</span>
+                                <h3>They will drive you dusk till dawn</h3>
+                                <p>We have more than 500 highly skilled and trained professional drivers. Each of them have at least 5 years of driving experience so that you can enjoy the journey and we can take care of the road. Your safety and comfort are always our first priority.</p>
+                                <a href="drivers.php" class="btn border-btn">Our Heroes<i class="ti-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -411,7 +319,7 @@
                                 </div>
                                  <!-- Testimonial Content -->
                                 <div class="testimonial-caption text-center">
-                                    <p>Yorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+                                    <p>My Ride is the best platform to take your favourite car to your weekend trip with friends. Wonderful service, punctual timing and comfortable ride.
                                     </p>
                                     <!-- Rattion -->
                                     <div class="testimonial-ratting">
@@ -422,7 +330,33 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="rattiong-caption">
-                                        <span>Clifford Frazier, <span>Regular Client</span> </span>
+                                        <span>Md. Abdul Akhtar, <span>Regular Client</span> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Testimonial -->
+                            <div class="single-testimonial pt-65">
+                                <!-- Testimonial tittle -->
+                                <div class="font-back-tittle mb-105">
+                                    <div class="archivment-front">
+                                        <img src="assets/img/logo/testimonial2.png" alt="">
+                                    </div>
+                                    <h3 class="archivment-back">Testimonial</h3>
+                                </div>
+                                <!-- Testimonial Content -->
+                                <div class="testimonial-caption text-center">
+                                    <p>My Ride is the best platform to take your favourite car to your weekend trip with friends. Wonderful service, punctual timing and comfortable ride.
+                                    </p>
+                                    <!-- Rattion -->
+                                    <div class="testimonial-ratting">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="rattiong-caption">
+                                        <span>Mr. Rajib Ghosh, <span>New Client</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -431,7 +365,7 @@
                                 <!-- Testimonial tittle -->
                                 <div class="font-back-tittle mb-105">
                                     <div class="archivment-front">
-                                        <img src="assets/img/logo/testimonial.png" alt="">
+                                        <img src="assets/img/logo/testimonial3.png" alt="">
                                     </div>
                                     <h3 class="archivment-back">Testimonial</h3>
                                 </div>
@@ -444,10 +378,10 @@
                                         <a href="#"><i class="fas fa-star"></i></a>
                                         <a href="#"><i class="fas fa-star"></i></a>
                                         <a href="#"><i class="fas fa-star"></i></a>
-                                        <a href="#"><i class="fas fa-star"></i></a>
+                                        <a href="#"><i class="fas fa-star-half"></i></a>
                                     </div>
                                     <div class="rattiong-caption">
-                                        <span>Clifford Frazier, <span>Regular Client</span> </span>
+                                        <span>Ms. Sahina Khatun, <span>Frequent Client</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -458,112 +392,26 @@
         </div>
         <!-- Testimonial End -->
 
-        <!-- Blog Start -->
-       <div class="blog-area blog-padding">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-8">
-                        <!-- Seciton Tittle  -->
-                        <div class="font-back-tittle mb-50">
-                            <div class="archivment-front">
-                                <h3>Our Heroes</h3>
-                            </div>
-<!--                            <h3 class="archivment-back">Recent News</h3>-->
-                        </div>
-                    </div>
-                </div>
+        <!-- Gallery img Start-->
+<!--        <div class="gallery-area fix">-->
+<!--            <div class="container-fluid p-0">-->
 <!--                <div class="row">-->
-<!--                    <div class="col-xl-4 col-lg-4 col-md-6">-->
-<!--                        &lt;!&ndash; Single Blog &ndash;&gt;-->
-<!--                        <div class="single-blog mb-30">-->
-<!--                            <div class="blog-img">-->
-<!--                                <a href="user_register.php"><img src="assets/img/our_blog/blog-img1.jpg" alt=""></a>-->
+<!--                    <div class="col-md-12">-->
+<!--                        <div class="gallery-active owl-carousel">-->
+<!--                            <div class="gallery-img">-->
+<!--                                <a href="#"><img src="assets/img/gallery/gallery1.jpg" alt=""></a>-->
 <!--                            </div>-->
-<!--                            <div class="blog-caption">-->
-<!--                                <div class="blog-cap-top d-flex justify-content-between mb-40">-->
-<!--                                    <span>news</span>-->
-<!--                                    <ul><li>by<a href="#"> Jhon Guru</a></li></ul>-->
-<!--                                </div>-->
-<!--                                <div class="blog-cap-mid">-->
-<!--                                    <p><a href="user_register.php">5 Simple Tricks for Getting Stellar Hotel Service Wherever You Are</a></p>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Comments &ndash;&gt;-->
-<!--                                <div class="blog-cap-bottom d-flex justify-content-between">-->
-<!--                                    <span>Feb 28, 2020</span>-->
-<!--                                    <span><img src="assets/img/our_blog/blog-comments-icon.jpg" alt="">3</span>-->
-<!--                                </div>-->
+<!--                            <div class="gallery-img">-->
+<!--                                <a href="#"><img src="assets/img/gallery/gallery2.jpg" alt=""></a>-->
 <!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-xl-4 col-lg-4 col-md-6">-->
-<!--                        &lt;!&ndash; Single Blog &ndash;&gt;-->
-<!--                        <div class="single-blog mb-30">-->
-<!--                            <div class="blog-img">-->
-<!--                               <a href="user_register.php"> <img src="assets/img/our_blog/blog-img2.jpg" alt=""></a>-->
-<!--                            </div>-->
-<!--                            <div class="blog-caption">-->
-<!--                                <div class="blog-cap-top d-flex justify-content-between mb-40">-->
-<!--                                    <span>news</span>-->
-<!--                                    <ul><li>by<a href="#"> Jhon Guru</a></li></ul>-->
-<!--                                </div>-->
-<!--                                <div class="blog-cap-mid">-->
-<!--                                    <p><a href="user_register.php">5 Simple Tricks for Getting Stellar Hotel Service Wherever You Are</a></p>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Comments &ndash;&gt;-->
-<!--                                <div class="blog-cap-bottom d-flex justify-content-between">-->
-<!--                                    <span>Feb 28, 2020</span>-->
-<!--                                    <span><img src="assets/img/our_blog/blog-comments-icon.jpg" alt="">3</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-xl-4 col-lg-4 col-md-6">-->
-<!--                        &lt;!&ndash; Single Blog &ndash;&gt;-->
-<!--                        <div class="single-blog mb-30">-->
-<!--                            <div class="blog-img">-->
-<!--                                <a href="user_register.php"><img src="assets/img/our_blog/blog-img3.jpg" alt=""></a>-->
-<!--                            </div>-->
-<!--                            <div class="blog-caption">-->
-<!--                                <div class="blog-cap-top d-flex justify-content-between mb-40">-->
-<!--                                    <span>news</span>-->
-<!--                                    <ul><li>by<a href="#"> Jhon Guru</a></li></ul>-->
-<!--                                </div>-->
-<!--                                <div class="blog-cap-mid">-->
-<!--                                    <p><a href="user_register.php">5 Simple Tricks for Getting Stellar Hotel Service Wherever You Are</a></p>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Comments &ndash;&gt;-->
-<!--                                <div class="blog-cap-bottom d-flex justify-content-between">-->
-<!--                                    <span>Feb 28, 2020</span>-->
-<!--                                    <span><img src="assets/img/our_blog/blog-comments-icon.jpg" alt="">3</span>-->
-<!--                                </div>-->
+<!--                            <div class="gallery-img">-->
+<!--                                <a href="#"><img src="assets/img/gallery/gallery3.jpg" alt=""></a>-->
 <!--                            </div>-->
 <!--                        </div>-->
 <!--                    </div>-->
 <!--                </div>-->
-            </div>
-       </div>
-        <!-- Blog End -->
-
-        <!-- Gallery img Start-->
-        <div class="gallery-area fix">
-            <div class="container-fluid p-0">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="gallery-active owl-carousel">
-                            <div class="gallery-img">
-                                <a href="#"><img src="assets/img/gallery/gallery1.jpg" alt=""></a>
-                            </div>
-                            <div class="gallery-img">
-                                <a href="#"><img src="assets/img/gallery/gallery2.jpg" alt=""></a>
-                            </div>
-                            <div class="gallery-img">
-                                <a href="#"><img src="assets/img/gallery/gallery3.jpg" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--            </div>-->
+<!--        </div>-->
         <!-- Gallery img End-->
     </main>
    <footer>
@@ -575,14 +423,14 @@
                       <div class="single-footer-caption mb-30">
                          <!-- logo -->
                          <div class="footer-logo">
-                           <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                           <a href="index.php"><img src="assets/img/logo/myride-footer.png" alt=""></a>
                          </div>
-                         <div class="footer-social footer-social2">
-                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                             <a href="#"><i class="fab fa-twitter"></i></a>
-                             <a href="#"><i class="fas fa-globe"></i></a>
-                             <a href="#"><i class="fab fa-behance"></i></a>
-                         </div>
+<!--                         <div class="footer-social footer-social2">-->
+<!--                             <a href="#"><i class="fab fa-facebook-f"></i></a>-->
+<!--                             <a href="#"><i class="fab fa-twitter"></i></a>-->
+<!--                             <a href="#"><i class="fas fa-globe"></i></a>-->
+<!--                             <a href="#"><i class="fab fa-behance"></i></a>-->
+<!--                         </div>-->
                          <div class="footer-pera">
                               <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
   Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -595,10 +443,10 @@
                            <div class="footer-tittle">
                                <h4>Quick Links</h4>
                                <ul>
-                                   <li><a href="#">About Mariana</a></li>
-                                   <li><a href="#">Our Best Rooms</a></li>
-                                   <li><a href="#">Our Photo Gellary</a></li>
-                                   <li><a href="#">Pool Service</a></li>
+                                   <li><a href="about.php">About Myride</a></li>
+                                   <li><a href="cars.php">Our Cars</a></li>
+                                   <li><a href="drivers.php">Our Drivers</a></li>
+                                   <li><a href="booking.php">Book Car</a></li>
                                </ul>
                            </div>
                        </div>
@@ -606,11 +454,11 @@
                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                        <div class="single-footer-caption mb-30">
                            <div class="footer-tittle">
-                               <h4>Reservations</h4>
+                               <h4>Talk to us</h4>
                                <ul>
-                                   <li><a href="#">Tel: 345 5667 889</a></li>
-                                   <li><a href="#">Skype: Marianabooking</a></li>
-                                   <li><a href="#">reservations@hotelriver.com</a></li>
+                                   <li><a href="tel:1234567889">Tel: 123 4567 889</a></li>
+                                   <li><a href="skype:live:.cid.734aa98970431b7c?chat">Skype: Myride</a></li>
+                                   <li><a href="mailto:p2.ms@yandex.com">booking@myride.com</a></li>
                                </ul>
                            </div>
                        </div>
@@ -620,25 +468,25 @@
                            <div class="footer-tittle">
                                <h4>Our Location</h4>
                                <ul>
-                                   <li><a href="#">198 West 21th Street,</a></li>
-                                   <li><a href="#">Suite 721 New York NY 10016</a></li>
+                                   <li><a href="https://goo.gl/maps/9U8wYcagqy6Awii89">Kutighat Baranagar Bazar</a></li>
+                                   <li><a href="https://goo.gl/maps/9U8wYcagqy6Awii89">Baranagar, West Bengal</a></li>
                                </ul>
                                <!-- Form -->
-                                <div class="footer-form" >
-                                    <div id="mc_embed_signup">
-                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                        method="get" class="subscribe_form relative mail_part">
-                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                            class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = ' Email Address '">
-                                            <div class="form-icon">
-                                              <button type="submit" name="submit" id="newsletter-submit"
-                                              class="email_icon newsletter-submit button-contactForm"><img src="assets/img/logo/form-iocn.jpg" alt=""></button>
-                                            </div>
-                                            <div class="mt-10 info"></div>
-                                        </form>
-                                    </div>
-                                </div>
+<!--                                <div class="footer-form" >-->
+<!--                                    <div id="mc_embed_signup">-->
+<!--                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"-->
+<!--                                        method="get" class="subscribe_form relative mail_part">-->
+<!--                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"-->
+<!--                                            class="placeholder hide-on-focus" onfocus="this.placeholder = ''"-->
+<!--                                            onblur="this.placeholder = ' Email Address '">-->
+<!--                                            <div class="form-icon">-->
+<!--                                              <button type="submit" name="submit" id="newsletter-submit"-->
+<!--                                              class="email_icon newsletter-submit button-contactForm"><img src="assets/img/logo/form-iocn.jpg" alt=""></button>-->
+<!--                                            </div>-->
+<!--                                            <div class="mt-10 info"></div>-->
+<!--                                        </form>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                            </div>
                        </div>
                    </div>

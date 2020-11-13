@@ -63,7 +63,7 @@ $getDid=mysqli_query($conn,"select did from driver");
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="../index.php">
                     <!-- Logo icon -->
                     <b class="logo-icon p-l-10">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -448,10 +448,10 @@ $getDid=mysqli_query($conn,"select did from driver");
                             </td>
                             <td>
 
-                                <input type="radio" id="male" name="type" value="private" required>
-                                <label for="private">Private</label>
-                                <input type="radio" id="female" name="type" value="commercial">
-                                <label for="commercial">Commercial</label>
+                                <input type="radio" id="male" name="type" value="Private" required>
+                                <label for="Private">Private</label>
+                                <input type="radio" id="female" name="type" value="Commercial">
+                                <label for="Commercial">Commercial</label>
 
                             </td>
                         </tr>

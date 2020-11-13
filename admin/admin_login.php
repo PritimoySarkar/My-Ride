@@ -90,7 +90,7 @@
                     </div>
                     <div class="row m-t-20">
                         <!-- Form -->
-                        <form class="col-12" action="index.html">
+                        <form class="col-12" action="../index.php">
                             <!-- email -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">

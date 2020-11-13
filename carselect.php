@@ -84,7 +84,7 @@ include ('php/checkuser.php');
                     <!-- logo -->
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/img/logo/myRIde_logo.png" alt=""></a>
+                            <a href="index.php"><img src="assets/img/logo/myRIde_logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-8">
@@ -92,8 +92,8 @@ include ('php/checkuser.php');
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="index.php">Home</a></li>
+                                    <li><a href="about.php">About</a></li>
                                     <li><a href="booking.pho">Booking</a></li>
                                     <!--                                        <li><a href="blog.html">Blog</a>-->
                                     <!--                                            <ul class="submenu">-->
@@ -107,7 +107,7 @@ include ('php/checkuser.php');
                                             <li><a href="drivers.php">Drivers</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="contact.php">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -210,7 +210,14 @@ include ('php/checkuser.php');
                                     Are you sure, you want to book this car?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" name="yes" id="yes">Yes, Book Now</button>
+                                    <form method="post" action="test.php">
+                                        <?php $arr = [
+                                                'cid' => $cid,
+                                                'did' =>$did
+                                                ]; ?>
+                                        <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                                        <input type="submit" class="btn btn-secondary" value="Yes, Book Now" />
+                                    </form>
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
                                 </div>
 
@@ -224,87 +231,87 @@ include ('php/checkuser.php');
         </table>
     </div>
 
-<footer>
-    <!-- Footer Start-->
-    <div class="footer-area black-bg footer-padding">
-        <div class="container">
-            <div class="row d-flex justify-content-between">
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-footer-caption mb-30">
-                        <!-- logo -->
-                        <div class="footer-logo">
-                            <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
-                        </div>
-                        <div class="footer-social footer-social2">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-globe"></i></a>
-                            <a href="#"><i class="fab fa-behance"></i></a>
-                        </div>
-                        <div class="footer-pera">
-                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5">
-                    <div class="single-footer-caption mb-30">
-                        <div class="footer-tittle">
-                            <h4>Quick Links</h4>
-                            <ul>
-                                <li><a href="#">About Mariana</a></li>
-                                <li><a href="#">Our Best Rooms</a></li>
-                                <li><a href="#">Our Photo Gellary</a></li>
-                                <li><a href="#">Pool Service</a></li>
-                            </ul>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area black-bg footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-30">
+                            <!-- logo -->
+                            <div class="footer-logo">
+                                <a href="index.php"><img src="assets/img/logo/myride-footer.png" alt=""></a>
+                            </div>
+                            <!--                         <div class="footer-social footer-social2">-->
+                            <!--                             <a href="#"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--                             <a href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--                             <a href="#"><i class="fas fa-globe"></i></a>-->
+                            <!--                             <a href="#"><i class="fab fa-behance"></i></a>-->
+                            <!--                         </div>-->
+                            <div class="footer-pera">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-                    <div class="single-footer-caption mb-30">
-                        <div class="footer-tittle">
-                            <h4>Reservations</h4>
-                            <ul>
-                                <li><a href="#">Tel: 345 5667 889</a></li>
-                                <li><a href="#">Skype: Marianabooking</a></li>
-                                <li><a href="#">reservations@hotelriver.com</a></li>
-                            </ul>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5">
+                        <div class="single-footer-caption mb-30">
+                            <div class="footer-tittle">
+                                <h4>Quick Links</h4>
+                                <ul>
+                                    <li><a href="about.php">About Myride</a></li>
+                                    <li><a href="cars.php">Our Cars</a></li>
+                                    <li><a href="drivers.php">Our Drivers</a></li>
+                                    <li><a href="booking.php">Book Car</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4  col-sm-5">
-                    <div class="single-footer-caption mb-30">
-                        <div class="footer-tittle">
-                            <h4>Our Location</h4>
-                            <ul>
-                                <li><a href="#">198 West 21th Street,</a></li>
-                                <li><a href="#">Suite 721 New York NY 10016</a></li>
-                            </ul>
-                            <!-- Form -->
-                            <div class="footer-form" >
-                                <div id="mc_embed_signup">
-                                    <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                          method="get" class="subscribe_form relative mail_part">
-                                        <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                               class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                               onblur="this.placeholder = ' Email Address '">
-                                        <div class="form-icon">
-                                            <button type="submit" name="submit" id="newsletter-submit"
-                                                    class="email_icon newsletter-submit button-contactForm"><img src="assets/img/logo/form-iocn.jpg" alt=""></button>
-                                        </div>
-                                        <div class="mt-10 info"></div>
-                                    </form>
-                                </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                        <div class="single-footer-caption mb-30">
+                            <div class="footer-tittle">
+                                <h4>Talk to us</h4>
+                                <ul>
+                                    <li><a href="tel:1234567889">Tel: 123 4567 889</a></li>
+                                    <li><a href="skype:live:.cid.734aa98970431b7c?chat">Skype: Myride</a></li>
+                                    <li><a href="mailto:p2.ms@yandex.com">booking@myride.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4  col-sm-5">
+                        <div class="single-footer-caption mb-30">
+                            <div class="footer-tittle">
+                                <h4>Our Location</h4>
+                                <ul>
+                                    <li><a href="https://goo.gl/maps/9U8wYcagqy6Awii89">Kutighat Baranagar Bazar</a></li>
+                                    <li><a href="https://goo.gl/maps/9U8wYcagqy6Awii89">Baranagar, West Bengal</a></li>
+                                </ul>
+                                <!-- Form -->
+                                <!--                                <div class="footer-form" >-->
+                                <!--                                    <div id="mc_embed_signup">-->
+                                <!--                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"-->
+                                <!--                                        method="get" class="subscribe_form relative mail_part">-->
+                                <!--                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"-->
+                                <!--                                            class="placeholder hide-on-focus" onfocus="this.placeholder = ''"-->
+                                <!--                                            onblur="this.placeholder = ' Email Address '">-->
+                                <!--                                            <div class="form-icon">-->
+                                <!--                                              <button type="submit" name="submit" id="newsletter-submit"-->
+                                <!--                                              class="email_icon newsletter-submit button-contactForm"><img src="assets/img/logo/form-iocn.jpg" alt=""></button>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="mt-10 info"></div>-->
+                                <!--                                        </form>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Footer End-->
-</footer>
+        <!-- Footer End-->
+    </footer>
 
 <!-- JS here -->
 

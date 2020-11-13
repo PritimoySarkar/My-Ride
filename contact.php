@@ -1,37 +1,53 @@
 <?php
-    include ('php/connection.php');
+include ("php/connection.php");
+if(isset($_SESSION['user'])){
+    ?>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Change text of input button
+            $("#profile").attr("href", "user/profile.php");
+
+            // Change text of button element
+            $("#profile").html("My Profile");
+        });
+    </script>
+    <?php
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>My Ride | Cars</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-        <!-- Place favicon.ico in the root directory -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>My Ride | Contact</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!-- CSS here -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="assets/css/gijgo.css">
-        <link rel="stylesheet" href="assets/css/slicknav.css">
-        <link rel="stylesheet" href="assets/css/animate.min.css">
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="assets/css/themify-icons.css">
-        <link rel="stylesheet" href="assets/css/themify-icons.css">
-        <link rel="stylesheet" href="assets/css/slick.css">
-        <link rel="stylesheet" href="assets/css/nice-select.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/responsive.css">
-   </head>
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <!--Bootstrap Link-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+   <!-- CSS here -->
+   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+   <link rel="stylesheet" href="assets/css/gijgo.css">
+   <link rel="stylesheet" href="assets/css/slicknav.css">
+   <link rel="stylesheet" href="assets/css/animate.min.css">
+   <link rel="stylesheet" href="assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+   <link rel="stylesheet" href="assets/css/themify-icons.css">
+   <link rel="stylesheet" href="assets/css/themify-icons.css">
+   <link rel="stylesheet" href="assets/css/slick.css">
+   <link rel="stylesheet" href="assets/css/nice-select.css">
+   <link rel="stylesheet" href="assets/css/style.css">
+   <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
 
-   <body style="background-color: #a7907b40">
-       
+<body style="background-color: #a7907b40">
+    
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -85,7 +101,7 @@
                         <div class="col-xl-2 col-lg-2">
                             <!-- header-btn -->
                             <div class="header-btn">
-                                <a href="user/user_login.php" class="btn btn1 d-none d-lg-block ">Log In</a>
+                                <a href="user/user_login.php" class="btn btn1 d-none d-lg-block" id="profile">Log In</a>
                             </div>
                         </div>
                         <!-- Mobile Menu -->
@@ -98,107 +114,105 @@
        </div>
         <!-- Header End -->
     </header>
-    <main>
 
-        <!-- slider Area Start-->
-        <div class="slider-area">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/background/cars.jpg" >
-                <div class="container">
-                    <div class="row ">
-                        <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
-                            <div class="hero-caption">
-                                <span>Cars</span>
-                                <h2>Our Gorgeous Transporters</h2>
-                            </div>
+    <!-- slider Area Start-->
+    <div class="slider-area">
+        <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/background/contact.jpg">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
+                        <div class="hero-caption">
+                            <span>Contact</span>
+                            <h2>Talk to us</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- slider Area End-->
+    </div>
+    <!-- slider Area End-->
 
-        <!-- Cars Start -->
-        <section class="room-area r-padding1">
-            <div class="container">
-                <?php
-                $cars=mysqli_query($conn,"select cid,brand,cname,ctype,ccolor,cseat,farepkm,farepd,pic from car");
-                if(mysqli_num_rows($cars)>0){
-                    ?>
-                    <div class="row justify-content-center">
-                        <div class="col-xl-8">
-                            <!--font-back-tittle  -->
-                            <div class="font-back-tittle mb-45">
-                                <div class="archivment-front">
-                                    <h3>Our Cars</h3>
+    <!-- ================ contact section start ================= -->
+    <section class="contact-section">
+            <div class="container-fluid center">
+
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="mapouter">
+                                <div class="gmap_canvas">
+                                    <iframe width="1000" height="500" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30251.53034448511!2d73.75354718167405!3d18.59921084979908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b971901a2589%3A0xa7dd000c9a7d9440!2sMy%20Ride!5e0!3m2!1sen!2sin!4v1605214253706!5m2!1sen!2sin" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+
+                                    </iframe
+                                    ><a href="https://www.whatismyip-address.com"></a>
                                 </div>
-                                <h3 class="archivment-back">Our Cars</h3>
+                                <style>.mapouter{position:relative;text-align:center;height:500px;width:1000px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:1000px;}</style>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="contact-title">Get in Touch</h2>
+                    </div>
+                    <div class="col-lg-8" style="margin-left: 30px">
+                        <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group" style="background-color: ghostwhite">
+                                        <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message" ></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group" style="background-color: ghostwhite">
+                                        <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group" style="background-color: ghostwhite">
+                                        <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group" style="background-color: ghostwhite">
+                                        <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-home"></i></span>
+                            <div class="media-body">
+                                <h3>Buttonwood, California.</h3>
+                                <p>Rosemead, CA 91770</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                            <div class="media-body">
+                                <h3>+1 253 565 2365</h3>
+                                <p>Mon to Fri 9am to 6pm</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-email"></i></span>
+                            <div class="media-body">
+                                <h3>support@myride.com</h3>
+                                <p>Send us your query anytime!</p>
                             </div>
                         </div>
                     </div>
-                    <?php
-                }
-                else{ echo "<h1 align='center'>No Cars Available</h1>";}
-                $count=0;
-                while ($row=mysqli_fetch_array($cars)){
-//                    var_dump($row['brand']);
-                    $path = "admin/".$row['pic'];
-                    $carview="carview.php?".$row['cid'];
-                    if($count%3==0){
-                        ?><div class="row"><?php
-                    }
-                    ?>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                                <a href=<?php echo $carview;?>><img src="<?php echo $path ?>" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href=<?php echo $carview;?>><?php echo $row['brand']."-".$row['cname'] ?></a></h3>
-                                <div class="per-night">
-                                    <span><u>₹ </u> <?php echo $row['farepkm'] ?> <span> per Kilometer<span></span></span>
-                                </div>
-                                <div class="per-night">
-                                    <span><u>₹ </u> <?php echo $row['farepd']?> <span> per Day</span></span>
-                                </div>
-                                <div><span><?php echo $row['cseat']." sitter || ".$row['ctype']." || ".$row['ccolor'] ?></span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-                    if(($count+1)%3==0 || $count==(mysqli_num_rows($cars)-1)){
-                        ?></div><?php
-                    }
-                    $count++;
-                }
-                ?>
+                </div>
             </div>
-
         </section>
-        <!-- Cars End -->
-
-        <!-- Gallery img Start-->
-<!--        <div class="gallery-area fix">-->
-<!--            <div class="container-fluid p-0">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-md-12">-->
-<!--                        <div class="gallery-active owl-carousel">-->
-<!--                            <div class="gallery-img">-->
-<!--                                <a href="#"><img src="assets/img/gallery/gallery1.jpg" alt=""></a>-->
-<!--                            </div>-->
-<!--                            <div class="gallery-img">-->
-<!--                                <a href="#"><img src="assets/img/gallery/gallery2.jpg" alt=""></a>-->
-<!--                            </div>-->
-<!--                            <div class="gallery-img">-->
-<!--                                <a href="#"><img src="assets/img/gallery/gallery3.jpg" alt=""></a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-        <!-- Gallery img End-->
-    </main>
+    <!-- ================ contact section end ================= -->
 
     <footer>
         <!-- Footer Start-->
@@ -281,8 +295,7 @@
         </div>
         <!-- Footer End-->
     </footer>
-   
-<!-- JS here -->
+    <!-- JS here -->
 	
 		<!-- All JS Custom Plugins Link Here here -->
         <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -320,5 +333,26 @@
         <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
         
+
+        <script>
+        $('#datepicker').datepicker({
+            iconsLibrary: 'fontawesome',
+            disableDaysOfWeek: [0, 0],
+        //     icons: {
+        //      rightIcon: '<span class="fa fa-caret-down"></span>'
+        //  }
+        });
+        $('#datepicker2').datepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+             rightIcon: '<span class="fa fa-caret-down"></span>'
+         }
+
+        });
+        var timepicker = $('#timepicker').timepicker({
+         format: 'HH.MM'
+     });
+        </script>
     </body>
-</html>
+    
+    </html>

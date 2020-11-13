@@ -20,7 +20,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="407e96ea-3f5d-488a-b7d1-4b1be6bd0b5f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/user/user_logout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/add_admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/add_cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_cars.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/add_drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_drivers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/add_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/approved.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/approved.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/authentication-register.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/authentication-register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cars.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/drivers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/error-403.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/error-403.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/error-404.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/error-404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/error-405.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/error-405.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/error-500.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/error-500.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/history.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/history.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/icon-fontawesome.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/icon-fontawesome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/icon-material.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/icon-material.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index_bkp.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index_bkp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/overview.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/overview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pending.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pending.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/rejected.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/rejected.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/remove_cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/remove_cars.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/remove_drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/remove_drivers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/remove_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/remove_routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/theme.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/theme.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/dining/dining-img.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/cars/dining-img.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/dining/dining-img.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/cars/dining-img.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/dining/dining-img2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/cars/dining-img2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/dining/dining-img2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/cars/dining-img2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/_common.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/_common.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/_dining.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/_dining.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blank.html" beforeDir="false" afterPath="$PROJECT_DIR$/blank.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/booking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/cars.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carselect.php" beforeDir="false" afterPath="$PROJECT_DIR$/carselect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carview.php" beforeDir="false" afterPath="$PROJECT_DIR$/carview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/drivers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/driverview.php" beforeDir="false" afterPath="$PROJECT_DIR$/driverview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user_register.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,17 +97,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../anik" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\MyRide\user" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\MyRide\user" />
       <recent name="C:\wamp64\www\MyRide" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\MyRide\user" />
     </key>
   </component>
@@ -88,6 +139,8 @@
       <workItem from="1605162787061" duration="4754000" />
       <workItem from="1605175984937" duration="11000" />
       <workItem from="1605176361920" duration="4000" />
+      <workItem from="1605208486608" duration="3737000" />
+      <workItem from="1605245319407" duration="30384000" />
     </task>
     <servers />
   </component>
@@ -115,10 +168,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1603958678601" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1604087897025">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605274248643">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604087897025" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605274248643" />
     <state x="589" y="447" key="NewPhpFileDialog" timestamp="1604123883690">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

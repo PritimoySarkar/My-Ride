@@ -62,7 +62,7 @@
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="../index.php">
                     <!-- Logo icon -->
                     <b class="logo-icon p-l-10">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->

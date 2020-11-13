@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <h1 style="text-align: center">Hey</h1>
+<?php
 
-</body>
-</html>
+    $decoded = unserialize($_POST['data']);
+    print_r($decoded);
+?>

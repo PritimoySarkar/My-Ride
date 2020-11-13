@@ -46,7 +46,7 @@
                     <!-- logo -->
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo">
-                            <a href="../index.html"><img src="../assets/img/logo/logo.png" alt=""></a>
+                            <a href="../index.php"><img src="../assets/img/logo/logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-8">
@@ -54,8 +54,8 @@
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="../index.html">Home</a></li>
-                                    <li><a href="../about.html">About</a></li>
+                                    <li><a href="../index.php">Home</a></li>
+                                    <li><a href="../about.php">About</a></li>
                                     <li><a href="../booking.html">Booking</a></li>
                                     <!--                                      <li><a href="../blog.html">Blog</a>-->
                                     <!--                                          <ul class="submenu">-->
@@ -69,7 +69,7 @@
                                             <li><a href="../drivers.php">Drivers</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="../contact.html">Contact</a></li>
+                                    <li><a href="../contact.php">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -135,11 +135,11 @@
                             </td>
                             <td>
 
-                                <input type="radio" id="male" name="gender" value="male">
+                                <input type="radio" id="male" name="gender" value="Male">
                                 <label for="male">Male</label>
-                                <input type="radio" id="female" name="gender" value="female">
+                                <input type="radio" id="female" name="gender" value="Female">
                                 <label for="female">Female</label>
-                                <input type="radio" id="other" name="gender" value="other">
+                                <input type="radio" id="other" name="gender" value="Other">
                                 <label for="other">Other</label>
 
                             </td>
@@ -302,7 +302,7 @@
                     <div class="single-footer-caption mb-30">
                         <!-- logo -->
                         <div class="footer-logo">
-                            <a href="../index.html"><img src="../assets/img/logo/logo2_footer.png" alt=""></a>
+                            <a href="../index.php"><img src="../assets/img/logo/logo2_footer.png" alt=""></a>
                         </div>
                         <div class="footer-social footer-social2">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>

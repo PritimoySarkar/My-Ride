@@ -2,7 +2,7 @@
 <?php if(isset($_SESSION['user']))
 {
     ?><script type="text/javascript">
-    window.location.href = "../index.html";
+    window.location.href = "../index.php";
 </script>
     <?php
 } ?>
@@ -60,7 +60,7 @@
                     <!-- logo -->
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo">
-                            <a href="../index.html"><img src="../assets/img/logo/myRIde_logo.png" alt=""></a>
+                            <a href="../index.php"><img src="../assets/img/logo/myRIde_logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-8">
@@ -68,8 +68,8 @@
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="../index.html">Home</a></li>
-                                    <li><a href="../about.html">About</a></li>
+                                    <li><a href="../index.php">Home</a></li>
+                                    <li><a href="../about.php">About</a></li>
                                     <li><a href="../booking.html">Booking</a></li>
                                     <!--                                        <li><a href="login.php">Blog</a>-->
                                     <!--                                            <ul class="submenu">-->
@@ -83,7 +83,7 @@
                                             <li><a href="../drivers.php">Drivers</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="../contact.html">Contact</a></li>
+                                    <li><a href="../contact.php">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -175,7 +175,7 @@
                             # fetch user data
                             $user_data = mysqli_fetch_array($check);
                             $_SESSION['user'] = $user_data;
-                            header("Location:../index.php");
+                            ?><script>window.location.href="../index.php";</script><?php
                         }
                         else
                         {
@@ -208,7 +208,7 @@
                     <div class="single-footer-caption mb-30">
                         <!-- logo -->
                         <div class="footer-logo">
-                            <a href="../index.html"><img src="../assets/img/logo/logo2_footer.png" alt=""></a>
+                            <a href="../index.php"><img src="../assets/img/logo/logo2_footer.png" alt=""></a>
                         </div>
                         <div class="footer-social footer-social2">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>

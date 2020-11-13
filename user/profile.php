@@ -1,9 +1,30 @@
 <?php
-    include ("../php/connection.php");
-    if(!isset($_SESSION['user'])){
-        ?>
+include ("../php/connection.php");
+if(!isset($_SESSION['user'])){
+    ?>
     <script type="text/javascript"> window.location.href="user_login.php" </script><?php
-    }
+}
+//Profile view variables
+$today = date("Y-m-d");
+$dob=$_SESSION['user']['dob'];
+$diff = (date('Y') - date('Y',strtotime($dob)));
+//$age = format('%yYears, %mMonths, %dDays');
+$uid=$_SESSION['user']['uid'];
+$name=$_SESSION['user']['name'];
+$email=$_SESSION['user']['email'];
+$gender=$_SESSION['user']['gender'];
+$number=$_SESSION['user']['phno'];
+$pic=$_SESSION['user']['pic'];
+$join=$_SESSION['user']['doj'];
+$imgpath='../'.$pic;
+
+//Booking Details
+$pending_qr=mysqli_query($conn,"select * from booking where uid=$uid and status='pending'");
+$approved_qr=mysqli_query($conn,"select * from booking where uid=$uid and status='approved'");
+$rejected_qr=mysqli_query($conn,"select * from booking where uid=$uid and status='rejected'");
+$pending_count = mysqli_num_rows($pending_qr);
+$approved_count = mysqli_num_rows($approved_qr);
+$rejected_count = mysqli_num_rows($rejected_qr);
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -58,7 +79,7 @@
                     <!-- logo -->
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo">
-                            <a href="../index.html"><img src="../assets/img/logo/myRIde_logo.png" alt=""></a>
+                            <a href="../index.php"><img src="../assets/img/logo/myRIde_logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-8">
@@ -66,8 +87,8 @@
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="../index.html">Home</a></li>
-                                    <li><a href="../about.html">About</a></li>
+                                    <li><a href="../index.php">Home</a></li>
+                                    <li><a href="../about.php">About</a></li>
                                     <li><a href="booking.html">Booking</a></li>
                                     <!--                                        <li><a href="blog.html">Blog</a>-->
                                     <!--                                            <ul class="submenu">-->
@@ -81,7 +102,7 @@
                                             <li><a href="../drivers.php">Drivers</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="../contact.html">Contact</a></li>
+                                    <li><a href="../contact.php">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -89,7 +110,7 @@
                     <div class="col-xl-2 col-lg-2">
                         <!-- header-btn -->
                         <div class="header-btn">
-                            <a href="#" class="btn btn1 d-none d-lg-block ">Log Out</a>
+                            <a href="user_logout.php" class="btn btn1 d-none d-lg-block ">Log Out</a>
                         </div>
                     </div>
                     <!-- Mobile Menu -->
@@ -121,7 +142,67 @@
     </div>
     
     <div>
-        <h1>Blank Page</h1>
+        <div style="padding-top: 50px;padding-bottom: 50px;">
+            <div class="container">
+                <div class="row" style="text-align: center">
+                    <div class="col">
+                        <img src="<?php echo $imgpath?>" class="img-fluid rounded-circle" alt="Responsive image" width="400px">
+                    </div>
+                    <div class="col" style="align-self: center">
+                        <table class="table table-borderless table-striped table-dark" style="text-align: center;font-size: x-large;color: #ccac4b;border-bottom-right-radius: 50px;border-top-left-radius: 50px;">
+                            <tbody>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <td><?php echo $name?></td>
+                            </tr>
+                            <tr class="table-dark" style="color: #8a6d0b">
+                                <th scope="row">Gender</th>
+                                <td><?php echo $gender?></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Date of Birth</th>
+                                <td><?php echo $dob?></td>
+                            </tr>
+                            <tr class="table-dark" style="color: #8a6d0b">
+                                <th scope="row">Age</th>
+                                <td><?php echo $diff?></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Email</th>
+                                <td><?php echo $email?></td>
+                            </tr>
+                            <tr class="table-dark" style="color: #8a6d0b">
+                                <th scope="row">Phone Number</th>
+                                <td><?php echo $number?></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Joining</th>
+                                <td><?php echo $join?></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid center">
+            <?php
+            if($pending_count==0 and $approved_count==0 and $rejected_count==0){
+                ?><h1 style="text-align: center;font-family: 'Lato', sans-serif;font-size: 50px;font-weight: 700;color: #48423d">No Booking record found</h1><?php
+            }
+            else{
+                if($pending_count>0){
+                    ?><h1 style="text-align: center;font-family: 'Lato', sans-serif;font-size: 50px;font-weight: 700;color: #48423d">Your pending Booking history</h1><?php
+                }
+                if($approved_count>0){
+                    ?><h1 style="text-align: center;font-family: 'Lato', sans-serif;font-size: 50px;font-weight: 700;color: #48423d">Your approved Booking history</h1><?php
+                }
+                if($rejected_count>0){
+                    ?><h1 style="text-align: center;font-family: 'Lato', sans-serif;font-size: 50px;font-weight: 700;color: #48423d">Your rejected Booking history</h1><?php
+                }
+            }
+            ?>
+        </div>
     </div>
 
 <footer>
@@ -133,7 +214,7 @@
                     <div class="single-footer-caption mb-30">
                         <!-- logo -->
                         <div class="footer-logo">
-                            <a href="../index.html"><img src="../assets/img/logo/logo2_footer.png" alt=""></a>
+                            <a href="../index.php"><img src="../assets/img/logo/logo2_footer.png" alt=""></a>
                         </div>
                         <div class="footer-social footer-social2">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
