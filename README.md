@@ -1,5 +1,5 @@
-<h1 style="text-align: center"> We move you and all your loads </h1>
-<h2 style="text-align: center"> Commercial and private - take car for rent </h2>
+<h1 align='Center'> We move you and all your loads </h1>
+<h2 align='Center'> Commercial and private - take car for rent </h2>
 <div allign='Center'>
 
 ![Screenshot](https://drive.google.com/uc?export=view&id=1SRI3TU3yHTtUOA3IOP2cFG-hfAYNAMqB)
