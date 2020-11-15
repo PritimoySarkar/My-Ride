@@ -36,3 +36,17 @@
 <p align="center">
   <img src="https://drive.google.com/uc?export=view&id=1hXa2yAurUqy1BlxTQihhGWdFchhvp5MI">
 </p>
+
+<h2 align='Center'> Admin Pannel can be boring - But powerful </h2>
+<h2 align='Center'> Admin can see pending booking requests in dashboard and pending section </h2>
+<p align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1GIcU5KnKljGGTuaGl1wjB_W8g6tDuYQ-">
+</p>
+<h2 align='Center'> Admin can reject or approve any pending booking request </h2>
+<p align="center">
+  <img src="https://drive.google.com/uc?export=view&id=12BhlyagVuVfacXbsdasNrKEyOgMrOY3F">
+</p>
+<h2 align='Center'> Admin can reject any approved request or approve any rejected request also - because admin can make mistakes too</h2>
+<p align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1NgDZtMcXubloRZKlwmrUQArwYMi9ZBUu">
+</p>
