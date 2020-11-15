@@ -423,11 +423,11 @@
             </style>
             <!--                Floating buttons End-->
             <!-- ============================================================== -->
-            <div>
-                <div>
-                    <div style="overflow-x:auto;">
+            <div class="container-fluid">
+                <div style="width: 800px; height: 400px; margin: 0 auto;">
+                    <div style="overflow-x:auto;text-align: center;align-items: center">
                         <form method="post" style="font-weight: bold;" enctype="multipart/form-data">
-                            <table cellpadding="15%" class="table-responsive" style="align-content: center">
+                            <table cellpadding="15%" class="table-responsive" style="align-content: center;font-size: x-large" >
                                 <tr>
                                     <td>Source</td>
                                     <td>

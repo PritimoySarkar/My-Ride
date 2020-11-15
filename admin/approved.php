@@ -322,13 +322,13 @@
                                 <th scope="col" width=10%">User's Photo</th>
                                 <th scope="col">Source</th>
                                 <th scope="col">Destination</th>
-                                <th scope="col">Pick up Date</th>
-                                <th scope="col">Drop off Date</th>
+                                <th scope="col" width=9%">Pick up Date</th>
+                                <th scope="col" width=9%">Drop off Date</th>
                                 <th scope="col">Hire type</th>
-                                <th scope="col">Car</th>
+                                <th scope="col" width=15%">Car</th>
                                 <th scope="col">Driver</th>
                                 <th scope="col">Cost</th>
-                                <th scope="col">Reject Button</th>
+                                <th scope="col" width='5%'>Reject Button</th>
                             </tr>
                             </thead>
                             <?php
@@ -359,7 +359,7 @@
                                 <td style="vertical-align: middle"><?php echo $startdate?></td>
                                 <td style="vertical-align: middle"><?php echo $enddate?></td>
                                 <td style="vertical-align: middle"><?php echo $hire_type?></td>
-                                <th scope="row"><img class="img-fluid" src="<?php echo $cpic?>" style="width: 100px"></th>
+                                <th scope="row"><img class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
                                 <th scope="row"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
                                 <td style="vertical-align: middle"><?php echo $cost?></td>
                                 <td style="vertical-align: middle">

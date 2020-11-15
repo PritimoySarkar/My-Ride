@@ -35,6 +35,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -424,7 +425,180 @@
             <!--                Floating buttons End-->
             <!-- ============================================================== -->
             <div>
+                <h1 align="center">Select filter to search Routes</h1>
+                <?php
+                $loc=mysqli_query($conn,"select source from route union select destination from route");
+                ?>
+                <?php
+                if(mysqli_num_rows($loc)>0){
+                    ?>
+                    <div style="text-align: center;">
+                        <form style="font-size: 15pt; align-items: center" method="post">
+                                        <br>
+                                        <label for="cars">Choose source or destination of routes: </label>
+                                        <select id="color" name="loc">
+                                            <option value="" selected>All locations</option>
+                                            <?php while($row=mysqli_fetch_array($loc)){
+                                                ?><option value="<?php echo $row[0] ?>"> <?php echo $row[0] ?></option><?php
+                                            }
+                                            ?>
+                                        </select>
+                                        <br>
+                                        <input type="submit" name="search" value="search">
+                        </form>
+                    </div>
+                    <?php
+                }
+                ?>
+                <br>
+                <?php
+                if($_SERVER['REQUEST_METHOD']=="POST"){
+                    if($_POST['loc']==''){
+                        $qr=mysqli_query($conn,"select * from route");
+                    }
+                    else{
+                        $loc=$_POST['loc'];
+                        $qr=mysqli_query($conn,"select * from route where source='$loc' or destination='$loc'");
+                    }
+                    if($qr){
+                        if(mysqli_num_rows($qr)){
+                            ?>
+                            <h1 align="center">Searched Routes</h1>
+                            <div>
+                                <div class="container-fluid" style="padding-top: 50px;">
+                                    <table class="table table-striped center table-warning table-bordered" style="font-size: x-large;text-align: center;">
+                                        <?php
+                                        if(mysqli_num_rows($qr)){
+                                            ?>
+                                            <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Route ID</th>
+                                                <th scope="col">Source Name</th>
+                                                <th scope="col">Destination</th>
+                                                <th scope="col">Distance</th>
+                                                <th scope="col">Edit Button</th>
+                                                <th scope="col">Remove Button</th>
+                                            </tr>
+                                            </thead>
+                                            <?php
+                                        }
+                                        ?>
+                                        <tbody>
+                                        <?php
+                                        while ($row=mysqli_fetch_array($qr)){
+                                            extract($row);
+//                    $cost=;
+                                            ?>
+                                            <tr>
+                                                <td style="vertical-align: middle"><?php echo $row['rid']?></td>
+                                                <td style="vertical-align: middle"><?php echo $row['source']?></td>
+                                                <td style="vertical-align: middle"><?php echo $row['destination']?></td>
+                                                <td style="vertical-align: middle"><?php echo $row['distance']?></td>
+                                                <td style="vertical-align: middle">
+<!--                                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Edit this Route</button>-->
+                                                    <form method="post" action="functionalities/edit-routes.php" id="edit-form<?php echo $rid?>">
+                                                        <?php $arr = [
+                                                            'rid' => $rid
+                                                        ];
+                                                        ?>
+                                                        <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                                                        <input onclick="
+                                                                swal('Edit Route','Are U sure? you want to edit this route','info',{buttons: {
+                                                                cancel: 'No\, Don\'t Edit',
 
+                                                                catch: {
+                                                                text: 'Yes\, Edit Now',
+                                                                value: 'catch',
+                                                                },
+                                                                },closeOnClickOutside: false,
+                                                                },).then((value) => {
+                                                                switch (value) {
+                                                                case 'catch':
+                                                                swal('Edited', 'Route editing successfully', 'success');
+                                                                $('#edit-form<?php echo $rid?>').submit();
+                                                                break;
+
+                                                                default:
+                                                                swal('Route not edited','','warning');
+                                                                }
+                                                                });"
+                                                               class="btn btn-primary" value="<?php echo 'Edit this route';?>"
+                                                        />
+                                                    </form>
+                                                </td>
+                                                <td style="vertical-align: middle">
+                                                    <form method="post" action="functionalities/remove-cars.php" id="remove-form<?php echo $rid?>">
+                                                        <?php $arr = [
+                                                            'rid' => $rid
+                                                        ];
+                                                        ?>
+                                                        <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                                                        <input onclick="
+                                                                swal('Remove Route','Are U sure? you want to remove this route','info',{buttons: {
+                                                                cancel: 'No\, Don\'t Remove',
+
+                                                                catch: {
+                                                                text: 'Yes\, Remove Now',
+                                                                value: 'catch',
+                                                                },
+                                                                },closeOnClickOutside: false,
+                                                                },).then((value) => {
+                                                                switch (value) {
+                                                                case 'catch':
+                                                                swal('Removed', 'Route removed successfully', 'success');
+                                                                $('#remove-form<?php echo $rid?>').submit();
+                                                                break;
+
+                                                                default:
+                                                                swal('Route not removed','','warning');
+                                                                }
+                                                                });"
+                                                               class="btn btn-primary" value="<?php echo 'Remove this route';?>"
+                                                        />
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <!-- Button trigger modal -->
+                                            <?php
+
+                                            ?>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header" style="text-align: center">
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete Route</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body" style="text-align: center">
+                                                            Are you sure, you want to remove this route?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary" data-dismiss="modal" name="yes" id="yes">Yes, Delete</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                        }
+                                        ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <?php
+                        }
+                    }
+                    else{
+                        echo "Data fetch Error";
+                    }
+                }
+                ?>
 
             </div>
             <!-- ============================================================== -->

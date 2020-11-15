@@ -424,7 +424,7 @@
             <!--                Floating buttons End-->
             <!-- ============================================================== -->
             <div>
-                <div style="overflow-x:auto;">
+                <div style="overflow-x:auto;width: 600px; margin: 0 auto;">
                     <form method="post" style="font-weight: bold;" enctype="multipart/form-data">
                         <table cellpadding="15%" class="table-responsive" style="align-content: center">
                             <tr>

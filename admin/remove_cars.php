@@ -41,6 +41,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -472,7 +473,38 @@
                                 <td style="vertical-align: middle"><?php echo $row['cname']?></td>
                                 <td style="vertical-align: middle"><?php echo $row['ctype']?></td>
                                 <td style="vertical-align: middle"><a href="<?php echo $dview?>"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px;height: 100px;" title="<?php echo $dname;?>"></a></td>
-                                <td style="vertical-align: middle"><button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Remove this Car</button></td>
+                                <td style="vertical-align: middle">
+<!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Remove this Car</button>-->
+                                    <form method="post" action="functionalities/remove-cars.php" id="remove-form<?php echo $cid?>">
+                                        <?php $arr = [
+                                            'cid' => $cid
+                                        ];
+                                        ?>
+                                        <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                                        <input onclick="
+                                                swal('Remove Car','Are U sure? you want to remove this car','info',{buttons: {
+                                                cancel: 'No\, Don\'t Remove',
+
+                                                catch: {
+                                                text: 'Yes\, Remove Now',
+                                                value: 'catch',
+                                                },
+                                                },closeOnClickOutside: false,
+                                                },).then((value) => {
+                                                switch (value) {
+                                                case 'catch':
+                                                swal('Removed', 'Car removed successfully', 'success');
+                                                $('#remove-form<?php echo $cid?>').submit();
+                                                break;
+
+                                                default:
+                                                swal('Car not removed','','warning');
+                                                }
+                                                });"
+                                               class="btn btn-primary" value="<?php echo 'Remove this car';?>"
+                                        />
+                                    </form>
+                                </td>
                             </tr>
                             <!-- Button trigger modal -->
                             <?php

@@ -41,6 +41,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -451,6 +452,7 @@
                         <tbody>
                         <?php
                         while ($row=mysqli_fetch_array($qr)){
+                            extract($row);
 //                    $cost=;
                             $path=$row['pic'];
                             ?>
@@ -460,7 +462,38 @@
                                 <td style="vertical-align: middle"><?php echo $row['dname']?></td>
                                 <td style="vertical-align: middle"><?php echo $row['phno']?></td>
                                 <td style="vertical-align: middle"><?php echo $row['lic']?></td>
-                                <td style="vertical-align: middle"><button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Remove this Driver</button></td>
+                                <td style="vertical-align: middle">
+<!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Remove this Driver</button>-->
+                                    <form method="post" action="functionalities/remove-driver.php" id="remove-form<?php echo $did?>">
+                                        <?php $arr = [
+                                            'did' => $did
+                                        ];
+                                        ?>
+                                        <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                                        <input onclick="
+                                                swal('Remove driver','Are U sure? you want to remove this driver','info',{buttons: {
+                                                cancel: 'No\, Don\'t Remove',
+
+                                                catch: {
+                                                text: 'Yes\, Remove Now',
+                                                value: 'catch',
+                                                },
+                                                },closeOnClickOutside: false,
+                                                },).then((value) => {
+                                                switch (value) {
+                                                case 'catch':
+                                                swal('Removed', 'Driver removed successfully', 'success');
+                                                $('#remove-form<?php echo $did?>').submit();
+                                                break;
+
+                                                default:
+                                                swal('Driver not removed','','warning');
+                                                }
+                                                });"
+                                               class="btn btn-primary" value="<?php echo 'Remove this driver';?>"
+                                        />
+                                    </form>
+                                </td>
                             </tr>
                             <!-- Button trigger modal -->
                             <?php

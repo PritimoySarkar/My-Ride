@@ -446,16 +446,16 @@
                             ?>
                             <thead class="thead-dark">
                             <tr>
-                                <th scope="col" width=10%">User's Photo</th>
+                                <th scope="col" width="10%">User's Photo</th>
                                 <th scope="col">Source</th>
                                 <th scope="col">Destination</th>
                                 <th scope="col">Pick up Date</th>
                                 <th scope="col">Drop off Date</th>
                                 <th scope="col">Hire type</th>
-                                <th scope="col">Car</th>
+                                <th scope="col" width="1000">Car</th>
                                 <th scope="col">Driver</th>
                                 <th scope="col">Cost</th>
-                                <th scope="col">Approve Button</th>
+                                <th scope="col" width="10%">Approve Button</th>
                                 <th scope="col">Reject Button</th>
                             </tr>
                             </thead>

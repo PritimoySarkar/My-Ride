@@ -57,7 +57,7 @@ $rejected_count = mysqli_num_rows($rejected_qr);
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
-<body>
+<body style="background-color: #a7907b40">
 
 <!-- Preloader Start -->
 <div id="preloader-active">
@@ -202,7 +202,7 @@ $rejected_count = mysqli_num_rows($rejected_qr);
                                 ?> <h2  style="text-align: center;font-family: 'Lato', sans-serif;font-size: 50px;font-weight: 700;color: #c67228;margin-bottom: 20px;">Your Pending Booking Requests</h2> <?php
                             }
                             ?>
-                            <table class="table table-striped center table-warning table-bordered" style="font-size: small;text-align: center;">
+                            <table class="table table-striped center table-warning table-bordered" style="font-size: large;font-weight: bold;text-align: center;">
                                 <?php
                                 if(mysqli_num_rows($pending_qr)){
                                     ?>
@@ -215,8 +215,8 @@ $rejected_count = mysqli_num_rows($rejected_qr);
                                         <th scope="col">Pick up Date</th>
                                         <th scope="col">Drop off Date</th>
                                         <th scope="col">Hire type</th>
-                                        <th scope="col">Cost</th>
-                                        <th scope="col">Cancel Button</th>
+                                        <th scope="col" width="10%">Cost</th>
+                                        <th scope="col" width="10%">Cancel Button</th>
                                     </tr>
                                     </thead>
                                     <?php
@@ -241,13 +241,13 @@ $rejected_count = mysqli_num_rows($rejected_qr);
                                     ?>
                                     <tr>
                                         <th scope="row"><img class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
-                                        <th scope="row"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
+                                        <th scope="row"><img class="img-fluid rounded-circle" src="<?php echo $dpic?>" style="width: 100px"></th>
                                         <td style="vertical-align: middle"><?php echo $source?></td>
                                         <td style="vertical-align: middle"><?php echo $destination?></td>
                                         <td style="vertical-align: middle"><?php echo $startdate?></td>
                                         <td style="vertical-align: middle"><?php echo $enddate?></td>
                                         <td style="vertical-align: middle"><?php echo $hire_type?></td>
-                                        <td style="vertical-align: middle"><?php echo $cost?></td>
+                                        <td style="vertical-align: middle"><?php echo '₹ '.$cost?></td>
                                         <td style="vertical-align: middle">
 <!--                                            <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Cancel this Ride</button>-->
                                             <form method="post" action="cancel.php" id="cancel-form<?php echo $bid?>">
@@ -283,30 +283,6 @@ $rejected_count = mysqli_num_rows($rejected_qr);
                                     </tr>
                                     <!-- Button trigger modal -->
                                     <?php
-
-                                    ?>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header" style="text-align: center">
-                                                    <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete Route</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body" style="text-align: center">
-                                                    Are you sure, you want to remove this route?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" name="yes" id="yes">Yes, Delete</button>
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php
                                 }
                                 ?>
                                 </tbody>
@@ -323,10 +299,10 @@ $rejected_count = mysqli_num_rows($rejected_qr);
                         <div class="container-fluid" style="padding-top: 50px;">
                             <?php
                             if(mysqli_num_rows($approved_qr)>0){
-                                ?> <h2  style="text-align: center;font-family: 'Lato', sans-serif;font-size: 50px;font-weight: 700;color: #c67228;margin-bottom: 20px;">Your Approved Booking Requests</h2> <?php
+                                ?> <h2  style="text-align: center;font-family: 'Lato', sans-serif;font-size: 50px;font-weight: 700;color: #25b125;margin-bottom: 20px;">Your Approved Booking Requests</h2> <?php
                             }
                             ?>
-                            <table class="table table-striped center table-success table-bordered" style="font-size: small;text-align: center;">
+                            <table class="table table-striped center table-success table-bordered" style="font-size: x-large;text-align: center;">
                                 <?php
                                 if(mysqli_num_rows($approved_qr)){
                                     ?>
@@ -364,39 +340,19 @@ $rejected_count = mysqli_num_rows($rejected_qr);
                                     ?>
                                     <tr>
                                         <th scope="row"><img class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
-                                        <th scope="row"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
+                                        <th scope="row"><img class="img-fluid rounded-circle" src="<?php echo $dpic?>" style="width: 100px"></th>
                                         <td style="vertical-align: middle"><?php echo $source?></td>
                                         <td style="vertical-align: middle"><?php echo $destination?></td>
                                         <td style="vertical-align: middle"><?php echo $startdate?></td>
                                         <td style="vertical-align: middle"><?php echo $enddate?></td>
                                         <td style="vertical-align: middle"><?php echo $hire_type?></td>
-                                        <td style="vertical-align: middle"><?php echo $cost?></td>
+                                        <td style="vertical-align: middle"><?php echo '₹ '.$cost?></td>
                                     </tr>
                                     <!-- Button trigger modal -->
                                     <?php
 
                                     ?>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header" style="text-align: center">
-                                                    <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete Route</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body" style="text-align: center">
-                                                    Are you sure, you want to remove this route?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" name="yes" id="yes">Yes, Delete</button>
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
                                     <?php
                                 }
                                 ?>
@@ -413,10 +369,10 @@ $rejected_count = mysqli_num_rows($rejected_qr);
                         <div class="container-fluid" style="padding-top: 50px;">
                             <?php
                             if(mysqli_num_rows($rejected_qr)>0){
-                                ?> <h2  style="text-align: center;font-family: 'Lato', sans-serif;font-size: 50px;font-weight: 700;color: #c67228;margin-bottom: 20px;">Your Rejected Booking Requests</h2> <?php
+                                ?> <h2  style="text-align: center;font-family: 'Lato', sans-serif;font-size: 50px;font-weight: 700;color: #db4177;margin-bottom: 20px;">Your Rejected Booking Requests</h2> <?php
                             }
                             ?>
-                            <table class="table table-striped center table-danger table-bordered" style="font-size: small;text-align: center;">
+                            <table class="table table-striped center table-danger table-bordered" style="font-size: x-large;text-align: center;">
                                 <?php
                                 if(mysqli_num_rows($rejected_qr)){
                                     ?>
@@ -454,13 +410,13 @@ $rejected_count = mysqli_num_rows($rejected_qr);
                                     ?>
                                     <tr>
                                         <th scope="row"><img class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
-                                        <th scope="row"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
+                                        <th scope="row"><img class="img-fluid rounded-circle" src="<?php echo $dpic?>" style="width: 100px"></th>
                                         <td style="vertical-align: middle"><?php echo $source?></td>
                                         <td style="vertical-align: middle"><?php echo $destination?></td>
                                         <td style="vertical-align: middle"><?php echo $startdate?></td>
                                         <td style="vertical-align: middle"><?php echo $enddate?></td>
                                         <td style="vertical-align: middle"><?php echo $hire_type?></td>
-                                        <td style="vertical-align: middle"><?php echo $cost?></td>
+                                        <td style="vertical-align: middle"><?php echo '₹ '.$cost?></td>
                                     </tr>
                                     <!-- Button trigger modal -->
                                     <?php

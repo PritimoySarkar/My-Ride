@@ -29,7 +29,11 @@ else{
                     echo $row;
                 }
             }
-            else{ ?><h1>No Car found for this details</h1><?php}
+            else{
+                ?>
+                    <h1>No Car found for this details</h1>
+                <?php
+            }
         }
         else{
             echo "DB Error";

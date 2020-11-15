@@ -425,8 +425,8 @@ $getDid=mysqli_query($conn,"select did from driver");
             <!--                Floating buttons End-->
             <!-- ============================================================== -->
 
-            <div style="overflow-x:auto;">
-                <form method="post" style="font-weight: bold;" enctype="multipart/form-data">
+            <div style="overflow-x:auto;width: 400px; margin: 0 auto;">
+                <form method="post" style="font-weight: bold;align-items: center" enctype="multipart/form-data">
                     <table cellpadding="15%" class="table-responsive" style="align-content: center">
                         <tr>
                             <td>Car Brand</td>
