@@ -431,7 +431,7 @@
                                 <tr>
                                     <td>Source</td>
                                     <td>
-                                        <input type="text" name="source" placeholder="Enter driver's Name" required>
+                                        <input type="text" name="source" placeholder="Enter Source Name" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -439,7 +439,7 @@
                                         Destination:
                                     </td>
                                     <td>
-                                        <input type="text" name="destination" placeholder="Enter Driver's Address" required>
+                                        <input type="text" name="destination" placeholder="Enter Destination Name" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -447,7 +447,7 @@
                                         Distance:
                                     </td>
                                     <td>
-                                        <input type="number" name="distance" placeholder="Enter driver's Age" min="18" required>
+                                        <input type="number" name="distance" placeholder="Enter distance in Km" min="5" required>
                                     </td>
                                 </tr>
                                 <tr>

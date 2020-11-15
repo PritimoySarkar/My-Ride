@@ -9,6 +9,12 @@
     }
     else{
 //        var_dump($_SESSION['admin']);
+        if($qr=mysqli_query($conn,"select * from booking where status='Approved'")){
+
+        }
+        else{
+            ?><script>alert("Data fetching error")</script> <?php
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -35,6 +41,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -296,135 +303,129 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Dashboard</h4>
-                    <!--                        <div class="ml-auto text-right">-->
-                    <!--                            <nav aria-label="breadcrumb">-->
-                    <!--                                <ol class="breadcrumb">-->
-                    <!--                                    <li class="breadcrumb-item"><a href="#">Home</a></li>-->
-                    <!--                                    <li class="breadcrumb-item active" aria-current="page">Library</li>-->
-                    <!--                                </ol>-->
-                    <!--                            </nav>-->
-                    <!--                        </div>-->
-                </div>
-            </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Floating buttons start  -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='index.php';">
-                        <div class="box bg-cyan text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-format-list-bulleted-type"></i></h1>
-                            <h6 class="text-white">Dashboard</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-4 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='cars.php';">
-                        <div class="box bg-success text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-car"></i></h1>
-                            <h6 class="text-white">Cars</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='add_cars.php';">
-                        <div class="box bg-warning text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-plus-circle"></i></h1>
-                            <h6 class="text-white">Add Cars</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='remove_cars.php';">
-                        <div class="box bg-danger text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-delete-circle"></i></h1>
-                            <h6 class="text-white">Remove Cars</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='drivers.php';">
-                        <div class="box bg-info text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-account"></i></h1>
-                            <h6 class="text-white">Drivers</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <!-- Column -->
-                <div class="col-md-6 col-lg-4 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='add_drivers.php';">
-                        <div class="box bg-danger text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-account-plus"></i></h1>
-                            <h6 class="text-white">Add Drivers</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='remove_drivers.php';">
-                        <div class="box bg-info text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-account-off"></i></h1>
-                            <h6 class="text-white">Remove Drivers</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='routes.php';">
-                        <div class="box bg-cyan text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-road-variant"></i></h1>
-                            <h6 class="text-white">Routes</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='add_routes.php';">
-                        <div class="box bg-success text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-plus-circle"></i></h1>
-                            <h6 class="text-white">Add Routes</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='remove_routes.php';">
-                        <div class="box bg-warning text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-delete-circle"></i></h1>
-                            <h6 class="text-white">Remove Routes</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-            </div>
-            <style>
-                .card-hover{cursor: pointer}
-            </style>
-            <!--                Floating buttons End-->
-            <!-- ============================================================== -->
             <div>
+                <div class="container-fluid" style="padding-top: 50px;">
+                    <?php
+                    if(mysqli_num_rows($qr)>0){
+                        ?> <h2 style="text-align: center">Approved Booking Requests</h2> <?php
+                    }
+                    ?>
+                    <table class="table table-striped center table-success table-bordered" style="font-size: small;text-align: center;">
+                        <?php
+                        if(mysqli_num_rows($qr)){
+                            ?>
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" width=10%">User's Photo</th>
+                                <th scope="col">Source</th>
+                                <th scope="col">Destination</th>
+                                <th scope="col">Pick up Date</th>
+                                <th scope="col">Drop off Date</th>
+                                <th scope="col">Hire type</th>
+                                <th scope="col">Car</th>
+                                <th scope="col">Driver</th>
+                                <th scope="col">Cost</th>
+                                <th scope="col">Reject Button</th>
+                            </tr>
+                            </thead>
+                            <?php
+                        }
+                        ?>
+                        <tbody>
+                        <?php
+                        while ($row=mysqli_fetch_array($qr)){
+                            extract($row);
+//                            var_dump($row);
+                            $driver_qr=mysqli_query($conn,"select dname,pic from driver where did=$did");
+                            $user_qr=mysqli_query($conn,"select name,pic from user where uid=$uid");
+                            $car_qr=mysqli_query($conn,"select pic from car where cid=$cid");
+                            $driver=mysqli_fetch_array($driver_qr);
+                            $user=mysqli_fetch_array($user_qr);
+                            $car=mysqli_fetch_array($car_qr);
+                            $dpic=$driver['pic'];
+                            $cpic=$car['pic'];
+                            $upic='../'.$user['pic'];
+//                            var_dump($driver);
+//                            var_dump($user);
+//                            echo $source;
+                            ?>
+                            <tr>
+                                <th scope="row"><img class="img-fluid" src="<?php echo $upic?>" style="width: 100px"></th>
+                                <td style="vertical-align: middle"><?php echo $source?></td>
+                                <td style="vertical-align: middle"><?php echo $destination?></td>
+                                <td style="vertical-align: middle"><?php echo $startdate?></td>
+                                <td style="vertical-align: middle"><?php echo $enddate?></td>
+                                <td style="vertical-align: middle"><?php echo $hire_type?></td>
+                                <th scope="row"><img class="img-fluid" src="<?php echo $cpic?>" style="width: 100px"></th>
+                                <th scope="row"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
+                                <td style="vertical-align: middle"><?php echo $cost?></td>
+                                <td style="vertical-align: middle">
+<!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Reject this Ride</button>-->
+                                    <form method="post" action="functionalities/reject.php" id="reject-form<?php echo $bid?>">
+                                        <?php $arr = [
+                                            'bid' => $bid
+                                        ];
+                                        ?>
+                                        <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                                        <input onclick="
+                                                swal('Reject Ride','Are U sure? you want to reject this ride','info',{buttons: {
+                                                cancel: 'No\, Don\'t Reject',
 
+                                                catch: {
+                                                text: 'Yes\, Reject Now',
+                                                value: 'catch',
+                                                },
+                                                },closeOnClickOutside: false,
+                                                },).then((value) => {
+                                                switch (value) {
+                                                case 'catch':
+                                                swal('Rejected', 'Ride rejected successfully', 'error');
+                                                $('#reject-form<?php echo $bid?>').submit();
+                                                break;
+
+                                                default:
+                                                swal('Ride not rejected','','warning');
+                                                }
+                                                });"
+                                               class="btn btn-primary" value="<?php echo 'Reject this booking';?>"
+                                        />
+                                    </form>
+                                </td>
+                            </tr>
+                            <!-- Button trigger modal -->
+                            <?php
+
+                            ?>
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="text-align: center">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete Route</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" style="text-align: center">
+                                            Are you sure, you want to remove this route?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" name="yes" id="yes">Yes, Delete</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
             <!-- ============================================================== -->

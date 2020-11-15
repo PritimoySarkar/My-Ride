@@ -1,0 +1,4 @@
+ErrorDocument 404 /MyRide/error-not-found-front.php
+ErrorDocument 403 /MyRide/error-403-front.php
+ErrorDocument 405 /MyRide/error-405-front.php
+ErrorDocument 500 /MyRide/error-500-found-front.php

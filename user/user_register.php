@@ -46,7 +46,7 @@
                     <!-- logo -->
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo">
-                            <a href="../index.php"><img src="../assets/img/logo/logo.png" alt=""></a>
+                            <a href="../index.php"><img src="../assets/img/logo/myRIde_logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-8">
@@ -302,14 +302,14 @@
                     <div class="single-footer-caption mb-30">
                         <!-- logo -->
                         <div class="footer-logo">
-                            <a href="../index.php"><img src="../assets/img/logo/logo2_footer.png" alt=""></a>
+                            <a href="index.php"><img src="../assets/img/logo/myride-footer.png" alt=""></a>
                         </div>
-                        <div class="footer-social footer-social2">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-globe"></i></a>
-                            <a href="#"><i class="fab fa-behance"></i></a>
-                        </div>
+                        <!--                         <div class="footer-social footer-social2">-->
+                        <!--                             <a href="#"><i class="fab fa-facebook-f"></i></a>-->
+                        <!--                             <a href="#"><i class="fab fa-twitter"></i></a>-->
+                        <!--                             <a href="#"><i class="fas fa-globe"></i></a>-->
+                        <!--                             <a href="#"><i class="fab fa-behance"></i></a>-->
+                        <!--                         </div>-->
                         <div class="footer-pera">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -322,10 +322,10 @@
                         <div class="footer-tittle">
                             <h4>Quick Links</h4>
                             <ul>
-                                <li><a href="#">About Mariana</a></li>
-                                <li><a href="#">Our Best Rooms</a></li>
-                                <li><a href="#">Our Photo Gellary</a></li>
-                                <li><a href="#">Pool Service</a></li>
+                                <li><a href="about.php">About Myride</a></li>
+                                <li><a href="cars.php">Our Cars</a></li>
+                                <li><a href="drivers.php">Our Drivers</a></li>
+                                <li><a href="booking.php">Book Car</a></li>
                             </ul>
                         </div>
                     </div>
@@ -333,11 +333,11 @@
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                     <div class="single-footer-caption mb-30">
                         <div class="footer-tittle">
-                            <h4>Reservations</h4>
+                            <h4>Talk to us</h4>
                             <ul>
-                                <li><a href="#">Tel: 345 5667 889</a></li>
-                                <li><a href="#">Skype: Marianabooking</a></li>
-                                <li><a href="#">reservations@hotelriver.com</a></li>
+                                <li><a href="tel:1234567889">Tel: 123 4567 889</a></li>
+                                <li><a href="skype:live:.cid.734aa98970431b7c?chat">Skype: Myride</a></li>
+                                <li><a href="mailto:p2.ms@yandex.com">booking@myride.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -347,25 +347,25 @@
                         <div class="footer-tittle">
                             <h4>Our Location</h4>
                             <ul>
-                                <li><a href="#">198 West 21th Street,</a></li>
-                                <li><a href="#">Suite 721 New York NY 10016</a></li>
+                                <li><a href="https://goo.gl/maps/9U8wYcagqy6Awii89">Kutighat Baranagar Bazar</a></li>
+                                <li><a href="https://goo.gl/maps/9U8wYcagqy6Awii89">Baranagar, West Bengal</a></li>
                             </ul>
                             <!-- Form -->
-                            <div class="footer-form" >
-                                <div id="mc_embed_signup">
-                                    <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                          method="get" class="subscribe_form relative mail_part">
-                                        <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                               class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                               onblur="this.placeholder = ' Email Address '">
-                                        <div class="form-icon">
-                                            <button type="submit" name="submit" id="newsletter-submit"
-                                                    class="email_icon newsletter-submit button-contactForm"><img src="../assets/img/logo/form-iocn.jpg" alt=""></button>
-                                        </div>
-                                        <div class="mt-10 info"></div>
-                                    </form>
-                                </div>
-                            </div>
+                            <!--                                <div class="footer-form" >-->
+                            <!--                                    <div id="mc_embed_signup">-->
+                            <!--                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"-->
+                            <!--                                        method="get" class="subscribe_form relative mail_part">-->
+                            <!--                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"-->
+                            <!--                                            class="placeholder hide-on-focus" onfocus="this.placeholder = ''"-->
+                            <!--                                            onblur="this.placeholder = ' Email Address '">-->
+                            <!--                                            <div class="form-icon">-->
+                            <!--                                              <button type="submit" name="submit" id="newsletter-submit"-->
+                            <!--                                              class="email_icon newsletter-submit button-contactForm"><img src="assets/img/logo/form-iocn.jpg" alt=""></button>-->
+                            <!--                                            </div>-->
+                            <!--                                            <div class="mt-10 info"></div>-->
+                            <!--                                        </form>-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
                         </div>
                     </div>
                 </div>

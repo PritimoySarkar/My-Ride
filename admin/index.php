@@ -41,6 +41,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -431,13 +432,21 @@
             <!-- ============================================================== -->
             <div>
                 <div class="container-fluid" style="padding-top: 50px;">
-                    <table class="table table-striped center table-warning table-bordered" style="font-size: x-large;text-align: center;">
+                    <?php
+                    if(mysqli_num_rows($qr)>0){
+                        ?> <h2 style="text-align: center">Pending Booking Requests</h2> <?php
+                    }
+                    else{
+                        ?> <h2 style="text-align: center">No Pending Booking Requests</h2> <?php
+                    }
+                    ?>
+                    <table class="table table-striped center table-warning table-bordered" style="font-size: small;text-align: center;">
                         <?php
                         if(mysqli_num_rows($qr)){
                             ?>
                             <thead class="thead-dark">
                             <tr>
-                                <th scope="col" width="20%">User's Photo</th>
+                                <th scope="col" width=10%">User's Photo</th>
                                 <th scope="col">Source</th>
                                 <th scope="col">Destination</th>
                                 <th scope="col">Pick up Date</th>
@@ -456,15 +465,96 @@
                         <tbody>
                         <?php
                         while ($row=mysqli_fetch_array($qr)){
-//                    $cost=;
+                            extract($row);
+//                            var_dump($row);
+                            $bid=$row['bid'];
+                            $driver_qr=mysqli_query($conn,"select dname,pic from driver where did=$did");
+                            $user_qr=mysqli_query($conn,"select name,pic from user where uid=$uid");
+                            $car_qr=mysqli_query($conn,"select pic from car where cid=$cid");
+                            $driver=mysqli_fetch_array($driver_qr);
+                            $user=mysqli_fetch_array($user_qr);
+                            $car=mysqli_fetch_array($car_qr);
+                            $dpic=$driver['pic'];
+                            $cpic=$car['pic'];
+                            $upic='../'.$user['pic'];
+//                            var_dump($driver);
+//                            var_dump($user);
+//                            echo $source;
                             ?>
                             <tr>
-                                <th scope="row"><img class="img-fluid" src="<?php echo $path?>" style="width: 100px"></th>
-                                <td style="vertical-align: middle"><?php echo $row['rid']?></td>
-                                <td style="vertical-align: middle"><?php echo $row['source']?></td>
-                                <td style="vertical-align: middle"><?php echo $row['destination']?></td>
-                                <td style="vertical-align: middle"><?php echo $row['distance']?></td>
-                                <td style="vertical-align: middle"><button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Remove this Route</button></td>
+                                <th scope="row"><img class="img-fluid" src="<?php echo $upic?>" style="width: 100px"></th>
+                                <td style="vertical-align: middle"><?php echo $source?></td>
+                                <td style="vertical-align: middle"><?php echo $destination?></td>
+                                <td style="vertical-align: middle"><?php echo $startdate?></td>
+                                <td style="vertical-align: middle"><?php echo $enddate?></td>
+                                <td style="vertical-align: middle"><?php echo $hire_type?></td>
+                                <th scope="row"><img class="img-fluid" src="<?php echo $cpic?>" style="width: 100px"></th>
+                                <th scope="row"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
+                                <td style="vertical-align: middle"><?php echo $cost?></td>
+                                <td style="vertical-align: middle">
+<!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Approve this Ride</button>-->
+                                <form method="post" action="functionalities/approve.php" id="approve-form<?php echo $bid?>">
+                                    <?php $arr = [
+                                        'bid' => $bid
+                                    ];
+                                    ?>
+                                    <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                                    <input onclick="
+                                            swal('Approve Ride','Are U sure? you want to approve this ride','info',{buttons: {
+                                            cancel: 'No\, Don\'t Approve',
+
+                                            catch: {
+                                            text: 'Yes\, Approve Now',
+                                            value: 'catch',
+                                            },
+                                            },closeOnClickOutside: false,
+                                            },).then((value) => {
+                                            switch (value) {
+                                            case 'catch':
+                                            swal('Approved', 'Ride approved successfully', 'success');
+                                            $('#approve-form<?php echo $bid?>').submit();
+                                            break;
+
+                                            default:
+                                            swal('Ride not approved','','warning');
+                                            }
+                                            });"
+                                           class="btn btn-primary" value="<?php echo 'Approve this booking';?>"
+                                    />
+                                </form>
+                                </td>
+                                <td style="vertical-align: middle">
+<!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Reject this Ride</button>-->
+                                    <form method="post" action="functionalities/reject.php" id="reject-form<?php echo $bid?>">
+                                        <?php $arr = [
+                                            'bid' => $bid
+                                        ];
+                                        ?>
+                                        <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                                        <input onclick="
+                                                swal('Reject Ride','Are U sure? you want to reject this ride','info',{buttons: {
+                                                cancel: 'No\, Don\'t Reject',
+
+                                                catch: {
+                                                text: 'Yes\, Reject Now',
+                                                value: 'catch',
+                                                },
+                                                },closeOnClickOutside: false,
+                                                },).then((value) => {
+                                                switch (value) {
+                                                case 'catch':
+                                                swal('Rejected', 'Ride rejected successfully', 'error');
+                                                $('#reject-form<?php echo $bid?>').submit();
+                                                break;
+
+                                                default:
+                                                swal('Ride not rejected','','warning');
+                                                }
+                                                });"
+                                               class="btn btn-primary" value="<?php echo 'Reject this booking';?>"
+                                        />
+                                    </form>
+                                </td>
                             </tr>
                             <!-- Button trigger modal -->
                             <?php

@@ -1,5 +1,19 @@
 <?php include("php/connection.php");
 include ('php/checkuser.php');
+if(isset($_SESSION['user'])){
+    ?>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Change text of input button
+            $("#profile").attr("href", "user/profile.php");
+
+            // Change text of button element
+            $("#profile").html("My Profile");
+        });
+    </script>
+    <?php
+}
     if($_SERVER['REQUEST_METHOD']=="POST"){
         $uid = $_SESSION['user']['uid'];
         if(isset($_POST['search'])){
@@ -16,12 +30,36 @@ include ('php/checkuser.php');
             }
             else{
                 extract($_POST);
+//                print_r($_POST);
+//                echo $_POST['source'];
+//                echo $source;
                 if($qr=mysqli_query($conn,"select * from car where cseat>=$headCount")){
 //                    var_dump($_POST);
-//                    while ($row=mysqli_fetch_array($qr)){
-//                        var_dump($row);
-//                        echo $row['pic'];
-//                    }
+                    if($source==$destination){
+                        ?> <script>alert("Source and Destination must be different"); window.location.href="booking.php";</script> <?php
+                    }
+                    else{
+                        if($route=mysqli_query($conn,"SELECT * FROM `route` WHERE (source='$source' or destination='$source') and (source='$destination' or destination='$destination')")){
+                            if(mysqli_num_rows($route)>0){
+                                $route_val=(mysqli_fetch_array($route));
+                                $rid=$route_val['rid'];
+                                $start=strtotime($startDate);
+                                $end=strtotime($endDate);
+                                if($end<$start){
+                                    ?><script>alert("Drop off date must be after or same with pick up date");window.location.href="booking.php";</script><?php
+                                }
+                                else{
+//                                    echo "ALL SET UP";
+                                }
+                            }
+                            else{
+                                ?><script>alert("No route available between source and destination");window.location.href="booking.php";</script><?php
+                            }
+                        }
+                        else{
+                            ?><script>alert("Route fetching error")</script><?php
+                        }
+                    }
                 }
             }
         }
@@ -58,6 +96,8 @@ include ('php/checkuser.php');
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body style="background-color: #a7907b40">
@@ -94,7 +134,7 @@ include ('php/checkuser.php');
                                 <ul id="navigation">
                                     <li><a href="index.php">Home</a></li>
                                     <li><a href="about.php">About</a></li>
-                                    <li><a href="booking.pho">Booking</a></li>
+                                    <li><a href="booking.php">Booking</a></li>
                                     <!--                                        <li><a href="blog.html">Blog</a>-->
                                     <!--                                            <ul class="submenu">-->
                                     <!--                                                <li><a href="blog.html">Blog</a></li>-->
@@ -115,7 +155,7 @@ include ('php/checkuser.php');
                     <div class="col-xl-2 col-lg-2">
                         <!-- header-btn -->
                         <div class="header-btn">
-                            <a href="#" class="btn btn1 d-none d-lg-block ">Book Online</a>
+                            <a href="#" class="btn btn1 d-none d-lg-block" id="profile">Book Online</a>
                         </div>
                     </div>
                     <!-- Mobile Menu -->
@@ -175,6 +215,8 @@ include ('php/checkuser.php');
 //                    $cost=;
                     $path="admin/".$row['pic'];
                     $did=$row['did'];
+                    $brand=$row['brand'];
+                    $name=$row['cname'];
                     $driver=mysqli_query($conn,"Select dname,pic from driver where did=$did");
                     while ($drow=mysqli_fetch_array($driver)){
                         $dpic = "admin/".$drow['pic'];
@@ -192,38 +234,49 @@ include ('php/checkuser.php');
                 <td style="vertical-align: middle"><?php echo $row['cseat']?></td>
                 <td style="vertical-align: middle"><?php echo $row['farepkm']?></td>
                 <td style="vertical-align: middle"><?php echo $row['farepd']?></td>
-                <td style="vertical-align: middle"><button class="btn-outline-info btn btn-primary" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Book This Car</button></td>
+                <td style="vertical-align: middle">
+<!--                    <button data-whatever="abc" class="btn-outline-info btn btn-primary" type="button" data-toggle="modal" data-target="#staticBackdrop">Book This Car</button>-->
+<!--                    <button type="button" onclick="swal('Confirm Booking','Are U sure? you want to book this car','info')" class="btn-outline-info btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" data-whatever="@getbootstrap">Book This Car</button>-->
+                    <form method="post" action="book.php" id="bokking-form<?php echo $cid?>">
+                        <?php $arr = [
+                            'cid' => $cid,
+                            'did' =>$did,
+                            'uid' =>$_SESSION['user']['uid'],
+                            'source' => $source,
+                            'destination' => $destination,
+                            'startDate' => $startDate,
+                            'endDate' => $endDate,
+                            'mode' => $mode,
+                            'rid' => $rid
+                        ];
+                        ?>
+                        <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                        <input onclick="
+                        swal('Confirm Booking','Are U sure? you want to book this car','info',{buttons: {
+                            cancel: 'No\, Don\'t Book',
+
+                            catch: {
+                                text: 'Yes\, Book Now',
+                                value: 'catch',
+                                },
+                            },closeOnClickOutside: false,
+                        },).then((value) => {
+                            switch (value) {
+                                case 'catch':
+                                swal('Gotcha!', 'Booking requested successfully', 'success');
+                                $('#bokking-form<?php echo $cid?>').submit();
+                                break;
+
+                        default:
+                        swal('Booking canceled','','warning');
+                        }
+                        });
+"
+                               class="btn btn-primary" value="<?php echo 'Book '.$name;?>"
+                        />
+                    </form>
+                </td>
             </tr>
-                    <!-- Button trigger modal -->
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header" style="text-align: center">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Confirm Registration</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body" style="text-align: center">
-                                    Are you sure, you want to book this car?
-                                </div>
-                                <div class="modal-footer">
-                                    <form method="post" action="test.php">
-                                        <?php $arr = [
-                                                'cid' => $cid,
-                                                'did' =>$did
-                                                ]; ?>
-                                        <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
-                                        <input type="submit" class="btn btn-secondary" value="Yes, Book Now" />
-                                    </form>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
             <?php
                 }
             ?>
@@ -316,6 +369,17 @@ include ('php/checkuser.php');
 <!-- JS here -->
 
 <!-- All JS Custom Plugins Link Here here -->
+    <script type="text/javascript">
+        $('#staticBackdrop').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('New message to ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+        })
+    </script>
 <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
 
 <!-- Jquery, Popper, Bootstrap -->
@@ -350,6 +414,7 @@ include ('php/checkuser.php');
 <!-- Jquery Plugins, main Jquery -->
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>

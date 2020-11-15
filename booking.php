@@ -207,7 +207,7 @@ if(isset($_SESSION['user'])){
                                     <div class="select-this">
                                         <select class="scrollable-menu" id="source" name="headCount">
                                             <option value="" selected>Select Number of people (Passenger)</option>
-                                            <?php foreach (range(1,30) as $num){
+                                            <?php foreach (range(1,16) as $num){
                                                 ?><option value="<?php echo $num ?>"> <?php echo $num ?></option><?php
                                             }
                                             ?>
@@ -232,10 +232,10 @@ if(isset($_SESSION['user'])){
                                 <div class="single-select-box mb-30">
                                     <!-- select out date -->
                                     <div class="boking-tittle">
-                                        <span>Drop off day release:</span>
+                                        <span>Release type:</span>
                                     </div>
                                     <div class="boking-datepicker">
-                                        <select id="type" name="type">
+                                        <select id="type" name="mode">
                                             <option value="" selected>Select Drop off service duration</option>
                                             <option value="day">Whole Day</option>
                                             <option value="noday">Release after journey completion</option>

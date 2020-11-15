@@ -1,5 +1,19 @@
 <?php
 include("php/connection.php");
+if(isset($_SESSION['user'])){
+    ?>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Change text of input button
+            $("#profile").attr("href", "user/profile.php");
+
+            // Change text of button element
+            $("#profile").html("My Profile");
+        });
+    </script>
+    <?php
+}
 //var_dump($_SERVER);
 if($_SERVER['QUERY_STRING']==""){
     ?><script type="text/javascript">window.location.href="cars.php"</script><?php
@@ -116,7 +130,7 @@ else{
                     <div class="col-xl-2 col-lg-2">
                         <!-- header-btn -->
                         <div class="header-btn">
-                            <a href="#" class="btn btn1 d-none d-lg-block ">Book Online</a>
+                            <a href="#" class="btn btn1 d-none d-lg-block" id="profile">Book Online</a>
                         </div>
                     </div>
                     <!-- Mobile Menu -->
