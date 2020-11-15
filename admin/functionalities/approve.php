@@ -5,10 +5,23 @@ include ("../php/connection.php");
         $decoded = unserialize($_POST['data']);
         $bid=$decoded['bid'];
         if($approve=mysqli_query($conn,"UPDATE `booking` SET status = 'Approved' WHERE bid=$bid")){
-            echo "Approved";
+                echo "<h1 style='text-align: center'>Ride Approved</h1>";
             ?>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script>
-                swal("Approved");
+                swal("Ride Approved",'Going back to dashboard','success',{
+                        buttons:{
+                            cancel: 'Okay',
+                        },
+                        closeOnClickOutside: false,
+                    },
+                ).then((value) =>{
+                    switch (value){
+                        default:
+                            // swal("Clicked");
+                            window.location.href="../index.php";
+                    }
+                });
             </script>
             <?php
         }
@@ -18,16 +31,13 @@ include ("../php/connection.php");
     }
     else{
         ?>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script>
-                swal("alert");
+                swal("No booking id found to approve");
             </script>
         <?php
     }
 ?>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
-    swal("alert");
-</script>
 <?php
 
 ?>

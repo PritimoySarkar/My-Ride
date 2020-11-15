@@ -492,7 +492,6 @@
                                 <th scope="row"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
                                 <td style="vertical-align: middle"><?php echo $cost?></td>
                                 <td style="vertical-align: middle">
-<!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Approve this Ride</button>-->
                                 <form method="post" action="functionalities/approve.php" id="approve-form<?php echo $bid?>">
                                     <?php $arr = [
                                         'bid' => $bid
@@ -524,7 +523,6 @@
                                 </form>
                                 </td>
                                 <td style="vertical-align: middle">
-<!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Reject this Ride</button>-->
                                     <form method="post" action="functionalities/reject.php" id="reject-form<?php echo $bid?>">
                                         <?php $arr = [
                                             'bid' => $bid
@@ -557,30 +555,6 @@
                                 </td>
                             </tr>
                             <!-- Button trigger modal -->
-                            <?php
-
-                            ?>
-                            <!-- Modal -->
-                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header" style="text-align: center">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete Route</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body" style="text-align: center">
-                                            Are you sure, you want to remove this route?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal" name="yes" id="yes">Yes, Delete</button>
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
                             <?php
                         }
                         ?>
