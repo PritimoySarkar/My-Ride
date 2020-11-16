@@ -138,8 +138,8 @@ if(isset($_SESSION['user'])){
                         <form method="POST" enctype="multipart/form-data" action="carselect.php">
                             <div class="booking-wrap d-flex justify-content-between align-items-center">
 
-                                <!-- select in date -->
-                                <div class="single-select-box mb-30">
+                                <!-- Single Select Box -->
+                                <div class="single-select-box mb-30 mr-30">
                                     <!-- select out date -->
                                     <div class="boking-tittle">
                                         <span> From Where:</span>
@@ -155,7 +155,7 @@ if(isset($_SESSION['user'])){
                                     </div>
                                 </div>
                                 <!-- Single Select Box -->
-                                <div class="single-select-box mb-30">
+                                <div class="single-select-box mb-30 mr-30 ml-30">
                                     <!-- select out date -->
                                     <div class="boking-tittle">
                                         <span>To Where:</span>
@@ -173,7 +173,7 @@ if(isset($_SESSION['user'])){
                                     </div>
                                 </div>
                                 <!-- Single Select Box -->
-                                <div class="single-select-box mb-30">
+                                <div class="single-select-box mb-30 mr-30 ml-30">
                                     <div class="boking-tittle">
                                         <span>Pick-up Date:</span>
                                     </div>
@@ -182,7 +182,7 @@ if(isset($_SESSION['user'])){
                                     </div>
                                 </div>
                                 <!-- Single Select Box -->
-                                <div class="single-select-box mb-30">
+                                <div class="single-select-box mb-30 mr-60 ml-30">
                                     <div class="boking-tittle">
                                         <span>Drop-off Date:</span>
                                     </div>
@@ -200,7 +200,7 @@ if(isset($_SESSION['user'])){
                                 <!--                        </div>-->
                                 <!--                   </div>-->
                                 <!-- Single Select Box -->
-                                <div class="single-select-box mb-30">
+                                <div class="single-select-box mb-30 mr-100">
                                     <div class="boking-tittle">
                                         <span>Head Count:</span>
                                     </div>
@@ -232,7 +232,9 @@ if(isset($_SESSION['user'])){
                                 <div class="single-select-box mb-30">
                                     <!-- select out date -->
                                     <div class="boking-tittle">
-                                        <span>Release type:</span>
+                                        <span>Release type:
+                                        <i data-toggle="tooltip" data-placement="top" title="Choose whole day if you wish to book the car for the whole day otherwise choose 'Release after journey completion' if you going to release the car just after reaching your destination" class="fas fa-question-circle"></i>
+                                        </span>
                                     </div>
                                     <div class="boking-datepicker">
                                         <select id="type" name="mode">

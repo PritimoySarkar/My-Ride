@@ -1,37 +1,32 @@
-<?php
-include ("php/connection.php");
-?>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!DOCTYPE html>
 
-<?php
-if($_SERVER['REQUEST_METHOD']=='POST'){
-    $decoded = unserialize($_POST['data']);
-    $bid=$decoded['bid'];
-    //echo $bid;
-    if($dlt=mysqli_query($conn,"DELETE FROM `booking` WHERE bid=$bid")){
-        ?>
-        <script>
-            alert("Ride cancellation successful");
-            window.location.href='profile.php';
-        </script>
-        <?php
-    }
-    else{
-        ?>
-        <script>
-            alert("Ride cancellation failed");
-            window.location.href='profile.php';
-        </script>
-        <?php
-    }
-}
-else{
-    ?>
-    <script>
-        // alert("No Booking ID found to delete");
-        // window.location.href='profile.php';
-        swal("Alert");
-    </script>
-    <?php
-}
-?>
+<head>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="admin/assets/images/my-ride-logo-small.png">
+    <title>My Ride - Page Not Found</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .error-box {
+            /* The image used */
+            background-image: url("assets/img/error/success.gif");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+<div class="error-box"></div>
+</body>
+
+</html>

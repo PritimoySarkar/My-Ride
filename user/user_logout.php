@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php
 include ("../php/connection.php");
     if(!isset($_SESSION['user'])){
@@ -10,13 +11,43 @@ include ("../php/connection.php");
         <?php
     }
     else{
-        session_start();
+        //session_start();
         session_destroy();
         //unset($_SESSION['user']);
+        echo "<img id='bg' src='../assets/img/error/success.gif'>";
         ?>
+        <style>
+            #whole-body {
+                /* The image used */
+                display: none;
+            }
+            #bg{
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+                size: auto;
+            }
+        </style>
         <script  type="text/javascript">
-            alert("Logged out successfully");
-            window.location.href="user_login.php";
+            //alert("You are not logged in");
+            swal('Logged Out','Logged out successfully','success',{buttons: {
+                    catch: {
+                        text: 'Go to Home',
+                        value: 'home',
+                    },
+                    cancel: 'Log In',
+                },closeOnClickOutside: false,
+            },).then((value) => {
+                switch (value) {
+                    case 'home':
+                        window.location.href="../index.php";
+                        break;
+                    default:
+                        window.location.href="user_login.php";
+                        break;
+                }
+            });
+            //window.location.href="user_login.php";
         </script>
         <?php
     }

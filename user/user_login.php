@@ -12,12 +12,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Hotel</title>
+    <title>My Ride | Login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="../assets/css/nice-select.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body style="background-color: #a7907b40">
@@ -175,11 +177,48 @@
                             # fetch user data
                             $user_data = mysqli_fetch_array($check);
                             $_SESSION['user'] = $user_data;
-                            ?><script>window.location.href="../index.php";</script><?php
+                            ?>
+                            <script>
+                                //window.location.href="../index.php";
+                                swal('Logged In','Logged in successfully','success',{buttons: {
+                                        catch: {
+                                            text: 'Go to Home',
+                                            value: 'home',
+                                        },
+                                        cancel: 'Profile',
+                                    },closeOnClickOutside: false,
+                                },).then((value) => {
+                                    switch (value) {
+                                        case 'home':
+                                            window.location.href="../index.php";
+                                            break;
+                                        default:
+                                            window.location.href="profile.php";
+                                            break;
+                                    }
+                                });
+                            </script>
+                        <?php
                         }
                         else
                         {
-                            echo "Invalid email / password";
+                            ?>
+                            <script>
+                                //alert("Invalid ID-pass");
+                                swal('Login failed','Invalid ID or password','error',{buttons: {
+                                        catch: {
+                                            text: 'Retry',
+                                            value: 'retry',
+                                        },
+                                    },closeOnClickOutside: false,
+                                },).then((value) => {
+                                    switch (value) {
+                                        case 'retry':
+                                            window.location.href="user_login.php";
+                                            break;
+                                    }
+                                });
+                        </script><?php
                         }
                     }
                 }

@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="../assets/css/nice-select.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body style="background-color: #a7907b40">
@@ -262,18 +264,63 @@
                                     $execute=mysqli_query($conn,$u_info) or die(mysqli_error($conn));
                                     if($execute)
                                     {
-
+                                        echo "Registration Completed";
                                         ?>
                                         <script type="text/javascript">
                                             // redirect
-                                            window.location.href = "user_login.php";
-                                            alert("Registration Successfull");
+                                            //window.location.href = "user_login.php";
+                                            //alert("Registration Successfull");
+                                            swal('Registration Successful','Registration completed successfully','success',{buttons: {
+                                                    catch: {
+                                                        text: 'Log In',
+                                                        value: 'catch',
+                                                    },
+                                                },closeOnClickOutside: false,
+                                            },).then((value) => {
+                                                switch (value) {
+                                                    case 'catch':
+                                                        window.location.href='user_login.php';
+                                                        break;
+                                                }
+                                            });
                                         </script>
                                         <?php
                                     }
                                     else{
                                         echo "Registration failed";
                                     }
+                                }
+                            }
+                            else{
+                                        $datetime=date("Y-m-d");
+                                        $u_info="INSERT INTO user (name,email,gender,password,dob,phno,doj) VALUES ('$nm','$em','$gender','$pwd','$dob','$phno','$datetime')";
+                                        $execute=mysqli_query($conn,$u_info) or die(mysqli_error($conn));
+                                        if($execute)
+                                        {
+                                        echo "Registration Completed";
+                                        ?>
+                                        <script type="text/javascript">
+                                        // redirect
+                                        //window.location.href = "user_login.php";
+                                        //alert("Registration Successfull");
+                                        swal('Registration Successful','Registration completed successfully','success',{buttons: {
+                                                catch: {
+                                                    text: 'Log In',
+                                                    value: 'catch',
+                                                },
+                                            },closeOnClickOutside: false,
+                                        },).then((value) => {
+                                            switch (value) {
+                                                case 'catch':
+                                                    window.location.href='user_login.php';
+                                                    break;
+                                            }
+                                        });
+                                    </script>
+                                    <?php
+                                }
+                                else{
+                                    echo "Registration failed";
                                 }
                             }
                         }

@@ -135,81 +135,12 @@ if(isset($_SESSION['user'])){
     <!-- ================ contact section start ================= -->
     <section class="contact-section">
             <div class="container-fluid center">
+                        <center>
+                            <h2 style="font-size: xx-large;font-family: 'Lato', sans-serif">Meet us here</h2>
+                            <br><br>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30256.00816518411!2d73.76170110273281!3d18.57399272251058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf81985e96a7%3A0x5f1b66bf913c96d1!2sMyRide%20-%20Bike%20Rentals%20In%20Baner%20Pune!5e0!3m2!1sen!2sin!4v1605533366927!5m2!1sen!2sin" width="70%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </center>
 
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="mapouter">
-                                <div class="gmap_canvas">
-                                    <iframe width="1000" height="500" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30251.53034448511!2d73.75354718167405!3d18.59921084979908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b971901a2589%3A0xa7dd000c9a7d9440!2sMy%20Ride!5e0!3m2!1sen!2sin!4v1605214253706!5m2!1sen!2sin" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-
-                                    </iframe
-                                    ><a href="https://www.whatismyip-address.com"></a>
-                                </div>
-                                <style>.mapouter{position:relative;text-align:center;height:500px;width:1000px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:1000px;}</style>
-                            </div>
-                        </div>
-                        <div class="col-md-4"></div>
-                    </div>
-
-
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="contact-title">Get in Touch</h2>
-                    </div>
-                    <div class="col-lg-8" style="margin-left: 30px">
-                        <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group" style="background-color: ghostwhite">
-                                        <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message" ></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group" style="background-color: ghostwhite">
-                                        <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group" style="background-color: ghostwhite">
-                                        <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group" style="background-color: ghostwhite">
-                                        <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mt-3">
-                                <button type="submit" class="button button-contactForm boxed-btn">Send</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="media contact-info">
-                            <span class="contact-info__icon"><i class="ti-home"></i></span>
-                            <div class="media-body">
-                                <h3>Buttonwood, California.</h3>
-                                <p>Rosemead, CA 91770</p>
-                            </div>
-                        </div>
-                        <div class="media contact-info">
-                            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
-                            <div class="media-body">
-                                <h3>+1 253 565 2365</h3>
-                                <p>Mon to Fri 9am to 6pm</p>
-                            </div>
-                        </div>
-                        <div class="media contact-info">
-                            <span class="contact-info__icon"><i class="ti-email"></i></span>
-                            <div class="media-body">
-                                <h3>support@myride.com</h3>
-                                <p>Send us your query anytime!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     <!-- ================ contact section end ================= -->

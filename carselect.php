@@ -15,7 +15,9 @@ if(isset($_SESSION['user'])){
     <?php
 }
     if($_SERVER['REQUEST_METHOD']=="POST"){
-        $uid = $_SESSION['user']['uid'];
+        if(isset($_SESSION['user'])){
+            $uid = $_SESSION['user']['uid'];
+        }
         if(isset($_POST['search'])){
             $flag = 0;
             foreach ($_POST as $key => $value){
@@ -36,17 +38,81 @@ if(isset($_SESSION['user'])){
                 if($qr=mysqli_query($conn,"select * from car where cseat>=$headCount")){
 //                    var_dump($_POST);
                     if($source==$destination){
-                        ?> <script>alert("Source and Destination must be different"); window.location.href="booking.php";</script> <?php
+                        echo "<img id='bg' src='assets/img/error/error.jpg'>";
+                        ?>
+                        <style>
+                            #whole-body {
+                                /* The image used */
+                                display: none;
+                            }
+                            #bg{
+                                background-repeat: no-repeat;
+                                width: 100%;
+                                height: 100%;
+                                size: auto;
+                            }
+                        </style>
+                        <script>
+                            //alert("Source and Destination must be different");
+                            //window.location.href="booking.php";
+                            swal('Same source & destination','Source and destination must be different','error',{buttons: {
+                                    catch: {
+                                        text: 'Go to Booking',
+                                        value: 'catch',
+                                    },
+                                },closeOnClickOutside: false,
+                            },).then((value) => {
+                                switch (value) {
+                                    case 'catch':
+                                        window.location.href='booking.php';
+                                        break;
+                                }
+                            });
+                        </script> <?php
                     }
                     else{
                         if($route=mysqli_query($conn,"SELECT * FROM `route` WHERE (source='$source' or destination='$source') and (source='$destination' or destination='$destination')")){
                             if(mysqli_num_rows($route)>0){
                                 $route_val=(mysqli_fetch_array($route));
                                 $rid=$route_val['rid'];
+                                $current=date("Y-m-d");
+                                $today=strtotime($current);
                                 $start=strtotime($startDate);
                                 $end=strtotime($endDate);
-                                if($end<$start){
-                                    ?><script>alert("Drop off date must be after or same with pick up date");window.location.href="booking.php";</script><?php
+                                $distance=$route_val['distance'];
+                                if($end<$start or $today>$start){
+                                    echo "<img id='bg' src='assets/img/error/error.jpg'>";
+                                    ?>
+                                    <style>
+                                        #whole-body {
+                                            /* The image used */
+                                            display: none;
+                                        }
+                                        #bg{
+                                            background-repeat: no-repeat;
+                                            width: 100%;
+                                            height: 100%;
+                                            size: auto;
+                                        }
+                                    </style>
+                                    <script>
+                                        //alert("Source and Destination must be different");
+                                        //window.location.href="booking.php";
+                                        swal('Date Error','Pick up date must not be before today and drop off day must not be before pick up date','error',{buttons: {
+                                                catch: {
+                                                    text: 'Go to Booking',
+                                                    value: 'catch',
+                                                },
+                                            },closeOnClickOutside: false,
+                                        },).then((value) => {
+                                            switch (value) {
+                                                case 'catch':
+                                                    window.location.href='booking.php';
+                                                    break;
+                                            }
+                                        });
+                                    </script>
+                                    <?php
                                 }
                                 else{
 //                                    echo "ALL SET UP";
@@ -101,6 +167,8 @@ if(isset($_SESSION['user'])){
 </head>
 
 <body style="background-color: #a7907b40">
+<div id="background"></div>
+<div id="whole-body">
 
 <!-- Preloader Start -->
 <div id="preloader-active">
@@ -191,18 +259,19 @@ if(isset($_SESSION['user'])){
             <?php
                 if(mysqli_num_rows($qr)){
                     ?>
-                    <thead class="thead-dark">
+                    <thead class="thead-dark" style="font-size: small">
                     <tr>
-                        <th scope="col" width="20%">Car Photo</th>
+                        <th scope="col" width="10%">Car Photo</th>
                         <th scope="col">Car Brand</th>
                         <th scope="col">Car Model Name</th>
                         <th scope="col">Car Type</th>
                         <th scope="col">Car Color</th>
-                        <th scope="col">Car Driver</th>
+                        <th scope="col" width="7%">Car Driver</th>
                         <th scope="col">Passenger Capacity</th>
-                        <th scope="col">Rate per Km</th>
-                        <th scope="col">Rate per Day</th>
-                        <th scope="col">Request for Booking</th>
+                        <th scope="col" width="5%">Rate per Km</th>
+                        <th scope="col" width="10%">Rate per Day</th>
+                        <th scope="col" width="10%">Total Cost</th>
+                        <th scope="col" width="10%">Request for Booking</th>
                     </tr>
                     </thead>
             <?php
@@ -212,7 +281,7 @@ if(isset($_SESSION['user'])){
             <?php
                 while ($row=mysqli_fetch_array($qr)){
                     $cid=$row['cid'];
-//                    $cost=;
+                    $cost=0;
                     $path="admin/".$row['pic'];
                     $did=$row['did'];
                     $brand=$row['brand'];
@@ -223,6 +292,14 @@ if(isset($_SESSION['user'])){
                         $dname= $drow['dname'];
                     }
                     $dview='driverview.php?'.$did;
+
+                    $start=strtotime($startDate);
+                    $end=strtotime($endDate);
+                    $days=($end-$start)/60/60/24;
+                    if($mode=='day'){
+                        $days+=1;
+                    }
+                    $cost=($days*$row['farepd'])+($row['farepkm']*$distance);
             ?>
             <tr>
                 <th scope="row"><img class="img-fluid" src="<?php echo $path?>"></th>
@@ -230,10 +307,11 @@ if(isset($_SESSION['user'])){
                 <td style="vertical-align: middle"><?php echo $row['cname']?></td>
                 <td style="vertical-align: middle"><?php echo $row['ctype']?></td>
                 <td style="vertical-align: middle"><?php echo $row['ccolor']?></td>
-                <td style="vertical-align: middle"><a href="<?php echo $dview?>"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px;height: 100px;" title="<?php echo $dname;?>"></a></td>
+                <td style="vertical-align: middle"><a href="<?php echo $dview?>"><img title="<?php echo $dname?>" class="img-fluid rounded-circle" src="<?php echo $dpic?>" style="width: 100px;height: 100px;" title="<?php echo $dname;?>"></a></td>
                 <td style="vertical-align: middle"><?php echo $row['cseat']?></td>
-                <td style="vertical-align: middle"><?php echo $row['farepkm']?></td>
-                <td style="vertical-align: middle"><?php echo $row['farepd']?></td>
+                <td style="vertical-align: middle"><?php echo '₹ '.$row['farepkm']?></td>
+                <td style="vertical-align: middle"><?php echo '₹ '.$row['farepd']?></td>
+                <td style="vertical-align: middle"><?php echo '₹ '.$cost?></td>
                 <td style="vertical-align: middle">
 <!--                    <button data-whatever="abc" class="btn-outline-info btn btn-primary" type="button" data-toggle="modal" data-target="#staticBackdrop">Book This Car</button>-->
 <!--                    <button type="button" onclick="swal('Confirm Booking','Are U sure? you want to book this car','info')" class="btn-outline-info btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" data-whatever="@getbootstrap">Book This Car</button>-->
@@ -251,7 +329,7 @@ if(isset($_SESSION['user'])){
                         ];
                         ?>
                         <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
-                        <input onclick="
+                        <input style="font-size: medium" onclick="
                         swal('Confirm Booking','Are U sure? you want to book this car','info',{buttons: {
                             cancel: 'No\, Don\'t Book',
 
@@ -416,5 +494,6 @@ if(isset($_SESSION['user'])){
 <script src="./assets/js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</div>
 </body>
 </html>

@@ -1,7 +1,19 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 <?php
-
     include ("php/connection.php");
+    if(!isset($_POST['data'])){
+        ?>
+        <script>
+            alert("Can\'t reload during booking, Please go back to Booking page")
+            window.location.href='booking.php';
+        </script>
+        <?php
+    }
     $decoded = unserialize($_POST['data']);
     $source = $decoded['source'];
     $destination = $decoded['destination'];
@@ -29,11 +41,36 @@
         $cost=$cost+($days*$car['farepd']);
         $insert=mysqli_query($conn,"INSERT INTO `booking`(`uid`, `rid`, `source`, `destination`, `startdate`, `enddate`, `hire_type`, `cid`, `did`, `status`, `cost`, `timing`) VALUES ($uid,$rid,'$source','$destination','$startD','$endD','$mode',$cid,$did,'Pending',$cost,'$current')");
         if($insert){
+            echo "<img id='bg' src='assets/img/error/success.gif'>";
             ?>
+            <style>
+                #whole-body {
+                    /* The image used */
+                    display: none;
+                }
+                #bg{
+                    background-repeat: no-repeat;
+                    width: 100%;
+                    height: 100%;
+                    size: auto;
+                }
+            </style>
             <script>
-                alert("Booking successful");
-                swal('Gotcha!', 'Booking requested successfully', 'success');
-                window.location.href="user/profile.php";
+                //alert("You must log in to perform this task");
+                swal('Ride Requested','Booking request generated successfully','success',{buttons: {
+                        catch: {
+                            text: 'Go to Profile',
+                            value: 'profile',
+                        },
+                    },closeOnClickOutside: false,
+                },).then((value) => {
+                    switch (value) {
+                        case 'profile':
+                            window.location.href="user/profile.php";
+                            break;
+                    }
+                });
+                //window.location.href = "user/user_login.php";
             </script>
             <?php
         }

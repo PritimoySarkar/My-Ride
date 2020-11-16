@@ -162,78 +162,130 @@ if(isset($_SESSION['user'])){
         <!-- Booking Room Start-->
         <div class="booking-area">
             <div class="container">
-               <div class="row ">
-               <div class="col-12">
-                <form action="">
-                <div class="booking-wrap d-flex justify-content-between align-items-center">
-                 
-                    <!-- select in date -->
-                    <div class="single-select-box mb-30">
-                        <!-- select out date -->
-                        <div class="boking-tittle">
-                            <span> From Where:</span>
-                        </div>
-                        <div class="boking-datepicker">
-                            <input id="source"  placeholder="Home Location" />
-                        </div>
-                   </div>
-                    <!-- Single Select Box -->
-                    <div class="single-select-box mb-30">
-                        <!-- select out date -->
-                        <div class="boking-tittle">
-                            <span>To Where:</span>
-                        </div>
-                        <div class="boking-datepicker">
-                            <input id="destination"  placeholder="Trip Ending Location" />
-                        </div>
-                   </div>
-                    <!-- Single Select Box -->
-                    <div class="single-select-box mb-30">
-                        <div class="boking-tittle">
-                            <span>Pick-up Date:</span>
-                        </div>
-                        <div class="select-this">
-                            <input id="datepicker1"  placeholder="dd/mm/yy" />
-                        </div>
-                   </div>
-                    <!-- Single Select Box -->
-                    <div class="single-select-box mb-30">
-                        <div class="boking-tittle">
-                            <span>Drop-off Date:</span>
-                        </div>
-                        <div class="select-this">
-                            <input id="datepicker2"  placeholder="dd/mm/yy" />
-                        </div>
-                    </div>
-<!--                    &lt;!&ndash; Single Select Box &ndash;&gt;-->
-<!--                    <div class="single-select-box mb-30">-->
-<!--                        <div class="boking-tittle">-->
-<!--                            <span>Pick-up Time:</span>-->
-<!--                        </div>-->
-<!--                        <div class="select-this">-->
-<!--                            <input id="timepicker" type="time" />-->
-<!--                        </div>-->
-<!--                   </div>-->
-                    <!-- Single Select Box -->
-                    <div class="single-select-box mb-30">
-                        <div class="boking-tittle">
-                            <span>Head Count:</span>
-                        </div>
-                        <div class="select-this">
-                            <input id="count" name="headCount" placeholder="Number of people" />
-                        </div>
-                   </div>
-                    <!-- Single Select Box -->
-                    <div class="single-select-box pt-45 mb-30">
-                        <input type="submit" name="search" value="Search" class="btn select-btn">
-<!--                        <a href="#" class="btn select-btn">Book Now</a>-->
-                   </div>
-               
+                <div class="row ">
+                    <div class="col-12">
+                        <form method="POST" enctype="multipart/form-data" action="carselect.php">
+                            <div class="booking-wrap d-flex justify-content-between align-items-center">
 
+                                <!-- Single Select Box -->
+                                <div class="single-select-box mb-30 mr-30">
+                                    <!-- select out date -->
+                                    <div class="boking-tittle">
+                                        <span> From Where:</span>
+                                    </div>
+                                    <div class="boking-datepicker">
+                                        <select id="source" name="source">
+                                            <option value="" selected>Select Source</option>
+                                            <?php
+                                            $routes=mysqli_query($conn,"SELECT source FROM route UNION SELECT destination FROM route");
+                                            while($row=mysqli_fetch_array($routes)){
+                                                ?><option value="<?php echo $row[0] ?>"> <?php echo $row[0] ?></option><?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Single Select Box -->
+                                <div class="single-select-box mb-30 mr-30 ml-30">
+                                    <!-- select out date -->
+                                    <div class="boking-tittle">
+                                        <span>To Where:</span>
+                                    </div>
+                                    <div class="boking-datepicker">
+                                        <select id="destination" name="destination">
+                                            <option value="" selected>Select Destination</option>
+                                            <?php
+                                            $routes=mysqli_query($conn,"SELECT source FROM route UNION SELECT destination FROM route");
+                                            while($row=mysqli_fetch_array($routes)){
+                                                ?><option value="<?php echo $row[0] ?>"> <?php echo $row[0] ?></option><?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Single Select Box -->
+                                <div class="single-select-box mb-30 mr-30 ml-30">
+                                    <div class="boking-tittle">
+                                        <span>Pick-up Date:</span>
+                                    </div>
+                                    <div class="select-this">
+                                        <input id="datepicker1" name="startDate" placeholder="dd/mm/yy" required/>
+                                    </div>
+                                </div>
+                                <!-- Single Select Box -->
+                                <div class="single-select-box mb-30 mr-60 ml-30">
+                                    <div class="boking-tittle">
+                                        <span>Drop-off Date:</span>
+                                    </div>
+                                    <div class="select-this">
+                                        <input id="datepicker2" name="endDate" placeholder="dd/mm/yy" required/>
+                                    </div>
+                                </div>
+                                <!--                    &lt;!&ndash; Single Select Box &ndash;&gt;-->
+                                <!--                    <div class="single-select-box mb-30">-->
+                                <!--                        <div class="boking-tittle">-->
+                                <!--                            <span>Pick-up Time:</span>-->
+                                <!--                        </div>-->
+                                <!--                        <div class="select-this">-->
+                                <!--                            <input id="timepicker" type="time" />-->
+                                <!--                        </div>-->
+                                <!--                   </div>-->
+                                <!-- Single Select Box -->
+                                <div class="single-select-box mb-30 mr-100">
+                                    <div class="boking-tittle">
+                                        <span>Head Count:</span>
+                                    </div>
+                                    <div class="select-this">
+                                        <select class="scrollable-menu" id="source" name="headCount">
+                                            <option value="" selected>Select Number of people (Passenger)</option>
+                                            <?php foreach (range(1,16) as $num){
+                                                ?><option value="<?php echo $num ?>"> <?php echo $num ?></option><?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Single Select Box -->
+                                <div class="single-select-box mb-30">
+                                    <!-- select out date -->
+                                    <div class="boking-tittle">
+                                        <span>Required Car Type:</span>
+                                    </div>
+                                    <div class="boking-datepicker">
+                                        <select id="type" name="type">
+                                            <option value="" selected>Select Car Type</option>
+                                            <option value="Commercial">Commercial</option>
+                                            <option value="Privet">Privet</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Single Select Box -->
+                                <div class="single-select-box mb-30">
+                                    <!-- select out date -->
+                                    <div class="boking-tittle">
+                                        <span>Release type:
+                                        <i data-toggle="tooltip" data-placement="top" title="Choose whole day if you wish to book the car for the whole day otherwise choose 'Release after journey completion' if you going to release the car just after reaching your destination" class="fas fa-question-circle"></i>
+                                        </span>
+                                    </div>
+                                    <div class="boking-datepicker">
+                                        <select id="type" name="mode">
+                                            <option value="" selected>Select Drop off service duration</option>
+                                            <option value="day">Whole Day</option>
+                                            <option value="noday">Release after journey completion</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Single Select Box -->
+                                <div class="single-select-box pt-45 mb-30">
+                                    <input type="submit" name="search" value="Search" class="btn select-btn">
+                                    <!--                                    <a href="#" type="submit" class="btn select-btn" name="search" >Book Now</a>-->
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </form>
-               </div>
-               </div>
             </div>
         </div>
         <!-- Booking Room End-->

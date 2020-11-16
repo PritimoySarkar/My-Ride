@@ -10,11 +10,13 @@ $dob=$_SESSION['user']['dob'];
 $diff = (date('Y') - date('Y',strtotime($dob)));
 //$age = format('%yYears, %mMonths, %dDays');
 $uid=$_SESSION['user']['uid'];
-$name=$_SESSION['user']['name'];
-$email=$_SESSION['user']['email'];
-$gender=$_SESSION['user']['gender'];
-$number=$_SESSION['user']['phno'];
-$pic=$_SESSION['user']['pic'];
+$profile_qr=mysqli_query($conn,"select * from user where uid=$uid");
+$profile=mysqli_fetch_array($profile_qr);
+$name=$profile['name'];
+$email=$profile['email'];
+$gender=$profile['gender'];
+$number=$profile['phno'];
+$pic=$profile['pic'];
 $join=$_SESSION['user']['doj'];
 $imgpath='../'.$pic;
 
@@ -53,6 +55,32 @@ $rejected_count = mysqli_num_rows($rejected_qr);
     <link rel="stylesheet" href="../assets/css/nice-select.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+
+    <style>
+        .btn-grad {background-image: linear-gradient(to right, #e25f08 0%, #ffcc33  51%, #73ef64 100%)}
+        .btn-grad {
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            font-size: xx-large;
+            font-weight: bolder;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: #ffffff;
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #e54545;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
@@ -129,13 +157,13 @@ $rejected_count = mysqli_num_rows($rejected_qr);
 
     <!-- slider Area Start-->
     <div class="slider-area">
-        <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="../assets/img/background/booking.jpg" >
+        <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="../assets/img/background/registration.jpg" >
             <div class="container">
                 <div class="row ">
                     <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
                         <div class="hero-caption">
-                            <span>Booking</span>
-                            <h2>Just Book and we'll meet at your place</h2>
+                            <span>Profile</span>
+                            <h2>Your profile - let us know you</h2>
                         </div>
                     </div>
                 </div>
@@ -148,7 +176,17 @@ $rejected_count = mysqli_num_rows($rejected_qr);
             <div class="container">
                 <div class="row" style="text-align: center">
                     <div class="col">
-                        <img src="<?php echo $imgpath?>" class="img-fluid rounded-circle" alt="Responsive image" width="400px">
+                        <?php
+                            if($pic==''){
+                                ?>
+                                <img src="../assets/img/adapt_icon/user.jpg" class="img-fluid rounded-circle img-thumbnail" alt="Responsive image" width="400px">
+                                <?php
+                            }else{
+                        ?>
+                            <img src="<?php echo $imgpath?>" class="img-fluid rounded-circle img-thumbnail" alt="Responsive image" width="400px">
+                        <?php
+                            }
+                        ?>
                     </div>
                     <div class="col" style="align-self: center">
                         <table class="table table-borderless table-striped table-dark" style="text-align: center;font-size: x-large;color: #ccac4b;border-bottom-right-radius: 50px;border-top-left-radius: 50px;">
@@ -187,6 +225,12 @@ $rejected_count = mysqli_num_rows($rejected_qr);
                 </div>
             </div>
         </div>
+        <center>
+            <form method="post" action="edit.php">
+                <input type="hidden" name="userID" value="<?php echo $uid;?>">
+            <button class="btn-grad" type="submit" name="edit-btn" value="Edit">Edit Profile</button>
+            </form>
+        </center>
         <div class="container-fluid center">
             <?php
             if($pending_count==0 and $approved_count==0 and $rejected_count==0){
@@ -229,24 +273,33 @@ $rejected_count = mysqli_num_rows($rejected_qr);
 //                            var_dump($row);
                                     $driver_qr=mysqli_query($conn,"select dname,pic from driver where did=$did");
                                     $user_qr=mysqli_query($conn,"select name,pic from user where uid=$uid");
-                                    $car_qr=mysqli_query($conn,"select pic from car where cid=$cid");
+                                    $car_qr=mysqli_query($conn,"select brand,cname,pic from car where cid=$cid");
                                     $driver=mysqli_fetch_array($driver_qr);
                                     $user=mysqli_fetch_array($user_qr);
                                     $car=mysqli_fetch_array($car_qr);
                                     $dpic='../admin/'.$driver['pic'];
                                     $cpic='../admin/'.$car['pic'];
+                                    $startD=date("d/m/y",strtotime($startdate));
+                                    $endD=date("d/m/y",strtotime($enddate));
+                                    $mode='';
+                                    if($hire_type=='day'){
+                                        $mode='Full Day';
+                                    }
+                                    else{
+                                        $mode='Release car on journey completion';
+                                    }
 //                            var_dump($driver);
 //                            var_dump($user);
 //                            echo $source;
                                     ?>
                                     <tr>
-                                        <th scope="row"><img class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
-                                        <th scope="row"><img class="img-fluid rounded-circle" src="<?php echo $dpic?>" style="width: 100px"></th>
+                                        <th scope="row"><img title="<?php echo $car['brand'].': '.$car['cname']?>" class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
+                                        <th scope="row"><img title="<?php echo $driver['dname']?>" class="img-fluid rounded-circle" src="<?php echo $dpic?>" style="width: 100px"></th>
                                         <td style="vertical-align: middle"><?php echo $source?></td>
                                         <td style="vertical-align: middle"><?php echo $destination?></td>
-                                        <td style="vertical-align: middle"><?php echo $startdate?></td>
-                                        <td style="vertical-align: middle"><?php echo $enddate?></td>
-                                        <td style="vertical-align: middle"><?php echo $hire_type?></td>
+                                        <td style="vertical-align: middle"><?php echo $startD?></td>
+                                        <td style="vertical-align: middle"><?php echo $endD?></td>
+                                        <td style="vertical-align: middle"><?php echo $mode?></td>
                                         <td style="vertical-align: middle"><?php echo '₹ '.$cost?></td>
                                         <td style="vertical-align: middle">
 <!--                                            <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Cancel this Ride</button>-->
@@ -328,24 +381,33 @@ $rejected_count = mysqli_num_rows($rejected_qr);
 //                            var_dump($row);
                                     $driver_qr=mysqli_query($conn,"select dname,pic from driver where did=$did");
                                     $user_qr=mysqli_query($conn,"select name,pic from user where uid=$uid");
-                                    $car_qr=mysqli_query($conn,"select pic from car where cid=$cid");
+                                    $car_qr=mysqli_query($conn,"select brand,cname,pic from car where cid=$cid");
                                     $driver=mysqli_fetch_array($driver_qr);
                                     $user=mysqli_fetch_array($user_qr);
                                     $car=mysqli_fetch_array($car_qr);
                                     $dpic='../admin/'.$driver['pic'];
                                     $cpic='../admin/'.$car['pic'];
+                                    $startD=date("d/m/y",strtotime($startdate));
+                                    $endD=date("d/m/y",strtotime($enddate));
+                                    $mode='';
+                                    if($hire_type=='day'){
+                                        $mode='Full Day';
+                                    }
+                                    else{
+                                        $mode='Release car on journey completion';
+                                    }
 //                            var_dump($driver);
 //                            var_dump($user);
 //                            echo $source;
                                     ?>
                                     <tr>
-                                        <th scope="row"><img class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
-                                        <th scope="row"><img class="img-fluid rounded-circle" src="<?php echo $dpic?>" style="width: 100px"></th>
+                                        <th scope="row"><img title="<?php echo $car['brand'].': '.$car['cname']?>" class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
+                                        <th scope="row"><img title="<?php echo $driver['dname']?>" class="img-fluid rounded-circle" src="<?php echo $dpic?>" style="width: 100px"></th>
                                         <td style="vertical-align: middle"><?php echo $source?></td>
                                         <td style="vertical-align: middle"><?php echo $destination?></td>
-                                        <td style="vertical-align: middle"><?php echo $startdate?></td>
-                                        <td style="vertical-align: middle"><?php echo $enddate?></td>
-                                        <td style="vertical-align: middle"><?php echo $hire_type?></td>
+                                        <td style="vertical-align: middle"><?php echo $startD?></td>
+                                        <td style="vertical-align: middle"><?php echo $endD?></td>
+                                        <td style="vertical-align: middle"><?php echo $mode?></td>
                                         <td style="vertical-align: middle"><?php echo '₹ '.$cost?></td>
                                     </tr>
                                     <!-- Button trigger modal -->
@@ -398,24 +460,33 @@ $rejected_count = mysqli_num_rows($rejected_qr);
 //                            var_dump($row);
                                     $driver_qr=mysqli_query($conn,"select dname,pic from driver where did=$did");
                                     $user_qr=mysqli_query($conn,"select name,pic from user where uid=$uid");
-                                    $car_qr=mysqli_query($conn,"select pic from car where cid=$cid");
+                                    $car_qr=mysqli_query($conn,"select brand,cname,pic from car where cid=$cid");
                                     $driver=mysqli_fetch_array($driver_qr);
                                     $user=mysqli_fetch_array($user_qr);
                                     $car=mysqli_fetch_array($car_qr);
                                     $dpic='../admin/'.$driver['pic'];
                                     $cpic='../admin/'.$car['pic'];
+                                    $startD=date("d/m/y",strtotime($startdate));
+                                    $endD=date("d/m/y",strtotime($enddate));
+                                    $mode='';
+                                    if($hire_type=='day'){
+                                        $mode='Full Day';
+                                    }
+                                    else{
+                                        $mode='Release car on journey completion';
+                                    }
 //                            var_dump($driver);
 //                            var_dump($user);
 //                            echo $source;
                                     ?>
                                     <tr>
-                                        <th scope="row"><img class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
-                                        <th scope="row"><img class="img-fluid rounded-circle" src="<?php echo $dpic?>" style="width: 100px"></th>
+                                        <th scope="row"><img title="<?php echo $car['brand'].': '.$car['cname']?>" class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
+                                        <th scope="row"><img title="<?php echo $driver['dname']?>" class="img-fluid rounded-circle" src="<?php echo $dpic?>" style="width: 100px"></th>
                                         <td style="vertical-align: middle"><?php echo $source?></td>
                                         <td style="vertical-align: middle"><?php echo $destination?></td>
-                                        <td style="vertical-align: middle"><?php echo $startdate?></td>
-                                        <td style="vertical-align: middle"><?php echo $enddate?></td>
-                                        <td style="vertical-align: middle"><?php echo $hire_type?></td>
+                                        <td style="vertical-align: middle"><?php echo $startD?></td>
+                                        <td style="vertical-align: middle"><?php echo $endD?></td>
+                                        <td style="vertical-align: middle"><?php echo $mode?></td>
                                         <td style="vertical-align: middle"><?php echo '₹ '.$cost?></td>
                                     </tr>
                                     <!-- Button trigger modal -->

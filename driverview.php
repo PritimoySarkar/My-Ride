@@ -134,13 +134,13 @@ else{
 
     <!-- slider Area Start-->
     <div class="slider-area">
-        <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/background/booking.jpg" >
+        <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/background/driver.jpg" >
             <div class="container">
                 <div class="row ">
                     <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
                         <div class="hero-caption">
-                            <span>Booking</span>
-                            <h2>Just Book and we'll meet at your place</h2>
+                            <span>Drivers</span>
+                            <h2>Our trained and skilled heroes</h2>
                         </div>
                     </div>
                 </div>

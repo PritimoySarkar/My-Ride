@@ -347,7 +347,7 @@
                             $bid=$row['bid'];
                             $driver_qr=mysqli_query($conn,"select dname,pic from driver where did=$did");
                             $user_qr=mysqli_query($conn,"select name,pic from user where uid=$uid");
-                            $car_qr=mysqli_query($conn,"select pic from car where cid=$cid");
+                            $car_qr=mysqli_query($conn,"select brand,cname,pic from car where cid=$cid");
                             $driver=mysqli_fetch_array($driver_qr);
                             $user=mysqli_fetch_array($user_qr);
                             $car=mysqli_fetch_array($car_qr);
@@ -359,14 +359,14 @@
 //                            echo $source;
                             ?>
                             <tr>
-                                <th scope="row"><img class="img-fluid" src="<?php echo $upic?>" style="width: 100px"></th>
+                                <th scope="row"><img title="<?php echo 'ID: '.$uid.' - Name: '.$user['name'];?>" class="img-fluid" src="<?php echo $upic?>" style="width: 100px"></th>
                                 <td style="vertical-align: middle"><?php echo $source?></td>
                                 <td style="vertical-align: middle"><?php echo $destination?></td>
                                 <td style="vertical-align: middle"><?php echo $startdate?></td>
                                 <td style="vertical-align: middle"><?php echo $enddate?></td>
                                 <td style="vertical-align: middle"><?php echo $hire_type?></td>
-                                <th scope="row"><img class="img-fluid" src="<?php echo $cpic?>" style="width: 100px"></th>
-                                <th scope="row"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
+                                <th scope="row"><img title="<?php echo 'ID: '.$cid.': '.$car['brand'].' - '.$car['cname'];?>" class="img-fluid" src="<?php echo $cpic?>" style="width: 100px"></th>
+                                <th scope="row"><img title="<?php echo 'ID: '.$did.' - Name: '.$driver['dname'];?>" class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
                                 <td style="vertical-align: middle"><?php echo $cost?></td>
                                 <td style="vertical-align: middle">
                                     <!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Approve this Ride</button>-->
