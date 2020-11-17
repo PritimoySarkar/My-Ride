@@ -1,5 +1,6 @@
 <?php include("php/connection.php");
-$getDid=mysqli_query($conn,"select did from driver");
+//$booked_drivers=mysqli_query($conn,"select did from car");
+$getDid=mysqli_query($conn,"select did from driver where did not in (select did from car)");
     if(!isset($_SESSION['admin'])){
 //        var_dump($_SESSION['admin']);
         ?>
@@ -443,8 +444,14 @@ $getDid=mysqli_query($conn,"select did from driver");
                             </td>
                         </tr>
                         <tr>
+                            <td>Car Registration Number</td>
                             <td>
-                                Car type:
+                                <input type="text" name="registrationNo" placeholder="Enter car registration number" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Car Category:
                             </td>
                             <td>
 
@@ -453,6 +460,20 @@ $getDid=mysqli_query($conn,"select did from driver");
                                 <input type="radio" id="female" name="type" value="Commercial">
                                 <label for="Commercial">Commercial</label>
 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Car type:
+                            </td>
+                            <td class="boking-datepicker">
+                                <select id="type" name="category" required>
+                                    <option value="" selected>Select Car Type</option>
+                                    <option value="Hatchback">Hatchback</option>
+                                    <option value="Sedan">Sedan</option>
+                                    <option value="SUV">SUV</option>
+                                    <option value="Van">Van</option>
+                                </select>
                             </td>
                         </tr>
                         <tr>
@@ -538,14 +559,16 @@ $getDid=mysqli_query($conn,"select did from driver");
                         else{
                             $brand=$_POST['brand'];
                             $model=$_POST['model'];
+                            $registrationNo=$_POST['registrationNo'];
                             $type=$_POST['type'];
+                            $category=$_POST['category'];
                             $color=$_POST['color'];
                             $seat=$_POST['seat'];
                             $did=$_POST['did'];
                             $farepkm=$_POST['farepk'];
                             $farepd=$_POST['farepd'];
                             $datetime=date("d/m/Y h:i:sa");
-                            $qr=mysqli_query($conn,"insert into car (brand,cname,ctype,ccolor,cseat,did,farepkm,farepd,pic,datetime) values('$brand','$model','$type','$color','$seat','$did','$farepkm','$farepd','$image_path','$datetime')");
+                            $qr=mysqli_query($conn,"insert into car (registrationNo,brand,cname,ctype,category,ccolor,cseat,did,farepkm,farepd,pic,datetime) values('$registrationNo','$brand','$model','$type','$category','$color','$seat','$did','$farepkm','$farepd','$image_path','$datetime')");
                             if($qr){
                                 ?>
                                     <script type="text/javascript">

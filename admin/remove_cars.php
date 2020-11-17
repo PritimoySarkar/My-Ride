@@ -442,8 +442,10 @@
                             <tr>
                                 <th scope="col" width="20%">Car Photo</th>
                                 <th scope="col">Car ID</th>
+                                <th scope="col">Registration Number</th>
                                 <th scope="col">Car Brand</th>
                                 <th scope="col">Car Model Name</th>
+                                <th scope="col">Car Category</th>
                                 <th scope="col">Car Type</th>
                                 <th scope="col">Car Driver</th>
                                 <th scope="col">Request for Booking</th>
@@ -469,9 +471,11 @@
                             <tr>
                                 <th scope="row"><img class="img-fluid" src="<?php echo $path?>"></th>
                                 <td style="vertical-align: middle"><?php echo $row['did']?></td>
+                                <td style="vertical-align: middle"><?php echo $row['registrationNo']?></td>
                                 <td style="vertical-align: middle"><?php echo $row['brand']?></td>
                                 <td style="vertical-align: middle"><?php echo $row['cname']?></td>
                                 <td style="vertical-align: middle"><?php echo $row['ctype']?></td>
+                                <td style="vertical-align: middle"><?php echo $row['category']?></td>
                                 <td style="vertical-align: middle"><a href="<?php echo $dview?>"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px;height: 100px;" title="<?php echo 'ID:'.$did.': '.$dname;?>"></a></td>
                                 <td style="vertical-align: middle">
 <!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Remove this Car</button>-->

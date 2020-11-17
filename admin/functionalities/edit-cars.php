@@ -9,6 +9,17 @@
     }
     else{
 //        var_dump($_SESSION['admin']);
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+
+        }
+        else{
+            ?>
+            <script type="text/javascript">
+                alert("No car found to edit");
+                window.location.href = "admin_login.php";
+            </script>
+            <?php
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -22,12 +33,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/my-ride-logo-small.png">
-    <title>My Ride | Admin Cars</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/my-ride-logo-small.png">
+    <title>My Ride | Admin Drivers</title>
     <!-- Custom CSS -->
-    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <link href="../assets/libs/flot/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="../dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -64,19 +75,19 @@
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="../index.php">
+                <a class="navbar-brand" href="../../index.php">
                     <!-- Logo icon -->
                     <b class="logo-icon p-l-10">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="assets/images/my-ride-logo.png" alt="homepage" class="light-logo" />
+                        <img src="../assets/images/my-ride-logo.png" alt="homepage" class="light-logo" />
 
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                              <!-- dark Logo text -->
-                             <img src="assets/images/my-ride-admin.png" alt="homepage" class="light-logo" />
+                             <img src="../assets/images/my-ride-admin.png" alt="homepage" class="light-logo" />
 
                         </span>
                     <!-- Logo icon -->
@@ -114,10 +125,10 @@
                             <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="pending.php">Pending</a>
-                            <a class="dropdown-item" href="approved.php">Approved</a>
+                            <a class="dropdown-item" href="../pending.php">Pending</a>
+                            <a class="dropdown-item" href="../approved.php">Approved</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="rejected.php">Rejected</a>
+                            <a class="dropdown-item" href="../rejected.php">Rejected</a>
                         </div>
                     </li>
                     <!-- ============================================================== -->
@@ -212,15 +223,15 @@
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
                         <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                            <a class="dropdown-item" href="profile.php"><i class="fas fa-user-circle m-r-5 m-l-5"></i> My Profile</a>
-                            <a class="dropdown-item" href="history.php"><i class="fas fa-history t m-r-5 m-l-5"></i> History </a>
-                            <a class="dropdown-item" href="add_admin.php"><i class="fas fa-user-plus m-r-5 m-l-5"></i> Add Admin </a>
+                            <a class="dropdown-item" href="../profile.php"><i class="fas fa-user-circle m-r-5 m-l-5"></i> My Profile</a>
+                            <a class="dropdown-item" href="../history.php"><i class="fas fa-history t m-r-5 m-l-5"></i> History </a>
+                            <a class="dropdown-item" href="../add_admin.php"><i class="fas fa-user-plus m-r-5 m-l-5"></i> Add Admin </a>
 <!--                            <div class="dropdown-divider"></div>-->
-                            <a class="dropdown-item" href="overview.php"><i class="fas fa-code m-r-5 m-l-5"></i> Overview </a>
+                            <a class="dropdown-item" href="../overview.php"><i class="fas fa-code m-r-5 m-l-5"></i> Overview </a>
 <!--                            <div class="dropdown-divider"></div>-->
-                            <a class="dropdown-item" href="php/admin-logout.php"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                            <a class="dropdown-item" href="../php/admin-logout.php"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                         </div>
                     </li>
                     <!-- ============================================================== -->
@@ -242,33 +253,33 @@
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="fas fa-list-alt"></i><span class="hide-menu">Dashboard</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../index.php" aria-expanded="false"><i class="fas fa-list-alt"></i><span class="hide-menu">Dashboard</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-car"></i><span class="hide-menu">Cars</span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="cars.php" class="sidebar-link"><i class="fas fa-car"></i><span class="hide-menu"> Show & Edit Cars </span></a></li>
-                            <li class="sidebar-item"><a href="add_cars.php" class="sidebar-link"><i class="fas fa-plus"></i><span class="hide-menu"> Add Cars </span></a></li>
-                            <li class="sidebar-item"><a href="remove_cars.php" class="sidebar-link"><i class="fas fa-trash-alt"></i><span class="hide-menu"> Remove Cars </span></a></li>
+                            <li class="sidebar-item"><a href="../cars.php" class="sidebar-link"><i class="fas fa-car"></i><span class="hide-menu"> Show & Edit Cars </span></a></li>
+                            <li class="sidebar-item"><a href="../add_cars.php" class="sidebar-link"><i class="fas fa-plus"></i><span class="hide-menu"> Add Cars </span></a></li>
+                            <li class="sidebar-item"><a href="../remove_cars.php" class="sidebar-link"><i class="fas fa-trash-alt"></i><span class="hide-menu"> Remove Cars </span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user"></i><span class="hide-menu">Drivers </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="drivers.php" class="sidebar-link"><i class="fas fa-user"></i><span class="hide-menu"> Show & Edit Drivers </span></a></li>
-                            <li class="sidebar-item"><a href="add_drivers.php" class="sidebar-link"><i class="fas fa-user-plus"></i><span class="hide-menu"> Add Drivers </span></a></li>
-                            <li class="sidebar-item"><a href="remove_drivers.php" class="sidebar-link"><i class="fas fa-user-times"></i><span class="hide-menu"> Remove Drivers </span></a></li>
+                            <li class="sidebar-item"><a href="../drivers.php" class="sidebar-link"><i class="fas fa-user"></i><span class="hide-menu"> Show & Edit Drivers </span></a></li>
+                            <li class="sidebar-item"><a href="../add_drivers.php" class="sidebar-link"><i class="fas fa-user-plus"></i><span class="hide-menu"> Add Drivers </span></a></li>
+                            <li class="sidebar-item"><a href="../remove_drivers.php" class="sidebar-link"><i class="fas fa-user-times"></i><span class="hide-menu"> Remove Drivers </span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-road"></i><span class="hide-menu"> Routes </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="routes.php" class="sidebar-link"><i class="fas fa-road"></i><span class="hide-menu"> Show & Edit Routes </span></a></li>
-                            <li class="sidebar-item"><a href="add_routes.php" class="sidebar-link"><i class="fas fa-plus"></i><span class="hide-menu"> Add Routes </span></a></li>
-                            <li class="sidebar-item"><a href="remove_routes.php" class="sidebar-link"><i class="fas fa-trash-alt"></i><span class="hide-menu"> Remove Routes </span></a></li>
+                            <li class="sidebar-item"><a href="../routes.php" class="sidebar-link"><i class="fas fa-road"></i><span class="hide-menu"> Show & Edit Routes </span></a></li>
+                            <li class="sidebar-item"><a href="../add_routes.php" class="sidebar-link"><i class="fas fa-plus"></i><span class="hide-menu"> Add Routes </span></a></li>
+                            <li class="sidebar-item"><a href="../remove_routes.php" class="sidebar-link"><i class="fas fa-trash-alt"></i><span class="hide-menu"> Remove Routes </span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-check-square"></i><span class="hide-menu"> Approve Ride </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="pending.php" class="sidebar-link"><i class="fas fa-exclamation-triangle"></i><span class="hide-menu"> Pending </span></a></li>
-                            <li class="sidebar-item"><a href="approved.php" class="sidebar-link"><i class="fas fa-thumbs-up"></i><span class="hide-menu"> Approved </span></a></li>
-                            <li class="sidebar-item"><a href="rejected.php" class="sidebar-link"><i class="fas fa-ban"></i><span class="hide-menu"> Rejected </span></a></li>
+                            <li class="sidebar-item"><a href="../pending.php" class="sidebar-link"><i class="fas fa-exclamation-triangle"></i><span class="hide-menu"> Pending </span></a></li>
+                            <li class="sidebar-item"><a href="../approved.php" class="sidebar-link"><i class="fas fa-thumbs-up"></i><span class="hide-menu"> Approved </span></a></li>
+                            <li class="sidebar-item"><a href="../rejected.php" class="sidebar-link"><i class="fas fa-ban"></i><span class="hide-menu"> Rejected </span></a></li>
                         </ul>
                     </li>
 <!--                    <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-key"></i><span class="hide-menu">Authentication </span></a>-->
@@ -424,276 +435,184 @@
                 .card-hover{cursor: pointer}
             </style>
             <!--                Floating buttons End-->
-
-<!--            Show Cars start-->
-            <h1 align="center">Select filter to search car</h1>
-            <?php
-                $car_type_private=mysqli_query($conn,"select distinct brand from car where ctype='private'");
-//                var_dump($car_type_private);
-                $car_type_commercial=mysqli_query($conn,"select distinct brand from car where ctype='commercial'");
-                $car_color=mysqli_query($conn,"select distinct ccolor from car");
-                $car_capacity=mysqli_query($conn,"select distinct cseat from car");
-            ?>
-            <?php
-            if(mysqli_num_rows($car_type_private)>0 or mysqli_num_rows($car_type_commercial)>0){
+            <!-- ============================================================== -->
+            <div>
+                <?php
+                    if(isset($_POST['cid'])){
+                    $cid=$_POST['cid'];
+                    $car_qr=mysqli_query($conn,"select * from car where cid=$cid");
+                    $car=mysqli_fetch_array($car_qr);
+                    extract($car);
                 ?>
-                <div style="text-align: center;">
-                    <form style="font-size: 15pt; align-items: center" method="post">
-                        <table class="table table-responsive">
+                <div style="overflow-x:auto;width: 400px; margin: 0 auto;">
+                    <form method="post" style="font-weight: bold;align-items: center" enctype="multipart/form-data">
+                        <table cellpadding="15%" class="table-responsive" style="align-content: center">
                             <tr>
-<!--                                Select Brand-->
+                                <td>Car Brand</td>
                                 <td>
-                                <label for="cars">Choose car brand: </label>
-                                <select id="cars" name="cars" style="width: 50%">
-                                    <optgroup label="Private">
-                                        <option value="" selected>All Brand</option>
-                                        <?php while($row=mysqli_fetch_array($car_type_private)){
-                                            ?><option value="<?php echo $row[0] ?>"> <?php echo $row[0] ?></option><?php
-                                        }
-                                        ?>
-                                    </optgroup>
-                                    <optgroup label="Commercial">
-                                        <?php while($row=mysqli_fetch_array($car_type_commercial)){
-                                            ?><option value="<?php echo $row[0] ?>"> <?php echo $row[0] ?></option><?php
-                                        }
-                                        ?>
-                                    </optgroup>
-                                </select>
+                                    <input hidden type="text" name="cid" placeholder="Enter car brand" value="<?php echo $cid?>" required>
+                                    <input type="text" name="brand" placeholder="Enter car brand" value="<?php echo $brand?>" required>
                                 </td>
-<!--                                Select Color-->
+                            </tr>
+                            <tr>
                                 <td>
-                                    <label for="cars">Choose car color: </label>
-                                    <select id="color" name="color" style="width: 50%">
-                                        <option value="" selected>All color</option>
-                                            <?php while($row=mysqli_fetch_array($car_color)){
-                                                ?><option value="<?php echo $row[0] ?>"> <?php echo $row[0] ?></option><?php
-                                            }
-                                            ?>
-                                    </select>
+                                    Car Model:
                                 </td>
-<!--                                Car Capacity-->
                                 <td>
-                                    <label for="cars">Choose car passenger capacity: </label>
-                                    <select id="capacity" name="capacity">
-                                        <option value="" selected>All capacity</option>
-                                        <?php while($row=mysqli_fetch_array($car_capacity)){
-                                            ?><option value="<?php echo $row[0] ?>"> <?php echo $row[0] ?></option><?php
-                                        }
-                                        ?>
-                                    </select>
+                                    <input type="text" name="model" placeholder="Enter Car Model" value="<?php echo $cname?>" required>
                                 </td>
-<!--                                Car Category-->
+                            </tr>
+                            <tr>
+                                <td>Car Registration Number</td>
                                 <td>
-                                    <label for="cars">Choose car category: </label>
-                                    <select id="fare" name="type" style="width: 70%">
-                                        <option value="" selected>Both category</option>
-                                        <option value="Commercial">Commercial</option>
-                                        <option value="Private">Private</option>
-                                    </select>
+                                    <input type="text" name="registrationNo" placeholder="Enter car registration number" value="<?php echo $registrationNo?>" required>
                                 </td>
-<!--                                Car type-->
+                            </tr>
+                            <tr>
                                 <td>
-                                    <label for="cars">Choose car type: </label>
-                                    <select id="fare" name="category" style="width: 70%">
-                                        <option value="" selected>All types</option>
+                                    Car Category:
+                                </td>
+                                <td>
+                                    <input type="radio" id="male" name="type" value="Private" required>
+                                    <label for="Private">Private</label>
+                                    <input type="radio" id="female" name="type" value="Commercial">
+                                    <label for="Commercial">Commercial</label>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Car type:
+                                </td>
+                                <td class="boking-datepicker">
+                                    <select id="type" name="category" required>
+                                        <option value="" selected>Select Car Type</option>
                                         <option value="Hatchback">Hatchback</option>
                                         <option value="Sedan">Sedan</option>
                                         <option value="SUV">SUV</option>
                                         <option value="Van">Van</option>
                                     </select>
                                 </td>
-
+                            </tr>
+                            <tr>
+                                <td>
+                                    Car Color:
+                                </td>
+                                <td>
+                                    <input type="text" name="color" placeholder="Enter Car color" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Car Passenger Capacity:
+                                </td>
+                                <td>
+                                    <input type="number" name="seat" placeholder="Enter passenger capacity" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Driver ID:
+                                </td>
+                                <td>
+                                    <select name="did" required>
+                                        <option value="">SELECT DRIVER</option>
+                                        <?php while($driver=mysqli_fetch_array($getDid)){ ?>
+                                            <option value="<?php echo $driver['did']?>"><?php echo $driver['did']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Fare per Kilometer:
+                                </td>
+                                <td>
+                                    <input type="number" name="farepk" placeholder="Enter car's Fare/kilometer" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Fare per Day:
+                                </td>
+                                <td>
+                                    <input type="number" name="farepd" placeholder="Enter car's Fare/Day">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Profile Picture
+                                </td>
+                                <td>
+                                    <input type="file" name="pic" required>
+                                </td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td></td>
-                                <td align="right">
-                                    <input type="submit" name="search" value="search" style="width: 70%">
+                                <td align="center">
+                                    <input type="submit" name="ok" value="Add Car">
                                 </td>
                             </tr>
                         </table>
                     </form>
-                </div>
-                <?php
-            }
-            if($_SERVER['REQUEST_METHOD']==="POST"){
-                $qr=array("","","","","");
-                if(!empty($_POST['cars'])){ $qr[0]="and brand ='".$_POST['cars']."'"; }
-                if(!empty($_POST['color'])){ $qr[1]="and ccolor ='".$_POST['color']."'"; }
-                if(!empty($_POST['capacity'])){ $qr[2]="and cseat =".$_POST['capacity']; }
-                if(!empty($_POST['type'])){ $qr[3]="and ctype ='".$_POST['type']."'"; }
-                if(!empty($_POST['category'])){ $qr[3]="and category ='".$_POST['category']."'"; }
-                $add_qr = implode(" ", $qr);
-//        echo $add_qr;
-                if(empty($add_qr)){ $final_qr = "select * from car where 1"; }
-                else{ $final_qr = "select * from car where 1 ".$add_qr; }
-//                echo $final_qr;
-                $res=mysqli_query($conn,$final_qr);
-                if($res){
-                    if(mysqli_num_rows($res)>0){
-                        ?>
-                            <h1 align="center">Available Cars</h1>
-                        <div>
-                            <div class="container-fluid" style="padding-top: 50px;">
-                                <table class="table table-striped center" style="font-size: x-large;text-align: center;">
-                                    <?php
-                                    if(mysqli_num_rows($res)){
-                                        ?>
-                                        <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col" width="20%">Car Photo</th>
-                                            <th scope="col">Car ID</th>
-                                            <th scope="col">Registration Number</th>
-                                            <th scope="col">Car Brand</th>
-                                            <th scope="col">Car Model Name</th>
-                                            <th scope="col">Car Category</th>
-                                            <th scope="col">Car Type</th>
-                                            <th scope="col">Car Driver</th>
-                                            <th scope="col">Edit or remove</th>
-                                        </tr>
-                                        </thead>
-                                        <?php
-                                    }
-                                    ?>
-                                    <tbody>
-                                    <?php
-                                    while ($row=mysqli_fetch_array($res)){
-                                        $cid=$row['cid'];
-                                        $path=$row['pic'];
-                                        $did=$row['did'];
-                                        $driver=mysqli_query($conn,"Select dname,pic from driver where did=$did");
-                                        while ($drow=mysqli_fetch_array($driver)){
-                                            $dpic = $drow['pic'];
-                                            $dname= $drow['dname'];
-                                        }
-                                        $dview='../driverview.php?'.$did;
-                                        ?>
-                                        <tr>
-                                            <th scope="row"><img class="img-fluid" src="<?php echo $path?>"></th>
-                                            <td style="vertical-align: middle"><?php echo $row['did']?></td>
-                                            <td style="vertical-align: middle"><?php echo $row['registrationNo']?></td>
-                                            <td style="vertical-align: middle"><?php echo $row['brand']?></td>
-                                            <td style="vertical-align: middle"><?php echo $row['cname']?></td>
-                                            <td style="vertical-align: middle"><?php echo $row['ctype']?></td>
-                                            <td style="vertical-align: middle"><?php echo $row['category']?></td>
-                                            <td style="vertical-align: middle"><a href="<?php echo $dview?>"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px;height: 100px;" title="<?php echo 'ID:'.$did.': '.$dname;?>"></a></td>
-                                            <td style="vertical-align: middle">
-                                                <!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Remove this Car</button>-->
-                                                <form method="post" action="functionalities/edit-cars.php" id="edit-form<?php echo $cid?>">
-                                                    <?php $arr = [
-                                                        'cid' => $cid
-                                                    ];
-                                                    ?>
-                                                    <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
-                                                    <input onclick="
-                                                            swal('Edit Car','Are U sure? you want to edit this car','info',{buttons: {
-                                                            cancel: 'No\, Don\'t Edit',
-
-                                                            catch: {
-                                                            text: 'Yes\, Edit Now',
-                                                            value: 'catch',
-                                                            },
-                                                            },closeOnClickOutside: false,
-                                                            },).then((value) => {
-                                                            switch (value) {
-                                                            case 'catch':
-                                                            swal('Edited', 'Car edited successfully', 'success');
-                                                            $('#edit-form<?php echo $cid?>').submit();
-                                                            break;
-
-                                                            default:
-                                                            swal('Car not edited','','warning');
-                                                            }
-                                                            });"
-                                                           class="btn btn-primary" value="<?php echo 'Edit this car';?>"
-                                                    />
-                                                </form>
-                                                <form method="post" action="functionalities/remove-cars.php" id="remove-form<?php echo $cid?>">
-                                                    <?php $arr = [
-                                                        'cid' => $cid
-                                                    ];
-                                                    ?>
-                                                    <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
-                                                    <input onclick="
-                                                            swal('Remove Car','Are U sure? you want to remove this car','info',{buttons: {
-                                                            cancel: 'No\, Don\'t Remove',
-
-                                                            catch: {
-                                                            text: 'Yes\, Remove Now',
-                                                            value: 'catch',
-                                                            },
-                                                            },closeOnClickOutside: false,
-                                                            },).then((value) => {
-                                                            switch (value) {
-                                                            case 'catch':
-                                                            swal('Removed', 'Car removed successfully', 'success');
-                                                            $('#remove-form<?php echo $cid?>').submit();
-                                                            break;
-
-                                                            default:
-                                                            swal('Car not removed','','warning');
-                                                            }
-                                                            });"
-                                                           class="btn btn-primary" value="<?php echo 'Remove this car';?>"
-                                                    />
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <!-- Button trigger modal -->
-                                        <?php
-
-                                        ?>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header" style="text-align: center">
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete Car</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body" style="text-align: center">
-                                                        Are you sure, you want to remove this car?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-primary" data-dismiss="modal" name="yes" id="yes">Yes, Delete</button>
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php
-                                    }
-                                    ?>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-                        <?php
-                        while($row=mysqli_fetch_array($res)){
-                            var_dump($row);
-                        }
+                    <?php
                     }
                     else{
+                    if(isset($_POST['ok'])){
+                    foreach ($_POST as $key => $value){
+                    if(empty($value)) {
                         ?>
-                        <h1 align="center">No Car found for this details</h1>
+                        <script type="text/javascript">alert("All fields are mandatory"); window.location.href="../add_cars.php";</script>
+                    <?php
+                    }
+                    }
+
+                    $image_path='uploaded/cars/'.date('d-m-Y_H-i-sa').$_FILES['pic']['name'];
+                    if($_FILES['pic']['type']=='image/jpg' || $_FILES['pic']['type']=='image/jpeg' || $_FILES['pic']['type']=='image/JPG' || $_FILES['pic']['type']=='image/JPEG' || $_FILES['pic']['type']=='image/png' || $_FILES['pic']['type']=='image/PMG'){
+                    if(!move_uploaded_file($_FILES['pic']['tmp_name'],$image_path)){
+                    //                            var_dump($_FILES['pic']);
+                    //                            echo $image_path;
+                    ?>
+                        <script type="text/javascript">alert("Image upload error"); window.location.href="../add_cars.php";</script>
+                    <?php
+                    }
+                    else{
+                    $brand=$_POST['brand'];
+                    $model=$_POST['model'];
+                    $registrationNo=$_POST['registrationNo'];
+                    $type=$_POST['type'];
+                    $category=$_POST['category'];
+                    $color=$_POST['color'];
+                    $seat=$_POST['seat'];
+                    $did=$_POST['did'];
+                    $farepkm=$_POST['farepk'];
+                    $farepd=$_POST['farepd'];
+                    $datetime=date("d/m/Y h:i:sa");
+                    $qr=mysqli_query($conn,"insert into car (registrationNo,brand,cname,ctype,category,ccolor,cseat,did,farepkm,farepd,pic,datetime) values('$registrationNo','$brand','$model','$type','$category','$color','$seat','$did','$farepkm','$farepd','$image_path','$datetime')");
+                    if($qr){
+                    ?>
+                        <script type="text/javascript">
+                            alert("Car added to the database successfully");
+                            window.location.href='add_cars.php';
+                        </script>
+                    <?php
+                    }
+                    else{
+                    ?>
+                        <script type="text/javascript">alert("Car add error in database"); window.location.href="../add_cars.php";</script>
+                    <?php
+                    }
+                    }
+                    }
+                    else{
+                    ?>
+                        <script type="text/javascript">alert("Invalid image file format"); window.location.href="../add_cars.php";</script>
                         <?php
                     }
-                }
-                else{
-                    echo "DB Error";
-                }
-            }
-            ?>
-
-<!--            Show Cars End-->
-            <!-- ============================================================== -->
-            <div>
-
-
+                    }
+                    }
+                    ?>
+                </div>
             </div>
             <!-- ============================================================== -->
         </div>
@@ -720,32 +639,31 @@
 <!-- ============================================================== -->
 <!-- All Jquery -->
 <!-- ============================================================== -->
-<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
-<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-<script src="assets/extra-libs/sparkline/sparkline.js"></script>
+<script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="../assets/extra-libs/sparkline/sparkline.js"></script>
 <!--Wave Effects -->
-<script src="dist/js/waves.js"></script>
+<script src="../dist/js/waves.js"></script>
 <!--Menu sidebar -->
-<script src="dist/js/sidebarmenu.js"></script>
+<script src="../dist/js/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
-<script src="dist/js/custom.min.js"></script>
+<script src="../dist/js/custom.min.js"></script>
 <!--This page JavaScript -->
 <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
 <!-- Charts js Files -->
-<script src="assets/libs/flot/excanvas.js"></script>
-<script src="assets/libs/flot/jquery.flot.js"></script>
-<script src="assets/libs/flot/jquery.flot.pie.js"></script>
-<script src="assets/libs/flot/jquery.flot.time.js"></script>
-<script src="assets/libs/flot/jquery.flot.stack.js"></script>
-<script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
-<script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-<script src="dist/js/pages/chart/chart-page-init.js"></script>
+<script src="../assets/libs/flot/excanvas.js"></script>
+<script src="../assets/libs/flot/jquery.flot.js"></script>
+<script src="../assets/libs/flot/jquery.flot.pie.js"></script>
+<script src="../assets/libs/flot/jquery.flot.time.js"></script>
+<script src="../assets/libs/flot/jquery.flot.stack.js"></script>
+<script src="../assets/libs/flot/jquery.flot.crosshair.js"></script>
+<script src="../assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="../dist/js/pages/chart/chart-page-init.js"></script>
 
 </body>
 
 
 </html>
-<?php?>

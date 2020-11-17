@@ -35,7 +35,7 @@ if(isset($_SESSION['user'])){
 //                print_r($_POST);
 //                echo $_POST['source'];
 //                echo $source;
-                if($qr=mysqli_query($conn,"select * from car where cseat>=$headCount")){
+                if($qr=mysqli_query($conn,"select * from car where cseat>=$headCount and ctype='$type'")){
 //                    var_dump($_POST);
                     if($source==$destination){
                         echo "<img id='bg' src='assets/img/error/error.jpg'>";
@@ -305,7 +305,7 @@ if(isset($_SESSION['user'])){
                 <th scope="row"><img class="img-fluid" src="<?php echo $path?>"></th>
                 <td style="vertical-align: middle"><?php echo $row['brand']?></td>
                 <td style="vertical-align: middle"><?php echo $row['cname']?></td>
-                <td style="vertical-align: middle"><?php echo $row['ctype']?></td>
+                <td style="vertical-align: middle"><?php echo $row['category']?></td>
                 <td style="vertical-align: middle"><?php echo $row['ccolor']?></td>
                 <td style="vertical-align: middle"><a href="<?php echo $dview?>"><img title="<?php echo $dname?>" class="img-fluid rounded-circle" src="<?php echo $dpic?>" style="width: 100px;height: 100px;" title="<?php echo $dname;?>"></a></td>
                 <td style="vertical-align: middle"><?php echo $row['cseat']?></td>

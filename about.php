@@ -42,6 +42,58 @@ if(isset($_SESSION['user'])){
         <link rel="stylesheet" href="assets/css/nice-select.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
+
+        <style>
+            .dining-area .single-dining-area.left-imgf {
+                position: relative;
+            }
+
+            /* line 16, C:/Users/SPN Graphics/Desktop/hotel_up/Hotel_HTML/assets/scss/_dining.scss */
+            .dining-area .single-dining-area.left-imgf::before {
+                position: absolute;
+                left: 0;
+                content: "";
+                top: 0;
+                bottom: 0;
+                background-image: url(assets/img/gallery/start2.jpg);
+                width: 50%;
+                border-radius: 0 5px 0 0;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            @media (max-width: 767px) {
+                /* line 16, C:/Users/SPN Graphics/Desktop/hotel_up/Hotel_HTML/assets/scss/_dining.scss */
+                .dining-area .single-dining-area.left-imgf::before {
+                    display: none;
+                }
+            }
+
+            .dining-area .single-dining-area.right-imgf {
+                position: relative;
+            }
+
+            /* line 34, C:/Users/SPN Graphics/Desktop/hotel_up/Hotel_HTML/assets/scss/_dining.scss */
+            .dining-area .single-dining-area.right-imgf::before {
+                position: absolute;
+                right: 0;
+                content: "";
+                top: 0;
+                bottom: 0;
+                background-image: url(assets/img/gallery/growing.jpg);
+                width: 50%;
+                border-radius: 0 0 0 5px;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            @media (max-width: 767px) {
+                /* line 34, C:/Users/SPN Graphics/Desktop/hotel_up/Hotel_HTML/assets/scss/_dining.scss */
+                .dining-area .single-dining-area.right-imgf::before {
+                    display: none;
+                }
+            }
+        </style>
    </head>
 
    <body style="background-color: #a7907b40">
@@ -135,23 +187,23 @@ if(isset($_SESSION['user'])){
         <section class="make-customer-area customar-padding fix">
             <div class="container-fluid p-0">
                 <div class="row">
-                   <div class="col-xl-5 col-lg-6">
+                    <div class="col-xl-5 col-lg-6">
                         <div class="customer-img mb-120">
-                            <img src="assets/img/customer/customar1.png" class="customar-img1" alt="">
+                            <img src="assets/img/gallery/better-journey.jpg" class="customar-img1" alt="">
                             <img src="assets/img/customer/customar2.png" class="customar-img2" alt="">
                             <div class="service-experience heartbeat">
                                 <h3>25 Years of Service<br>Experience</h3>
                             </div>
                         </div>
-                   </div>
+                    </div>
                     <div class=" col-xl-4 col-lg-4">
                         <div class="customer-caption">
-                            <span>About our company</span>
-                            <h2>Make the customer the hero of your story</h2>
+                            <span>What we do</span>
+                            <h2>We are here to make your journey better</h2>
                             <div class="caption-details">
-                                <p class="pera-dtails">Lorem ipsum dolor sit amet, consectetur adipisic- ing elit, sed do eiusmod tempor inc. </p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. </p>
-                                <a href="#" class="btn more-btn1">Learn More <i class="ti-angle-right"></i> </a>
+                                <p class="pera-dtails">Your comfort and safety throughout the journey is our responsibility.</p>
+                                <p>Serving our customers with quality service since 25 years with 55000+ happy customers and 520+ drivers we are proud to provide you a proper hassle free smooth journey. We are happy to serve you. Our journey begins with you and it also ends with you only.</p>
+                                <a href="about.php" class="btn more-btn1">Learn More <i class="ti-angle-right"></i> </a>
                             </div>
                         </div>
                     </div>
@@ -183,33 +235,34 @@ if(isset($_SESSION['user'])){
         </div>
         <!-- Gallery img End-->
 
-        <!-- Dining Start -->
+        <!-- Left Right Images starts -->
         <div class="dining-area d-padding">
             <!-- Single Left img -->
-            <div class="single-dining-area left-img">
+            <div class="single-dining-area left-imgf">
+<!--                <img src="assets/img/gallery/start.jpg">-->
                 <div class="container">
                     <div class="row justify-content-end">
                         <div class="col-lg-8 col-md-8">
                             <div class="dining-caption">
-                                <span>Our cars</span>
-                                <h3>Ride our luxury wheels</h3>
-                                <p>We provide more than 700 cars including private and commercial types. Starting from a short quick ride to a long trip with friends and family as well as transporting huge amount of commercial material we got you covered.</p>
-                                <a href="cars.php" class="btn border-btn">All wheels<i class="ti-angle-right"></i> </a>
+                                <span>Our story</span>
+                                <h3>We started as a team of 15 members</h3>
+                                <p>Our journey started with 15 of us. 3 of us in the office and 12 drivers and 13 Cars. 25 years ago we were just a small company providing rental cars and drivers and today where we stand is where you put us. It is all your support and love that put us here.</p>
+                                <a href="contact.php" class="btn border-btn">Visit & Join us<i class="ti-angle-right"></i> </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- single Right img -->
-            <div class="single-dining-area right-img">
+            <div class="single-dining-area right-imgf">
                 <div class="container">
                     <div class="row justify-content-start">
                         <div class="col-lg-8 col-md-8">
                             <div class="dining-caption text-right">
-                                <span>Our Drivers</span>
-                                <h3>They will drive you dusk till dawn</h3>
-                                <p>We have more than 500 highly skilled and trained professional drivers. Each of them have at least 5 years of driving experience so that you can enjoy the journey and we can take care of the road. Your safety and comfort are always our first priority.</p>
-                                <a href="drivers.php" class="btn border-btn">Our Heroes<i class="ti-angle-right"></i></a>
+                                <span>Coming Soon</span>
+                                <h3>We are still growing and new services are coming</h3>
+                                <p>We are planning to provide our customers a little more flexibility to book car without a driver in that case customer has to submit his/her driving licence number and we are also going to provide driver for hire without a car. We will bring these options as soon as possible.</p>
+                                <a href="cars.php" class="btn border-btn">Current Services<i class="ti-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -246,12 +299,12 @@ if(isset($_SESSION['user'])){
                 </div>
             </div>
         </div>
-        <!-- Dining End -->
+        <!-- Left Right Images End -->
 
         <!-- Testimonial Start -->
-        <div class="testimonial-area t-padding">
+        <div class="testimonial-area testimonial-padding">
             <div class="container">
-               <div class="row justify-content-center">
+                <div class="row justify-content-center">
                     <div class="col-xl-9 col-lg-9 col-md-9">
                         <div class="h1-testimonial-active">
                             <!-- Single Testimonial -->
@@ -263,9 +316,9 @@ if(isset($_SESSION['user'])){
                                     </div>
                                     <h3 class="archivment-back">Testimonial</h3>
                                 </div>
-                                 <!-- Testimonial Content -->
+                                <!-- Testimonial Content -->
                                 <div class="testimonial-caption text-center">
-                                    <p>Yorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+                                    <p>My Ride is the best platform to take your favourite car to your weekend trip with friends. Wonderful service, punctual timing and comfortable ride.
                                     </p>
                                     <!-- Rattion -->
                                     <div class="testimonial-ratting">
@@ -276,7 +329,33 @@ if(isset($_SESSION['user'])){
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="rattiong-caption">
-                                        <span>Clifford Frazier, <span>Regular Client</span> </span>
+                                        <span>Md. Abdul Akhtar, <span>Regular Client</span> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Testimonial -->
+                            <div class="single-testimonial pt-65">
+                                <!-- Testimonial tittle -->
+                                <div class="font-back-tittle mb-105">
+                                    <div class="archivment-front">
+                                        <img src="assets/img/logo/testimonial2.png" alt="">
+                                    </div>
+                                    <h3 class="archivment-back">Testimonial</h3>
+                                </div>
+                                <!-- Testimonial Content -->
+                                <div class="testimonial-caption text-center">
+                                    <p>My Ride is the best platform to take your favourite car to your weekend trip with friends. Wonderful service, punctual timing and comfortable ride.
+                                    </p>
+                                    <!-- Rattion -->
+                                    <div class="testimonial-ratting">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="rattiong-caption">
+                                        <span>Mr. Rajib Ghosh, <span>New Client</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -285,7 +364,7 @@ if(isset($_SESSION['user'])){
                                 <!-- Testimonial tittle -->
                                 <div class="font-back-tittle mb-105">
                                     <div class="archivment-front">
-                                        <img src="assets/img/logo/testimonial.png" alt="">
+                                        <img src="assets/img/logo/testimonial3.png" alt="">
                                     </div>
                                     <h3 class="archivment-back">Testimonial</h3>
                                 </div>
@@ -293,22 +372,21 @@ if(isset($_SESSION['user'])){
                                 <div class="testimonial-caption text-center">
                                     <p>Yorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
                                     </p>
-                                    <!-- Rattion -->
                                     <div class="testimonial-ratting">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
+                                        <a href="#"><i class="fas fa-star"></i></a>
+                                        <a href="#"><i class="fas fa-star"></i></a>
+                                        <a href="#"><i class="fas fa-star"></i></a>
+                                        <a href="#"><i class="fas fa-star"></i></a>
+                                        <a href="#"><i class="fas fa-star-half"></i></a>
                                     </div>
                                     <div class="rattiong-caption">
-                                        <span>Clifford Frazier, <span>Regular Client</span> </span>
+                                        <span>Ms. Sahina Khatun, <span>Frequent Client</span> </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-               </div>
+                </div>
             </div>
         </div>
         <!-- Testimonial End -->

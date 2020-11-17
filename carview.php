@@ -175,8 +175,12 @@ else{
                 <td><?php echo $view['cname']?></td>
             </tr>
             <tr>
-                <th scope="row">Type</th>
+                <th scope="row">Category</th>
                 <td><?php echo $view['ctype']?></td>
+            </tr>
+            <tr>
+                <th scope="row">Type</th>
+                <td><?php echo $view['category']?></td>
             </tr>
             <tr>
                 <th scope="row">Color</th>

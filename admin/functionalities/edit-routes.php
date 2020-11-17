@@ -9,12 +9,11 @@ include ("../php/connection.php");
 if(isset($_POST['data'])){
     $decoded = unserialize($_POST['data']);
     $rid=$decoded['rid'];
-    echo $rid;
     if($edt=mysqli_query($conn,"select * from route WHERE rid=$rid")){
         if(mysqli_num_rows($edt)>0){
             $row=mysqli_fetch_array($edt);
             extract($row);
-            var_dump($_POST);
+//            var_dump($_POST);
         ?>
         <div>
             <div>
@@ -22,14 +21,9 @@ if(isset($_POST['data'])){
                     <form method="post" style="font-weight: bold;" enctype="multipart/form-data">
                         <table cellpadding="15%" class="table-responsive" style="align-content: center">
                             <tr>
-                                <td>Route ID</td>
-                                <td>
-                                    <input readonly type="text" name="rid" placeholder="Enter Source Name" value="<?php echo $rid?>" required>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>Source</td>
                                 <td>
+                                    <input hidden type="text" name="rid" placeholder="Enter Source Name" value="<?php echo $rid?>" required>
                                     <input type="text" name="source" placeholder="Enter Source Name" value="<?php echo $source?>" required>
                                 </td>
                             </tr>

@@ -174,7 +174,7 @@ if(isset($_SESSION['user'])){
                                         <span> From Where:</span>
                                     </div>
                                     <div class="boking-datepicker">
-                                        <select id="source" name="source">
+                                        <select id="source" name="source" required>
                                             <option value="" selected>Select Source</option>
                                             <?php
                                             $routes=mysqli_query($conn,"SELECT source FROM route UNION SELECT destination FROM route");
@@ -249,13 +249,13 @@ if(isset($_SESSION['user'])){
                                 <div class="single-select-box mb-30">
                                     <!-- select out date -->
                                     <div class="boking-tittle">
-                                        <span>Required Car Type:</span>
+                                        <span>Required Car Category:</span>
                                     </div>
                                     <div class="boking-datepicker">
-                                        <select id="type" name="type">
+                                        <select id="type" name="type" required>
                                             <option value="" selected>Select Car Type</option>
                                             <option value="Commercial">Commercial</option>
-                                            <option value="Privet">Privet</option>
+                                            <option value="Private">Private</option>
                                         </select>
                                     </div>
                                 </div>

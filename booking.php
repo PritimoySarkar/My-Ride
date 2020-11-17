@@ -218,13 +218,13 @@ if(isset($_SESSION['user'])){
                                 <div class="single-select-box mb-30">
                                     <!-- select out date -->
                                     <div class="boking-tittle">
-                                        <span>Required Car Type:</span>
+                                        <span>Required Car Category:</span>
                                     </div>
                                     <div class="boking-datepicker">
                                         <select id="type" name="type">
                                             <option value="" selected>Select Car Type</option>
                                             <option value="Commercial">Commercial</option>
-                                            <option value="Privet">Privet</option>
+                                            <option value="Private">Private</option>
                                         </select>
                                     </div>
                                 </div>
