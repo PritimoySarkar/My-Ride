@@ -65,6 +65,8 @@ extract($qr);
     </style>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
+    <style>.swal-overlay {background-image: url("../assets/img/error/success.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 </head>
 
 <body style="background-color: #a7907b40">
@@ -159,7 +161,7 @@ extract($qr);
             ?>
                 <center>
                 <form method="post" enctype="multipart/form-data">
-                    <table cellpadding="15%">
+                    <table cellpadding="10%">
                         <tr>
                             <td>Name</td>
                             <td>
@@ -249,7 +251,7 @@ extract($qr);
                         <tr>
                             <td></td>
                             <td align="center">
-                                <input type="submit" name="ok" value="Register">
+                                <input type="submit" name="ok" value="Save Changes">
                             </td>
                         </tr>
                     </table>
@@ -313,8 +315,8 @@ extract($qr);
                             }
                             else{
                                 extract($_POST);
-                                if($pic!='no val'){
-                                    unlink('../'.$pic);
+                                if($old_pic!='no val'){
+                                    unlink('../'.$old_pic);
                                 }
                                 if($edit=mysqli_query($conn,"UPDATE `user` SET `name`='$nm',`email`='$em',`gender`='$gender',`dob`='$dob',`phno`='$phno',`pic`='$destination' WHERE uid=$uid")){
                                     ?>

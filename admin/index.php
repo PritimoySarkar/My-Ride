@@ -490,7 +490,7 @@
                                 <td style="vertical-align: middle"><?php echo $hire_type?></td>
                                 <th scope="row"><img title="<?php echo 'ID: '.$cid.': '.$car['brand'].' - '.$car['cname'];?>" class="img-fluid" src="<?php echo $cpic?>" style="width: 100px"></th>
                                 <th scope="row"><img title="<?php echo 'ID: '.$did.' - Name: '.$driver['dname'];?>" class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
-                                <td style="vertical-align: middle"><?php echo $cost?></td>
+                                <td style="vertical-align: middle"><?php echo '₹ '.$cost.' Rupees'?></td>
                                 <td style="vertical-align: middle">
                                 <form method="post" action="functionalities/approve.php" id="approve-form<?php echo $bid?>">
                                     <?php $arr = [

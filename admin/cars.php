@@ -298,24 +298,10 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+        <h1 style="text-align: center">Cars - Search Edit and Remove</h1>
         <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Dashboard</h4>
-                    <!--                        <div class="ml-auto text-right">-->
-                    <!--                            <nav aria-label="breadcrumb">-->
-                    <!--                                <ol class="breadcrumb">-->
-                    <!--                                    <li class="breadcrumb-item"><a href="#">Home</a></li>-->
-                    <!--                                    <li class="breadcrumb-item active" aria-current="page">Library</li>-->
-                    <!--                                </ol>-->
-                    <!--                            </nav>-->
-                    <!--                        </div>-->
-                </div>
-            </div>
-        </div>
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -443,7 +429,7 @@
                             <tr>
 <!--                                Select Brand-->
                                 <td>
-                                <label for="cars">Choose car brand: </label>
+                                <label for="cars">Search by brand: </label>
                                 <select id="cars" name="cars" style="width: 50%">
                                     <optgroup label="Private">
                                         <option value="" selected>All Brand</option>
@@ -462,7 +448,7 @@
                                 </td>
 <!--                                Select Color-->
                                 <td>
-                                    <label for="cars">Choose car color: </label>
+                                    <label for="cars">Search by car color: </label>
                                     <select id="color" name="color" style="width: 50%">
                                         <option value="" selected>All color</option>
                                             <?php while($row=mysqli_fetch_array($car_color)){
@@ -473,7 +459,7 @@
                                 </td>
 <!--                                Car Capacity-->
                                 <td>
-                                    <label for="cars">Choose car passenger capacity: </label>
+                                    <label for="cars">Search by passenger capacity: </label>
                                     <select id="capacity" name="capacity">
                                         <option value="" selected>All capacity</option>
                                         <?php while($row=mysqli_fetch_array($car_capacity)){
@@ -484,7 +470,7 @@
                                 </td>
 <!--                                Car Category-->
                                 <td>
-                                    <label for="cars">Choose car category: </label>
+                                    <label for="cars">Search by car category: </label>
                                     <select id="fare" name="type" style="width: 70%">
                                         <option value="" selected>Both category</option>
                                         <option value="Commercial">Commercial</option>
@@ -493,7 +479,7 @@
                                 </td>
 <!--                                Car type-->
                                 <td>
-                                    <label for="cars">Choose car type: </label>
+                                    <label for="cars">Search by car type: </label>
                                     <select id="fare" name="category" style="width: 70%">
                                         <option value="" selected>All types</option>
                                         <option value="Hatchback">Hatchback</option>
@@ -597,7 +583,7 @@
                                                             },).then((value) => {
                                                             switch (value) {
                                                             case 'catch':
-                                                            swal('Edited', 'Car edited successfully', 'success');
+                                                            swal('Editing', 'Going to edit car', 'info');
                                                             $('#edit-form<?php echo $cid?>').submit();
                                                             break;
 

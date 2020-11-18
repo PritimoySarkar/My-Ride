@@ -303,24 +303,10 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+        <h1 style="text-align: center">Rejected Booking Requests</h1>
         <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-<!--                    <h4 class="page-title">Dashboard</h4>-->
-                    <!--                        <div class="ml-auto text-right">-->
-                    <!--                            <nav aria-label="breadcrumb">-->
-                    <!--                                <ol class="breadcrumb">-->
-                    <!--                                    <li class="breadcrumb-item"><a href="#">Home</a></li>-->
-                    <!--                                    <li class="breadcrumb-item active" aria-current="page">Library</li>-->
-                    <!--                                </ol>-->
-                    <!--                            </nav>-->
-                    <!--                        </div>-->
-                </div>
-            </div>
-        </div>
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -333,7 +319,7 @@
                 <div class="container-fluid" style="padding-top: 50px;">
                     <?php
                     if(mysqli_num_rows($qr)>0){
-                        ?> <h2 style="text-align: center">Rejected Booking Requests</h2> <?php
+                        ?> <h2 style="text-align: center">Booking Requests Currently in Rejected state</h2> <?php
                     }
                     ?>
                     <table class="table table-striped center table-danger table-bordered" style="font-size: small;text-align: center;">
@@ -384,7 +370,7 @@
                                 <td style="vertical-align: middle"><?php echo $hire_type?></td>
                                 <th scope="row"><img title="<?php echo 'ID: '.$cid.': '.$car['brand'].' - '.$car['cname'];?>" class="img-fluid" src="<?php echo $cpic?>" style="width: 100px"></th>
                                 <th scope="row"><img title="<?php echo 'ID: '.$did.' - Name: '.$driver['dname'];?>" class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
-                                <td style="vertical-align: middle"><?php echo $cost?></td>
+                                <td style="vertical-align: middle"><?php echo '₹ '.$cost.' Rupees'?></td>
                                 <td style="vertical-align: middle">
 <!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Approve this Ride</button>-->
                                     <form method="post" action="functionalities/approve.php" id="approve-form<?php echo $bid?>">

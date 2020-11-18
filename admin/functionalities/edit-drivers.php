@@ -1,14 +1,25 @@
-<?php include("php/connection.php");
+<?php include("../php/connection.php");
     if(!isset($_SESSION['admin'])){
 //        var_dump($_SESSION['admin']);
         ?>
             <script type="text/javascript">
-                window.location.href = "admin_login.php";
+                window.location.href = "../php/admin_login.php";
             </script>
         <?php
     }
     else{
 //        var_dump($_SESSION['admin']);
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+
+        }
+        else{
+            ?>
+            <script type="text/javascript">
+                alert("No car found to edit");
+                window.location.href = "admin_login.php";
+            </script>
+            <?php
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -22,12 +33,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/my-ride-logo-small.png">
-    <title>My Ride | Admin Overview</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/my-ride-logo-small.png">
+    <title>My Ride | Admin Drivers</title>
     <!-- Custom CSS -->
-    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <link href="../assets/libs/flot/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="../dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -35,6 +46,10 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
+    <style>.swal-overlay {background-image: url("../../assets/img/error/drifting-by.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 </head>
 
 <body>
@@ -62,19 +77,19 @@
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="../index.php">
+                <a class="navbar-brand" href="../../index.php">
                     <!-- Logo icon -->
                     <b class="logo-icon p-l-10">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="assets/images/my-ride-logo.png" alt="homepage" class="light-logo" />
+                        <img src="../assets/images/my-ride-logo.png" alt="homepage" class="light-logo" />
 
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                              <!-- dark Logo text -->
-                             <img src="assets/images/my-ride-admin.png" alt="homepage" class="light-logo" />
+                             <img src="../assets/images/my-ride-admin.png" alt="homepage" class="light-logo" />
 
                         </span>
                     <!-- Logo icon -->
@@ -112,10 +127,10 @@
                             <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="pending.php">Pending</a>
-                            <a class="dropdown-item" href="approved.php">Approved</a>
+                            <a class="dropdown-item" href="../pending.php">Pending</a>
+                            <a class="dropdown-item" href="../approved.php">Approved</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="rejected.php">Rejected</a>
+                            <a class="dropdown-item" href="../rejected.php">Rejected</a>
                         </div>
                     </li>
                     <!-- ============================================================== -->
@@ -210,15 +225,15 @@
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
                         <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                            <a class="dropdown-item" href="profile.php"><i class="fas fa-user-circle m-r-5 m-l-5"></i> My Profile</a>
-                            <a class="dropdown-item" href="history.php"><i class="fas fa-history t m-r-5 m-l-5"></i> History </a>
-                            <a class="dropdown-item" href="add_admin.php"><i class="fas fa-user-plus m-r-5 m-l-5"></i> Add Admin </a>
+                            <a class="dropdown-item" href="../profile.php"><i class="fas fa-user-circle m-r-5 m-l-5"></i> My Profile</a>
+                            <a class="dropdown-item" href="../history.php"><i class="fas fa-history t m-r-5 m-l-5"></i> History </a>
+                            <a class="dropdown-item" href="../add_admin.php"><i class="fas fa-user-plus m-r-5 m-l-5"></i> Add Admin </a>
 <!--                            <div class="dropdown-divider"></div>-->
-                            <a class="dropdown-item" href="overview.php"><i class="fas fa-code m-r-5 m-l-5"></i> Overview </a>
+                            <a class="dropdown-item" href="../overview.php"><i class="fas fa-code m-r-5 m-l-5"></i> Overview </a>
 <!--                            <div class="dropdown-divider"></div>-->
-                            <a class="dropdown-item" href="php/admin-logout.php"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                            <a class="dropdown-item" href="../php/admin-logout.php"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                         </div>
                     </li>
                     <!-- ============================================================== -->
@@ -240,33 +255,33 @@
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="fas fa-list-alt"></i><span class="hide-menu">Dashboard</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../index.php" aria-expanded="false"><i class="fas fa-list-alt"></i><span class="hide-menu">Dashboard</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-car"></i><span class="hide-menu">Cars</span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="cars.php" class="sidebar-link"><i class="fas fa-car"></i><span class="hide-menu"> Show & Edit Cars </span></a></li>
-                            <li class="sidebar-item"><a href="add_cars.php" class="sidebar-link"><i class="fas fa-plus"></i><span class="hide-menu"> Add Cars </span></a></li>
-                            <li class="sidebar-item"><a href="remove_cars.php" class="sidebar-link"><i class="fas fa-trash-alt"></i><span class="hide-menu"> Remove Cars </span></a></li>
+                            <li class="sidebar-item"><a href="../cars.php" class="sidebar-link"><i class="fas fa-car"></i><span class="hide-menu"> Show & Edit Cars </span></a></li>
+                            <li class="sidebar-item"><a href="../add_cars.php" class="sidebar-link"><i class="fas fa-plus"></i><span class="hide-menu"> Add Cars </span></a></li>
+                            <li class="sidebar-item"><a href="../remove_cars.php" class="sidebar-link"><i class="fas fa-trash-alt"></i><span class="hide-menu"> Remove Cars </span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user"></i><span class="hide-menu">Drivers </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="drivers.php" class="sidebar-link"><i class="fas fa-user"></i><span class="hide-menu"> Show & Edit Drivers </span></a></li>
-                            <li class="sidebar-item"><a href="add_drivers.php" class="sidebar-link"><i class="fas fa-user-plus"></i><span class="hide-menu"> Add Drivers </span></a></li>
-                            <li class="sidebar-item"><a href="remove_drivers.php" class="sidebar-link"><i class="fas fa-user-times"></i><span class="hide-menu"> Remove Drivers </span></a></li>
+                            <li class="sidebar-item"><a href="../drivers.php" class="sidebar-link"><i class="fas fa-user"></i><span class="hide-menu"> Show & Edit Drivers </span></a></li>
+                            <li class="sidebar-item"><a href="../add_drivers.php" class="sidebar-link"><i class="fas fa-user-plus"></i><span class="hide-menu"> Add Drivers </span></a></li>
+                            <li class="sidebar-item"><a href="../remove_drivers.php" class="sidebar-link"><i class="fas fa-user-times"></i><span class="hide-menu"> Remove Drivers </span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-road"></i><span class="hide-menu"> Routes </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="routes.php" class="sidebar-link"><i class="fas fa-road"></i><span class="hide-menu"> Show & Edit Routes </span></a></li>
-                            <li class="sidebar-item"><a href="add_routes.php" class="sidebar-link"><i class="fas fa-plus"></i><span class="hide-menu"> Add Routes </span></a></li>
-                            <li class="sidebar-item"><a href="remove_routes.php" class="sidebar-link"><i class="fas fa-trash-alt"></i><span class="hide-menu"> Remove Routes </span></a></li>
+                            <li class="sidebar-item"><a href="../routes.php" class="sidebar-link"><i class="fas fa-road"></i><span class="hide-menu"> Show & Edit Routes </span></a></li>
+                            <li class="sidebar-item"><a href="../add_routes.php" class="sidebar-link"><i class="fas fa-plus"></i><span class="hide-menu"> Add Routes </span></a></li>
+                            <li class="sidebar-item"><a href="../remove_routes.php" class="sidebar-link"><i class="fas fa-trash-alt"></i><span class="hide-menu"> Remove Routes </span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-check-square"></i><span class="hide-menu"> Approve Ride </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="pending.php" class="sidebar-link"><i class="fas fa-exclamation-triangle"></i><span class="hide-menu"> Pending </span></a></li>
-                            <li class="sidebar-item"><a href="approved.php" class="sidebar-link"><i class="fas fa-thumbs-up"></i><span class="hide-menu"> Approved </span></a></li>
-                            <li class="sidebar-item"><a href="rejected.php" class="sidebar-link"><i class="fas fa-ban"></i><span class="hide-menu"> Rejected </span></a></li>
+                            <li class="sidebar-item"><a href="../pending.php" class="sidebar-link"><i class="fas fa-exclamation-triangle"></i><span class="hide-menu"> Pending </span></a></li>
+                            <li class="sidebar-item"><a href="../approved.php" class="sidebar-link"><i class="fas fa-thumbs-up"></i><span class="hide-menu"> Approved </span></a></li>
+                            <li class="sidebar-item"><a href="../rejected.php" class="sidebar-link"><i class="fas fa-ban"></i><span class="hide-menu"> Rejected </span></a></li>
                         </ul>
                     </li>
 <!--                    <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-key"></i><span class="hide-menu">Authentication </span></a>-->
@@ -302,7 +317,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Overview</h4>
+<!--                    <h4 class="page-title">Dashboard</h4>-->
                     <!--                        <div class="ml-auto text-right">-->
                     <!--                            <nav aria-label="breadcrumb">-->
                     <!--                                <ol class="breadcrumb">-->
@@ -322,189 +337,231 @@
         <!-- ============================================================== -->
         <div class="container-fluid">
             <!-- ============================================================== -->
-            <!-- Floating buttons start  -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='index.php';">
-                        <div class="box bg-cyan text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-format-list-bulleted-type"></i></h1>
-                            <h6 class="text-white">Dashboard</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-4 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='cars.php';">
-                        <div class="box bg-success text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-car"></i></h1>
-                            <h6 class="text-white">Cars</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='add_cars.php';">
-                        <div class="box bg-warning text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-plus-circle"></i></h1>
-                            <h6 class="text-white">Add Cars</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='remove_cars.php';">
-                        <div class="box bg-danger text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-delete-circle"></i></h1>
-                            <h6 class="text-white">Remove Cars</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='drivers.php';">
-                        <div class="box bg-info text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-account"></i></h1>
-                            <h6 class="text-white">Drivers</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <!-- Column -->
-                <div class="col-md-6 col-lg-4 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='add_drivers.php';">
-                        <div class="box bg-danger text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-account-plus"></i></h1>
-                            <h6 class="text-white">Add Drivers</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='remove_drivers.php';">
-                        <div class="box bg-info text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-account-off"></i></h1>
-                            <h6 class="text-white">Remove Drivers</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='routes.php';">
-                        <div class="box bg-cyan text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-road-variant"></i></h1>
-                            <h6 class="text-white">Routes</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='add_routes.php';">
-                        <div class="box bg-success text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-plus-circle"></i></h1>
-                            <h6 class="text-white">Add Routes</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='remove_routes.php';">
-                        <div class="box bg-warning text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-delete-circle"></i></h1>
-                            <h6 class="text-white">Remove Routes</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-            </div>
-            <style>
-                .card-hover{cursor: pointer}
-            </style>
-            <!--                Floating buttons End-->
-            <!-- ============================================================== -->
             <div>
-                <div class="container-fluid" style="padding-top: 50px;">
-                    <h1 style="text-align: center;margin-bottom: 40px">Total income by each corresponding car</h1>
-                    <table class="table table-striped center" style="font-size: x-large;text-align: center;">
-                        <?php
-                        $grand=0;
-                        $qr=mysqli_query($conn,"select * from car");
-                        if(mysqli_num_rows($qr)){
-                            ?>
-                            <thead class="thead-dark">
+                <?php
+                    //var_dump($_POST);
+                    if(isset($_POST['data'])){
+                        $deserialized=unserialize($_POST['data']);
+//                        var_dump($deserialized);
+                    $did=$deserialized['did'];
+                    $driver_qr=mysqli_query($conn,"select * from driver where did=$did");
+                    $driver=mysqli_fetch_array($driver_qr);
+                    extract($driver);
+                ?>
+                <div style="overflow-x:auto;width: 800px; margin: 0 auto;">
+                    <form method="post" style="font-weight: bold;align-items: center" enctype="multipart/form-data">
+                        <table cellpadding="15%" class="table-responsive" style="align-content: center;">
                             <tr>
-                                <th scope="col" width="20%">Car Photo</th>
-                                <th scope="col">Car ID</th>
-                                <th scope="col">Registration Number</th>
-                                <th scope="col">Car Driver</th>
-                                <th scope="col">Car Driver Name</th>
-                                <th scope="col">Total Income</th>
+                                <td>Driver Name</td>
+                                <td>
+                                    <input hidden type="text" name="did" placeholder="Enter car brand" value="<?php echo $did?>" required>
+                                    <input type="text" name="name" placeholder="Enter car brand" value="<?php echo $dname?>" required>
+                                </td>
                             </tr>
-                            </thead>
+                            <tr>
+                                <td>
+                                    Driver's Address:
+                                </td>
+                                <td>
+                                    <input type="text" name="address" placeholder="Enter Car Model" value="<?php echo $address?>" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Driver's age</td>
+                                <td>
+                                    <input type="number" name="age" placeholder="Enter car registration number" value="<?php echo $age?>" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Driver's Gender:
+                                </td>
+                                <td>
+                                    <?php
+                                        if($gender=='Male'){
+                                            ?>
+                                            <input checked type="radio" name="gender" value="Male" required>
+                                            <label for="Male">Male</label>
+                                            <input type="radio" name="gender" value="Female">
+                                            <label for="Female">Female</label>
+                                            <input type="radio" name="gender" value="Other">
+                                            <label for="Other">Other</label>
+                                            <?php
+                                        }
+                                        elseif($gender=='Female'){
+                                            ?>
+                                            <input type="radio" name="gender" value="Male" required>
+                                            <label for="Male">Male</label>
+                                            <input checked type="radio" name="gender" value="Female">
+                                            <label for="Female">Female</label>
+                                            <input type="radio" name="gender" value="Other">
+                                            <label for="Other">Other</label>
+                                            <?php
+                                        }
+                                        else{
+                                            ?>
+                                            <input type="radio" name="gender" value="Male" required>
+                                            <label for="Male">Male</label>
+                                            <input type="radio" name="gender" value="Female">
+                                            <label for="Female">Female</label>
+                                            <input checked type="radio" name="gender" value="Other">
+                                            <label for="Other">Other</label>
+                                            <?php
+                                        }
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Driver's Contact Number:
+                                </td>
+                                <td>
+                                    <input type="number" name="phno" placeholder="Enter Car color" value="<?php echo $phno?>" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Driver's Licence Number:
+                                </td>
+                                <td>
+                                    <input type="text" name="lic" placeholder="Enter passenger capacity" value="<?php echo $lic?>" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Driver's Picture
+                                </td>
+                                <td>
+                                    <?php
+                                    if($pic==''){
+                                        $snd='no val';
+                                    }
+                                    else{
+                                        $snd=$pic;
+                                    }
+                                    ?>
+                                    <input type="hidden" name="old_pic" value="<?php echo $snd;?>">
+                                    <input type="file" name="pic">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td align="center">
+                                    <input type="submit" name="ok" value="Save Changes">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                    <?php
+                    }
+                    else{
+//                        var_dump($_POST);
+                        extract($_POST);
+                        $destination='';
+                        if(!empty($_FILES['pic']['name'])){
+                            $file_type = $_FILES['pic']['type'];
+                            $exten=pathinfo($_FILES['pic']['name'],PATHINFO_EXTENSION);
+                            $destination = "uploaded/drivers/".date('d-m-Y_H-i-sa').$did.".".$exten;
+                        if($file_type=="image/jpg" || $file_type=="image/png" || $file_type=="image/JPG" || $file_type=="image/jpeg" || $file_type=="image/JPEG" || $file_type=="image/PNG"){
+//                        var_dump($_FILES);
+                            //echo $_FILES['pic']['tmp_name'];
+                            echo $destination;
+                            if(!move_uploaded_file($_FILES['pic']['tmp_name'],'../'.$destination)){
+                            ?>
+                            <script>
+                                swal('File error','some error occurred during uploading the file','error',{buttons: {
+                                        catch: {
+                                            text: 'Go to Cars',
+                                            value: 'catch',
+                                        },
+                                    },closeOnClickOutside: false,
+                                },).then((value) => {
+                                    switch (value) {
+                                        case 'catch':
+                                            window.location.href='../drivers.php';
+                                            break;
+                                    }
+                                });
+                            </script>
+                        <?php
+                        }
+                        else{
+                        if($old_pic!='no val'){
+                            unlink('../'.$old_pic);
+                        }
+                        if($edit=mysqli_query($conn,"UPDATE `driver` SET `dname`='$name',`address`='$address',`age`=$age,`gender`='$gender',`phno`=$phno,`lic`='$lic',`pic`='$destination' WHERE did=$did")){
+                        ?>
+                            <script>
+                                swal('Driver details Updated','Driver details updated successfully','success',{buttons: {
+                                        catch: {
+                                            text: 'Go to Drivers',
+                                            value: 'catch',
+                                        },
+                                    },closeOnClickOutside: false,
+                                },).then((value) => {
+                                    switch (value) {
+                                        case 'catch':
+                                            window.location.href='../drivers.php';
+                                            break;
+                                    }
+                                });
+                            </script>
+                        <?php
+                        }
+                        else{
+                            echo "Database insert error";
+                        }
+                        }
+                        }
+                        else{
+                        ?>
+                            <script>
+                                swal('Invalid file','only jpg, jpeg ang png file supported','error',{buttons: {
+                                        catch: {
+                                            text: 'Go to Cars',
+                                            value: 'catch',
+                                        },
+                                    },closeOnClickOutside: false,
+                                },).then((value) => {
+                                    switch (value) {
+                                        case 'catch':
+                                            window.location.href='../drivers.php';
+                                            break;
+                                    }
+                                });
+                            </script>
+                        <?php
+                        }
+                        }
+                        else{
+                        //echo "pic not uploaded";
+                        extract($_POST);
+                        if($edit=mysqli_query($conn,"UPDATE `driver` SET `dname`='$name',`address`='$address',`age`=$age,`gender`='$gender',`phno`=$phno,`lic`='$lic' WHERE did=$did")){
+                        ?>
+                            <script>
+                                swal('Driver details Updated','Driver details updated successfully','success',{buttons: {
+                                        catch: {
+                                            text: 'Go to Drivers',
+                                            value: 'catch',
+                                        },
+                                    },closeOnClickOutside: false,
+                                },).then((value) => {
+                                    switch (value) {
+                                        case 'catch':
+                                            window.location.href='../drivers.php';
+                                            break;
+                                    }
+                                });
+                            </script>
                             <?php
                         }
-                        ?>
-                        <tbody>
-                        <?php
-                        while ($row=mysqli_fetch_array($qr)){
-                            $cid=$row['cid'];
-                            $inc_qr=mysqli_query($conn,"select sum(cost) total from booking where cid=$cid and status='Completed'");
-                            $inc=mysqli_fetch_array($inc_qr);
-//                            var_dump($inc);
-                            $income=$inc['total'];
-                            if($inc['total']==null){$income=0;}
-                            $grand+=$income;
-                            $path=$row['pic'];
-                            $did=$row['did'];
-                            $driver=mysqli_query($conn,"Select dname,pic from driver where did=$did");
-                            while ($drow=mysqli_fetch_array($driver)){
-                                $dpic = $drow['pic'];
-                                $dname= $drow['dname'];
-                            }
-                            $dview='../driverview.php?'.$did;
-                            ?>
-                            <tr>
-                                <th scope="row"><img class="img-fluid" src="<?php echo $path?>"></th>
-                                <td style="vertical-align: middle"><?php echo $row['cid']?></td>
-                                <td style="vertical-align: middle"><?php echo $row['registrationNo']?></td>
-                                <td style="vertical-align: middle"><a href="<?php echo $dview?>"><img class="img-fluid" src="<?php echo $dpic?>" style="width: 100px;height: 100px;" title="<?php echo 'ID:'.$did.': '.$dname;?>"></a></td>
-                                <td style="vertical-align: middle"><?php echo $dname?></td>
-                                <td style="vertical-align: middle"><?php echo '₹ '.$income.' Rupees'?></td>
-                            </tr>
-                            <!-- Button trigger modal -->
-                            <?php
-
-                            ?>
-                            <!-- Modal -->
-                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header" style="text-align: center">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete Car</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body" style="text-align: center">
-                                            Are you sure, you want to remove this car?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal" name="yes" id="yes">Yes, Delete</button>
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
+                        else{
+                            echo "Database insert error";
                         }
-                        ?>
-                        </tbody>
-                    </table>
-                    <h1 style="text-align: center">Total income: <?php echo $grand.' Rupees';?></h1>
+                        }
+                    }
+                    ?>
                 </div>
-
             </div>
             <!-- ============================================================== -->
         </div>
@@ -531,29 +588,29 @@
 <!-- ============================================================== -->
 <!-- All Jquery -->
 <!-- ============================================================== -->
-<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
-<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-<script src="assets/extra-libs/sparkline/sparkline.js"></script>
+<script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="../assets/extra-libs/sparkline/sparkline.js"></script>
 <!--Wave Effects -->
-<script src="dist/js/waves.js"></script>
+<script src="../dist/js/waves.js"></script>
 <!--Menu sidebar -->
-<script src="dist/js/sidebarmenu.js"></script>
+<script src="../dist/js/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
-<script src="dist/js/custom.min.js"></script>
+<script src="../dist/js/custom.min.js"></script>
 <!--This page JavaScript -->
 <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
 <!-- Charts js Files -->
-<script src="assets/libs/flot/excanvas.js"></script>
-<script src="assets/libs/flot/jquery.flot.js"></script>
-<script src="assets/libs/flot/jquery.flot.pie.js"></script>
-<script src="assets/libs/flot/jquery.flot.time.js"></script>
-<script src="assets/libs/flot/jquery.flot.stack.js"></script>
-<script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
-<script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-<script src="dist/js/pages/chart/chart-page-init.js"></script>
+<script src="../assets/libs/flot/excanvas.js"></script>
+<script src="../assets/libs/flot/jquery.flot.js"></script>
+<script src="../assets/libs/flot/jquery.flot.pie.js"></script>
+<script src="../assets/libs/flot/jquery.flot.time.js"></script>
+<script src="../assets/libs/flot/jquery.flot.stack.js"></script>
+<script src="../assets/libs/flot/jquery.flot.crosshair.js"></script>
+<script src="../assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="../dist/js/pages/chart/chart-page-init.js"></script>
 
 </body>
 

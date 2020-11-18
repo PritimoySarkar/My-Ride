@@ -303,6 +303,7 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+        <h1 style="text-align: center">Approved Booking Requests</h1>
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
@@ -310,7 +311,7 @@
                 <div class="container-fluid" style="padding-top: 50px;">
                     <?php
                     if(mysqli_num_rows($qr)>0){
-                        ?> <h2 style="text-align: center">Approved Booking Requests</h2> <?php
+                        ?> <h2 style="text-align: center">Booking Requests Currently in Approved state</h2> <?php
                     }
                     ?>
                     <table class="table table-striped center table-success table-bordered" style="font-size: small;text-align: center;">
@@ -329,6 +330,7 @@
                                 <th scope="col">Driver</th>
                                 <th scope="col">Cost</th>
                                 <th scope="col" width='5%'>Reject Button</th>
+                                <th scope="col" width='5%'>Mark as Complete Button</th>
                             </tr>
                             </thead>
                             <?php
@@ -361,7 +363,7 @@
                                 <td style="vertical-align: middle"><?php echo $hire_type?></td>
                                 <th scope="row"><img title="<?php echo 'ID: '.$cid.': '.$car['brand'].' - '.$car['cname'];?>" class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
                                 <th scope="row"><img title="<?php echo 'ID: '.$did.' - Name: '.$driver['dname'];?>" class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
-                                <td style="vertical-align: middle"><?php echo $cost?></td>
+                                <td style="vertical-align: middle"><?php echo '₹ '.$cost.' Rupees'?></td>
                                 <td style="vertical-align: middle">
 <!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Reject this Ride</button>-->
                                     <form method="post" action="functionalities/reject.php" id="reject-form<?php echo $bid?>">
@@ -391,6 +393,38 @@
                                                 }
                                                 });"
                                                class="btn btn-primary" value="<?php echo 'Reject this booking';?>"
+                                        />
+                                    </form>
+                                </td>
+                                <td style="vertical-align: middle">
+                                    <!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Reject this Ride</button>-->
+                                    <form method="post" action="functionalities/complete.php" id="complete-form<?php echo $bid?>">
+                                        <?php $arr = [
+                                            'bid' => $bid
+                                        ];
+                                        ?>
+                                        <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                                        <input onclick="
+                                                swal('Mark ride as complete','Are U sure? you want to mark this ride as completed, this can\'t be undone','info',{buttons: {
+                                                cancel: 'No\, Don\'t mark completed',
+
+                                                catch: {
+                                                text: 'Yes\, Mark as completed',
+                                                value: 'catch',
+                                                },
+                                                },closeOnClickOutside: false,
+                                                },).then((value) => {
+                                                switch (value) {
+                                                case 'catch':
+                                                swal('Marked Completed', 'Ride marked completed successfully', 'success');
+                                                $('#complete-form<?php echo $bid?>').submit();
+                                                break;
+
+                                                default:
+                                                swal('Ride not marked as completed','','warning');
+                                                }
+                                                });"
+                                               class="btn btn-primary" value="<?php echo 'Mark booking as Completed';?>"
                                         />
                                     </form>
                                 </td>

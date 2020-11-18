@@ -35,6 +35,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
+    <style>.swal-overlay {background-image: url("../assets/img/error/drifting-by.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 </head>
 
 <body>
@@ -234,7 +237,7 @@
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
-    <aside class="left-sidebar" data-sidebarbg="skin5">
+    <aside class="left-sidebar whole-body-custom" data-sidebarbg="skin5">
         <!-- Sidebar scroll-->
         <div class="scroll-sidebar">
             <!-- Sidebar navigation-->
@@ -296,24 +299,10 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+        <h1 style="text-align: center">Add Routes</h1>
         <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Dashboard</h4>
-                    <!--                        <div class="ml-auto text-right">-->
-                    <!--                            <nav aria-label="breadcrumb">-->
-                    <!--                                <ol class="breadcrumb">-->
-                    <!--                                    <li class="breadcrumb-item"><a href="#">Home</a></li>-->
-                    <!--                                    <li class="breadcrumb-item active" aria-current="page">Library</li>-->
-                    <!--                                </ol>-->
-                    <!--                            </nav>-->
-                    <!--                        </div>-->
-                </div>
-            </div>
-        </div>
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -324,7 +313,7 @@
             <!-- ============================================================== -->
             <!-- Floating buttons start  -->
             <!-- ============================================================== -->
-            <div class="row">
+            <div class="row whole-body-custom">
                 <!-- Column -->
                 <div class="col-md-6 col-lg-2 col-xlg-3">
                     <div class="card card-hover" onclick="window.location='index.php';">
@@ -426,7 +415,7 @@
             <div class="container-fluid">
                 <div style="width: 800px; height: 400px; margin: 0 auto;">
                     <div style="overflow-x:auto;text-align: center;align-items: center">
-                        <form method="post" style="font-weight: bold;" enctype="multipart/form-data">
+                        <form class="whole-body-custom" method="post" style="font-weight: bold;" enctype="multipart/form-data">
                             <table cellpadding="15%" class="table-responsive" style="align-content: center;font-size: x-large" >
                                 <tr>
                                     <td>Source</td>
@@ -472,10 +461,34 @@
                         $distance=mysqli_real_escape_string($conn,$_POST['distance']);
                         $qr=mysqli_query($conn,"insert into route (source,destination,distance) values('$source','$destination','$distance')");
                         if($qr){
-                        ?>
+                                echo "<img id='bg2' src=''>";
+                            ?>
+                            <style>
+                                .whole-body-custom {
+                                    /* The image used */
+                                    display: none;
+                                }
+                                #bg2 bg{
+                                    background-repeat: no-repeat;
+                                    width: 100%;
+                                    height: 100%;
+                                    size: auto;
+                                }
+                            </style>
                             <script type="text/javascript">
-                                alert("Route added to the database successfully");
-                                window.location.href='add_routes.php';
+                                swal("Route Added",'Route added successfully','success',{
+                                        buttons:{
+                                            cancel: 'Add Route',
+                                        },
+                                        closeOnClickOutside: false,
+                                    },
+                                ).then((value) =>{
+                                    switch (value){
+                                        default:
+                                            // swal("Clicked");
+                                            window.location.href="add_routes.php";
+                                    }
+                                });
                             </script>
                         <?php
                         }
@@ -497,7 +510,7 @@
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-        <footer class="footer text-center">
+        <footer class="footer text-center whole-body-custom">
             All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
         </footer>
         <!-- ============================================================== -->

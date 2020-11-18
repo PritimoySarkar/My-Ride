@@ -37,6 +37,9 @@ $getDid=mysqli_query($conn,"select did from driver where did not in (select did 
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
+    <style>.swal-overlay {background-image: url("../assets/img/error/drifting-by.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 </head>
 
 <body>
@@ -298,24 +301,10 @@ $getDid=mysqli_query($conn,"select did from driver where did not in (select did 
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+        <h1 style="text-align: center">Add cars</h1>
         <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Dashboard</h4>
-                    <!--                        <div class="ml-auto text-right">-->
-                    <!--                            <nav aria-label="breadcrumb">-->
-                    <!--                                <ol class="breadcrumb">-->
-                    <!--                                    <li class="breadcrumb-item"><a href="#">Home</a></li>-->
-                    <!--                                    <li class="breadcrumb-item active" aria-current="page">Library</li>-->
-                    <!--                                </ol>-->
-                    <!--                            </nav>-->
-                    <!--                        </div>-->
-                </div>
-            </div>
-        </div>
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -426,8 +415,8 @@ $getDid=mysqli_query($conn,"select did from driver where did not in (select did 
             <!--                Floating buttons End-->
             <!-- ============================================================== -->
 
-            <div style="overflow-x:auto;width: 400px; margin: 0 auto;">
-                <form method="post" style="font-weight: bold;align-items: center" enctype="multipart/form-data">
+            <div style="overflow-x:auto;width: 600px; margin: 0 auto;">
+                <form method="post" style="font-weight: bold;align-items: center;font-size: large" enctype="multipart/form-data">
                     <table cellpadding="15%" class="table-responsive" style="align-content: center">
                         <tr>
                             <td>Car Brand</td>
@@ -518,12 +507,12 @@ $getDid=mysqli_query($conn,"select did from driver where did not in (select did 
                                 Fare per Day:
                             </td>
                             <td>
-                                <input type="number" name="farepd" placeholder="Enter car's Fare/Day">
+                                <input type="number" name="farepd" placeholder="Enter car's Fare/Day" required>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Profile Picture
+                                Car Picture
                             </td>
                             <td>
                                 <input type="file" name="pic" required>
@@ -570,10 +559,34 @@ $getDid=mysqli_query($conn,"select did from driver where did not in (select did 
                             $datetime=date("d/m/Y h:i:sa");
                             $qr=mysqli_query($conn,"insert into car (registrationNo,brand,cname,ctype,category,ccolor,cseat,did,farepkm,farepd,pic,datetime) values('$registrationNo','$brand','$model','$type','$category','$color','$seat','$did','$farepkm','$farepd','$image_path','$datetime')");
                             if($qr){
+                            echo "<img id='bg' src='../assets/img/error/success.gif'>";
                                 ?>
-                                    <script type="text/javascript">
-                                        alert("Car added to the database successfully");
-                                        window.location.href='add_cars.php';
+                    <style>
+                        #whole-body {
+                            /* The image used */
+                            display: none;
+                        }
+                        #bg{
+                            background-repeat: no-repeat;
+                            width: 100%;
+                            height: 100%;
+                            size: auto;
+                        }
+                    </style>
+                    <script type="text/javascript">
+                                        swal("Car Added",'Car added successfully','success',{
+                                                buttons:{
+                                                    cancel: 'Add Cars',
+                                                },
+                                                closeOnClickOutside: false,
+                                            },
+                                        ).then((value) =>{
+                                            switch (value){
+                                                default:
+                                                    // swal("Clicked");
+                                                    window.location.href="add_cars.php";
+                                            }
+                                        });
                                     </script>
                                 <?php
                             }

@@ -165,7 +165,6 @@ if(isset($_SESSION['user'])){
         <!-- Header End -->
     </header>
     <main>
-
         <!-- slider Area Start-->
         <div class="slider-area">
             <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/background/about.jpg" >
@@ -211,8 +210,23 @@ if(isset($_SESSION['user'])){
             </div>
         </section>
         <!-- Make customer End-->
-
-
+<!--        BLog start-->
+        <div class="blog-area blog-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8">
+                        <!-- Seciton Tittle  -->
+                        <div class="font-back-tittle mb-50">
+                            <div class="archivment-front">
+                                <h3>Our story</h3>
+                            </div>
+                            <h3 class="archivment-back">Our Origin</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        Blog end-->
         <!-- Gallery img Start-->
         <div class="gallery-area g-padding fix">
             <div class="container-fluid p-0">

@@ -1,15 +1,21 @@
 <?php include("php/connection.php");
-    if(!isset($_SESSION['admin'])){
+if(!isset($_SESSION['admin'])){
 //        var_dump($_SESSION['admin']);
-        ?>
-            <script type="text/javascript">
-                window.location.href = "admin_login.php";
-            </script>
-        <?php
+    ?>
+    <script type="text/javascript">
+        window.location.href = "admin_login.php";
+    </script>
+    <?php
+}
+else{
+//        var_dump($_SESSION['admin']);
+    if($qr=mysqli_query($conn,"select * from booking where status='Completed'")){
+
     }
     else{
-//        var_dump($_SESSION['admin']);
+        ?><script>alert("Data fetching error")</script> <?php
     }
+}
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -35,6 +41,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
+    <style>.swal-overlay {background-image: url("../../assets/img/error/success.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 </head>
 
 <body>
@@ -302,7 +311,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Dashboard</h4>
+                    <h4 class="page-title">History</h4>
                     <!--                        <div class="ml-auto text-right">-->
                     <!--                            <nav aria-label="breadcrumb">-->
                     <!--                                <ol class="breadcrumb">-->
@@ -424,8 +433,104 @@
             <!--                Floating buttons End-->
             <!-- ============================================================== -->
             <div>
+                <div class="container-fluid">
+                    <div>
+                        <div class="container-fluid" style="padding-top: 50px;">
+                            <?php
+                            $total=0;
+                            if(mysqli_num_rows($qr)>0){
+                                ?> <h2 style="text-align: center">Completd Booking Requests</h2> <?php
+                            }
+                            ?>
+                            <table class="table table-striped center table-info table-bordered" style="font-size: small;text-align: center;">
+                                <?php
+                                if(mysqli_num_rows($qr)){
+                                    ?>
 
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col" width=10%">User's Photo</th>
+                                        <th scope="col">Source</th>
+                                        <th scope="col">Destination</th>
+                                        <th scope="col" width=9%">Pick up Date</th>
+                                        <th scope="col" width=9%">Drop off Date</th>
+                                        <th scope="col">Hire type</th>
+                                        <th scope="col" width=15%">Car</th>
+                                        <th scope="col">Driver</th>
+                                        <th scope="col">Cost</th>
+<!--                                        <th scope="col" width='5%'>Reject Button</th>-->
+<!--                                        <th scope="col" width='5%'>Mark as Complete Button</th>-->
+                                    </tr>
+                                    </thead>
+                                    <?php
+                                }
+                                ?>
+                                <tbody>
+                                <?php
+                                while ($row=mysqli_fetch_array($qr)){
+                                    extract($row);
+//                            var_dump($row);
+                                    $driver_qr=mysqli_query($conn,"select dname,pic from driver where did=$did");
+                                    $user_qr=mysqli_query($conn,"select name,pic from user where uid=$uid");
+                                    $car_qr=mysqli_query($conn,"select brand,cname,pic from car where cid=$cid");
+                                    $driver=mysqli_fetch_array($driver_qr);
+                                    $user=mysqli_fetch_array($user_qr);
+                                    $car=mysqli_fetch_array($car_qr);
+                                    $dpic=$driver['pic'];
+                                    $cpic=$car['pic'];
+                                    $upic='../'.$user['pic'];
+                                    $total+=$cost;
+//                            var_dump($driver);
+//                            var_dump($user);
+//                            echo $source;
+                                    ?>
+                                    <tr>
+                                        <th scope="row"><img title="<?php echo 'ID: '.$uid.' - Name: '.$user['name'];?>" class="img-fluid" src="<?php echo $upic?>" style="width: 100px"></th>
+                                        <td style="vertical-align: middle"><?php echo $source?></td>
+                                        <td style="vertical-align: middle"><?php echo $destination?></td>
+                                        <td style="vertical-align: middle"><?php echo $startdate?></td>
+                                        <td style="vertical-align: middle"><?php echo $enddate?></td>
+                                        <td style="vertical-align: middle"><?php echo $hire_type?></td>
+                                        <th scope="row"><img title="<?php echo 'ID: '.$cid.': '.$car['brand'].' - '.$car['cname'];?>" class="img-fluid" src="<?php echo $cpic?>" style="width: 200px"></th>
+                                        <th scope="row"><img title="<?php echo 'ID: '.$did.' - Name: '.$driver['dname'];?>" class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
+                                        <td style="vertical-align: middle"><?php echo $cost?></td>
+                                    </tr>
+                                    <!-- Button trigger modal -->
+                                    <?php
 
+                                    ?>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="text-align: center">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete Route</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body" style="text-align: center">
+                                                    Are you sure, you want to remove this route?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" name="yes" id="yes">Yes, Delete</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                            <h1 style="text-align: center">Total income: <?php echo $total.' Rupees';?></h1>
+                        </div>
+
+                    </div>
+                    <!-- ============================================================== -->
+                </div>
             </div>
             <!-- ============================================================== -->
         </div>

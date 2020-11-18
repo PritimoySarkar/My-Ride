@@ -35,6 +35,32 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+
+    <style>
+        .btn-grad {background-image: linear-gradient(to right, #e25f08 0%, #ffcc33  51%, #60c3f1 100%)}
+        .btn-grad {
+            margin: 20px;
+            padding: 15px 45px;
+            text-align: center;
+            font-size: xx-large;
+            font-weight: bolder;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: #ffffff;
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #e54545;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -302,7 +328,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Dashboard</h4>
+                    <h4 class="page-title">Profile</h4>
                     <!--                        <div class="ml-auto text-right">-->
                     <!--                            <nav aria-label="breadcrumb">-->
                     <!--                                <ol class="breadcrumb">-->
@@ -424,8 +450,35 @@
             <!--                Floating buttons End-->
             <!-- ============================================================== -->
             <div>
-
-
+                <?php
+                    extract($_SESSION['admin']);
+                    $admin_details=mysqli_query($conn,"select * from admin where id=$id");
+                    $admin=mysqli_fetch_array($admin_details);
+                    extract($admin);
+//                    var_dump($admin);
+                ?>
+                <center>
+                <div style="align-self: center;width: 50%;margin-top: 50px;">
+                    <table class="table table-borderless table-striped table-dark" style="text-align: center;font-size: x-large;color: #ccac4b;border-bottom-right-radius: 50px;border-top-left-radius: 50px;">
+                        <tbody>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <td><?php echo $name?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Email</th>
+                            <td><?php echo $email?></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </center>
+                <center>
+                    <form method="post" action="functionalities/edit-profile.php">
+                        <input type="hidden" name="ID" value="<?php echo $id;?>">
+                        <button class="btn-grad" type="submit" name="edit-btn" value="Edit" style="margin-top: 40px;">Edit Profile</button>
+                    </form>
+                </center>
             </div>
             <!-- ============================================================== -->
         </div>

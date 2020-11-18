@@ -1,4 +1,6 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
+<style>.swal-overlay {background-image: url("../assets/img/error/drifting-by.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 <?php
 include ("../php/connection.php");
     if(!isset($_SESSION['user'])){

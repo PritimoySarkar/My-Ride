@@ -34,7 +34,9 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -296,24 +298,10 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+        <h1 style="text-align: center">Drivers - Search Edit and Remove</h1>
         <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Dashboard</h4>
-                    <!--                        <div class="ml-auto text-right">-->
-                    <!--                            <nav aria-label="breadcrumb">-->
-                    <!--                                <ol class="breadcrumb">-->
-                    <!--                                    <li class="breadcrumb-item"><a href="#">Home</a></li>-->
-                    <!--                                    <li class="breadcrumb-item active" aria-current="page">Library</li>-->
-                    <!--                                </ol>-->
-                    <!--                            </nav>-->
-                    <!--                        </div>-->
-                </div>
-            </div>
-        </div>
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -424,8 +412,209 @@
             <!--                Floating buttons End-->
             <!-- ============================================================== -->
             <div>
+                <?php
+                    $get_did=mysqli_query($conn,"select did from driver");
+                ?>
+                <div style="text-align: center;">
+                    <form style="font-size: 15pt; align-items: center" method="post">
+                        <table class="table table-responsive">
+                            <tr>
+                                <!--                                Driver ID-->
+                                <td>
+                                    <label for="cars">Search by Driver ID: </label>
+                                    <select name="did" style="width: 50%">
+                                        <option value="" selected>All IDs</option>
+                                        <?php while($row=mysqli_fetch_array($get_did)){
+                                            ?><option value="<?php echo $row['did'] ?>"> <?php echo $row['did'] ?></option><?php
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
+                                <!--                                Name-->
+                                <td>
+                                    <label for="cars">Search by Name: </label>
+                                    <input name="name" type="text" placeholder="Any Name">
+                                </td>
+                                <!--                                Gender-->
+                                <td>
+                                    <label for="cars">Search by Gender: </label>
+                                    <select id="fare" name="gender" style="width: 70%">
+                                        <option value="" selected>All genders</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </td>
+                                <!--                                Address-->
+                                <td>
+                                    <label for="cars">Search by location: </label>
+                                    <input name="address" type="text" placeholder="Any Address">
+                                </td>
 
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td align="right">
+                                    <input type="submit" name="search" value="search" style="width: 70%">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <?php
+                    if($_SERVER['REQUEST_METHOD']=='POST'){
+                        $qr=array("","","","","");
+                        if(!empty($_POST['did'])){ $qr[0]="and did =".$_POST['did']; }
+                        if(!empty($_POST['name'])){ $qr[1]="and dname like '%".$_POST['color']."%'"; }
+                        if(!empty($_POST['gender'])){ $qr[2]="and gender ='".$_POST['gender']."'"; }
+                        if(!empty($_POST['address'])){ $qr[3]="and address like '%".$_POST['address']."%'"; }
+                        $add_qr = implode(" ", $qr);
+                        $final_qr="select * from driver where 1".$add_qr;
+                        if($drivers=mysqli_query($conn,$final_qr)){
+                            if(mysqli_num_rows($drivers)){
+                                ?>
+                                    <h1 align="center">Available Drivers</h1>
+                                <div>
+                                    <div class="container-fluid" style="padding-top: 50px;">
+                                        <table class="table table-striped center" style="font-size: x-large;text-align: center;">
 
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col" width="20%">Driver Photo</th>
+                                                    <th scope="col">Driver ID</th>
+                                                    <th scope="col">Driver Name</th>
+                                                    <th scope="col">Address</th>
+                                                    <th scope="col">Age</th>
+                                                    <th scope="col">Gender</th>
+                                                    <th scope="col">Phone Number</th>
+                                                    <th scope="col">Licence Number</th>
+                                                    <th scope="col">Edit or remove</th>
+                                                </tr>
+                                                </thead>
+                                            <tbody>
+                                            <?php
+                                            while ($row=mysqli_fetch_array($drivers)){
+                                                $did=$row['did'];
+                                                $path=$row['pic'];
+                                                ?>
+                                                <tr>
+                                                    <th scope="row"><img class="img-fluid" style="width: 200px" src="<?php echo $path?>"></th>
+                                                    <td style="vertical-align: middle"><?php echo $row['did']?></td>
+                                                    <td style="vertical-align: middle"><?php echo $row['dname']?></td>
+                                                    <td style="vertical-align: middle"><?php echo $row['address']?></td>
+                                                    <td style="vertical-align: middle"><?php echo $row['age']?></td>
+                                                    <td style="vertical-align: middle"><?php echo $row['gender']?></td>
+                                                    <td style="vertical-align: middle"><?php echo $row['phno']?></td>
+                                                    <td style="vertical-align: middle"><?php echo $row['lic']?></td>
+                                                    <td style="vertical-align: middle">
+                                                        <!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Remove this Car</button>-->
+                                                        <form method="post" action="functionalities/edit-drivers.php" id="edit-form<?php echo $did?>">
+                                                            <?php $arr = [
+                                                                'did' => $did
+                                                            ];
+                                                            ?>
+                                                            <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                                                            <input onclick="
+                                                                    swal('Edit Driver','Are U sure? you want to edit this Driver details','info',{buttons: {
+                                                                    cancel: 'No\, Don\'t Edit',
+
+                                                                    catch: {
+                                                                    text: 'Yes\, Edit Now',
+                                                                    value: 'catch',
+                                                                    },
+                                                                    },closeOnClickOutside: false,
+                                                                    },).then((value) => {
+                                                                    switch (value) {
+                                                                    case 'catch':
+                                                                    swal('Editing', 'Going to edit driver details', 'info');
+                                                                    $('#edit-form<?php echo $did?>').submit();
+                                                                    break;
+
+                                                                    default:
+                                                                    swal('Driver not edited','','warning');
+                                                                    }
+                                                                    });"
+                                                                   class="btn btn-primary" value="<?php echo 'Edit this Driver';?>"
+                                                            />
+                                                        </form>
+                                                        <form method="post" action="functionalities/remove-driver.php" id="remove-form<?php echo $did?>">
+                                                            <?php $arr = [
+                                                                'did' => $did
+                                                            ];
+                                                            ?>
+                                                            <input type="hidden" name="data" value="<?php echo htmlentities(serialize($arr)); ?>">
+                                                            <input onclick="
+                                                                    swal('Remove Driver','Are U sure? you want to remove this driver details','info',{buttons: {
+                                                                    cancel: 'No\, Don\'t Remove',
+
+                                                                    catch: {
+                                                                    text: 'Yes\, Remove Now',
+                                                                    value: 'catch',
+                                                                    },
+                                                                    },closeOnClickOutside: false,
+                                                                    },).then((value) => {
+                                                                    switch (value) {
+                                                                    case 'catch':
+                                                                    swal('Removed', 'Driver removed successfully', 'success');
+                                                                    $('#remove-form<?php echo $did?>').submit();
+                                                                    break;
+
+                                                                    default:
+                                                                    swal('Driver not removed','','warning');
+                                                                    }
+                                                                    });"
+                                                                   class="btn btn-primary" value="<?php echo 'Remove this driver';?>"
+                                                            />
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                <!-- Button trigger modal -->
+                                                <?php
+
+                                                ?>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header" style="text-align: center">
+                                                                <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete Car</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body" style="text-align: center">
+                                                                Are you sure, you want to remove this car?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-dismiss="modal" name="yes" id="yes">Yes, Delete</button>
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <?php
+                                $res=mysqli_fetch_array($drivers);
+//                                var_dump($res);
+                            }
+                            else{
+                                echo "No Drivers found with these details";
+                            }
+                        }
+                        else{
+                            echo "Data Fetch error";
+                        }
+                    }
+                ?>
             </div>
             <!-- ============================================================== -->
         </div>

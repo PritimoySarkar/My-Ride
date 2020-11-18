@@ -303,6 +303,7 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+        <h1 style="text-align: center">Pending Booking Requests</h1>
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
@@ -311,7 +312,7 @@
                 <div class="container-fluid" style="padding-top: 50px;">
                     <?php
                     if(mysqli_num_rows($qr)>0){
-                        ?> <h2 style="text-align: center">Pending Booking Requests</h2> <?php
+                        ?> <h2 style="text-align: center">Booking Requests Currently in Pendingd state</h2> <?php
                     }
                     else{
                         ?> <h2 style="text-align: center">No Pending Booking Requests</h2> <?php
@@ -367,7 +368,7 @@
                                 <td style="vertical-align: middle"><?php echo $hire_type?></td>
                                 <th scope="row"><img title="<?php echo 'ID: '.$cid.': '.$car['brand'].' - '.$car['cname'];?>" class="img-fluid" src="<?php echo $cpic?>" style="width: 100px"></th>
                                 <th scope="row"><img title="<?php echo 'ID: '.$did.' - Name: '.$driver['dname'];?>" class="img-fluid" src="<?php echo $dpic?>" style="width: 100px"></th>
-                                <td style="vertical-align: middle"><?php echo $cost?></td>
+                                <td style="vertical-align: middle"><?php echo '₹ '.$cost.' Rupees'?></td>
                                 <td style="vertical-align: middle">
                                     <!--                                    <button class="btn-outline-info" placeholder="Some" value="car" name="book" type="button" data-toggle="modal" data-target="#staticBackdrop">Approve this Ride</button>-->
                                     <form method="post" action="functionalities/approve.php" id="approve-form<?php echo $bid?>">

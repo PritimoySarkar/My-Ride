@@ -1,12 +1,12 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
-<style>.swal-overlay {background-image: url("../../assets/img/error/drifting-by.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
+<style>.swal-overlay {background-image: url("../../assets/img/error/success.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 <?php
 include ("../php/connection.php");
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $decoded = unserialize($_POST['data']);
     $bid=$decoded['bid'];
-    if($approve=mysqli_query($conn,"UPDATE `booking` SET status = 'Rejected' WHERE bid=$bid")){
+    if($approve=mysqli_query($conn,"UPDATE `booking` SET status = 'Completed' WHERE bid=$bid")){
         echo "<img id='bg' src='../../assets/img/error/drifting-by.gif'>";
         ?>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             }
         </style>
         <script>
-            swal("Ride Rejected",'Going back to dashboard','error',{
+            swal("Ride Completed",'Booking marked as completed','success',{
                 buttons:{
                             cancel: 'Okay',
                         },

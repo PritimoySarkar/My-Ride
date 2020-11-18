@@ -1,13 +1,27 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
+<style>.swal-overlay {background-image: url("../../assets/img/error/success.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 <?php
 include ("../php/connection.php");
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $decoded = unserialize($_POST['data']);
         $bid=$decoded['bid'];
         if($approve=mysqli_query($conn,"UPDATE `booking` SET status = 'Approved' WHERE bid=$bid")){
-                echo "<h1 style='text-align: center'>Ride Approved</h1>";
+            echo "<img id='bg' src='../../assets/img/error/success.gif'>";
             ?>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <style>
+                #whole-body {
+                    /* The image used */
+                    display: none;
+                }
+                #bg{
+                    background-repeat: no-repeat;
+                    width: 100%;
+                    height: 100%;
+                    size: auto;
+                }
+            </style>
             <script>
                 swal("Ride Approved",'Going back to dashboard','success',{
                         buttons:{

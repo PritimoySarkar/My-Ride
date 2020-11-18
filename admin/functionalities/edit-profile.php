@@ -311,6 +311,7 @@ else{
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+        <h1 style="text-align: center">Edit Admin Profile</h1>
         <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -340,10 +341,10 @@ else{
             <!-- ============================================================== -->
             <div>
                 <?php
-                if(isset($_POST['data'])){
-                    $decoded = unserialize($_POST['data']);
-                    $rid=$decoded['rid'];
-                if($edt=mysqli_query($conn,"select * from route WHERE rid=$rid")){
+                if(isset($_POST['ID'])){
+                    $ID=$_POST['ID'];
+//                    var_dump($_POST['ID']);
+                if($edt=mysqli_query($conn,"select * from admin WHERE id=$ID")){
                 if(mysqli_num_rows($edt)>0){
                     $row=mysqli_fetch_array($edt);
                     extract($row);
@@ -355,32 +356,24 @@ else{
                                 <form method="post" style="font-weight: bold;font-size: large" enctype="multipart/form-data">
                                     <table cellpadding="25%" class="table-responsive" style="align-content: center">
                                         <tr>
-                                            <td>Source</td>
+                                            <td>Name:</td>
                                             <td>
-                                                <input hidden type="text" name="rid" placeholder="Enter Source Name" value="<?php echo $rid?>" required>
-                                                <input type="text" name="source" placeholder="Enter Source Name" value="<?php echo $source?>" required>
+                                                <input hidden type="text" name="id" placeholder="Enter Source Name" value="<?php echo $id?>" required>
+                                                <input type="text" name="name" placeholder="Enter Source Name" value="<?php echo $name?>" required>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                Destination:
+                                                ID:
                                             </td>
                                             <td>
-                                                <input type="text" name="destination" placeholder="Enter Destination Name" value="<?php echo $destination?>" required>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Distance:
-                                            </td>
-                                            <td>
-                                                <input type="number" name="distance" placeholder="Enter distance in Km" min="5" value="<?php echo $distance?>" required>
+                                                <input type="text" name="email" placeholder="Enter Destination Name" value="<?php echo $email?>" required>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td></td>
                                             <td align="center">
-                                                <input type="submit" name="addRoute" value="Edit Route">
+                                                <input type="submit" name="edit" value="Save Changes">
                                             </td>
                                         </tr>
                                     </table>
@@ -398,7 +391,7 @@ else{
                 }
                 else{
                     echo "after submit";
-                    var_dump($_POST);
+//                    var_dump($_POST);
                     ?>
                     <!--        <script>-->
                     <!--            alert("Route deletion failed");-->
@@ -407,7 +400,7 @@ else{
                     <?php
                 }
                 }
-                elseif(isset($_POST['addRoute'])){
+                elseif(isset($_POST['edit'])){
                 var_dump($_POST);
                 foreach ($_POST as $key => $value){
                 if(empty($value)) {
@@ -416,24 +409,24 @@ else{
                 <?php
                 }
                 }
-                $rid=$_POST['rid'];
-                $source=mysqli_real_escape_string($conn,$_POST['source']);
-                $destination=mysqli_real_escape_string($conn,$_POST['destination']);
-                $distance=mysqli_real_escape_string($conn,$_POST['distance']);
-                $qr=mysqli_query($conn,"UPDATE `route` SET `source`='$source',`destination`='$destination',`distance`=$distance WHERE rid=$rid");
+                $id=$_POST['id'];
+                $name=mysqli_real_escape_string($conn,$_POST['name']);
+                $email=mysqli_real_escape_string($conn,$_POST['email']);
+                $qr=mysqli_query($conn,"UPDATE `admin` SET `name`='$name',`email`='$email' WHERE id=$id");
                 if($qr){
+                    echo "Profile Edited";
                 ?>
                     <script type="text/javascript">
-                        swal('Route updated','Route details updated successfully','success',{buttons: {
+                        swal('Profile updated','Profile details updated successfully','success',{buttons: {
                                 catch: {
-                                    text: 'Go to Routes',
+                                    text: 'Go to Profile',
                                     value: 'catch',
                                 },
                             },closeOnClickOutside: false,
                         },).then((value) => {
                             switch (value) {
                                 case 'catch':
-                                    window.location.href='../routes.php';
+                                    window.location.href='../profile.php';
                                     break;
                             }
                         });
@@ -455,26 +448,26 @@ else{
                     <?php
                 }
                 ?>
-                </div>
             </div>
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center">
-            All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
         <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
+    <!-- End Container fluid  -->
     <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-center">
+        All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
 </div>
 <!-- ============================================================== -->
 <!-- End Wrapper -->

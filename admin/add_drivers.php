@@ -35,6 +35,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
+    <style>.swal-overlay {background-image: url("../assets/img/error/drifting-by.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 </head>
 
 <body>
@@ -296,24 +299,10 @@
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
+        <h1 style="text-align: center">Add Drivers</h1>
         <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Dashboard</h4>
-                    <!--                        <div class="ml-auto text-right">-->
-                    <!--                            <nav aria-label="breadcrumb">-->
-                    <!--                                <ol class="breadcrumb">-->
-                    <!--                                    <li class="breadcrumb-item"><a href="#">Home</a></li>-->
-                    <!--                                    <li class="breadcrumb-item active" aria-current="page">Library</li>-->
-                    <!--                                </ol>-->
-                    <!--                            </nav>-->
-                    <!--                        </div>-->
-                </div>
-            </div>
-        </div>
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -425,7 +414,7 @@
             <!-- ============================================================== -->
             <div>
                 <div style="overflow-x:auto;width: 600px; margin: 0 auto;">
-                    <form method="post" style="font-weight: bold;" enctype="multipart/form-data">
+                    <form method="post" style="font-weight: bold;font-size: large" enctype="multipart/form-data">
                         <table cellpadding="15%" class="table-responsive" style="align-content: center">
                             <tr>
                                 <td>Driver Name</td>
@@ -454,11 +443,11 @@
                                     Gender:
                                 </td>
                                 <td>
-                                    <input type="radio" id="male" name="gender" value="male" required>
-                                    <label for="private">male</label>
-                                    <input type="radio" id="female" name="gender" value="female">
+                                    <input type="radio" id="male" name="gender" value="Male" required>
+                                    <label for="private">Male</label>
+                                    <input type="radio" id="female" name="gender" value="Female">
                                     <label for="commercial">Female</label>
-                                    <input type="radio" id="other" name="gender" value="other">
+                                    <input type="radio" id="other" name="gender" value="Other">
                                     <label for="other">Other</label>
 
                                 </td>
@@ -481,7 +470,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Profile Picture
+                                    Driver picture:
                                 </td>
                                 <td>
                                     <input type="file" name="pic" required>
@@ -525,10 +514,34 @@
                     $datetime=date();
                     echo $datetime;
                     if($qr){
-                    ?>
+                        echo "<img id='bg' src='../assets/img/error/drifting-by.gif'>";
+                        ?>
+                        <style>
+                            #whole-body {
+                                /* The image used */
+                                display: none;
+                            }
+                            #bg{
+                                background-repeat: no-repeat;
+                                width: 100%;
+                                height: 100%;
+                                size: auto;
+                            }
+                        </style>
                         <script type="text/javascript">
-                            alert("Driver added to the database successfully");
-                            window.location.href='add_drivers.php';
+                            swal("Driver Added",'Driver added successfully','success',{
+                                    buttons:{
+                                        cancel: 'Add Driver',
+                                    },
+                                    closeOnClickOutside: false,
+                                },
+                            ).then((value) =>{
+                                switch (value){
+                                    default:
+                                        // swal("Clicked");
+                                        window.location.href="add_drivers.php";
+                                }
+                            });
                         </script>
                     <?php
                     }

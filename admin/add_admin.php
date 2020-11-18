@@ -35,6 +35,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
+    <style>.swal-overlay {background-image: url("../assets/img/error/drifting-by.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 </head>
 
 <body>
@@ -302,7 +305,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Dashboard</h4>
+                    <h4 class="page-title">Add Admin</h4>
                     <!--                        <div class="ml-auto text-right">-->
                     <!--                            <nav aria-label="breadcrumb">-->
                     <!--                                <ol class="breadcrumb">-->
@@ -424,8 +427,96 @@
             <!--                Floating buttons End-->
             <!-- ============================================================== -->
             <div>
-
-
+                <div class="container-fluid">
+                    <div style="width: 800px; height: 400px; margin: 0 auto;">
+                        <div style="overflow-x:auto;text-align: center;align-items: center">
+                            <form class="whole-body-custom" method="post" style="font-weight: bold;" enctype="multipart/form-data">
+                                <table cellpadding="15%" class="table-responsive" style="align-content: center;font-size: x-large" >
+                                    <tr>
+                                        <td>Admin Name:</td>
+                                        <td>
+                                            <input type="text" name="name" placeholder="Enter Source Name" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Login ID:
+                                        </td>
+                                        <td>
+                                            <input type="email" name="email" placeholder="Enter Destination Name" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            password:
+                                        </td>
+                                        <td>
+                                            <input type="password" name="password" placeholder="Enter distance in Km" min="5" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td align="center">
+                                            <input type="submit" name="addRoute" value="Add Route">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                            <?php
+                            if(isset($_POST['addRoute'])){
+                            foreach ($_POST as $key => $value){
+                            if(empty($value)) {
+                                ?>
+                                <script type="text/javascript">alert("All fields are mandatory"); window.location.href="add_routes.php";</script>
+                            <?php
+                            }
+                            }
+                            $name=mysqli_real_escape_string($conn,$_POST['name']);
+                            $email=mysqli_real_escape_string($conn,$_POST['email']);
+                            $password=mysqli_real_escape_string($conn,$_POST['password']);
+                            $qr=mysqli_query($conn,"insert into admin (name,email,password) values('$name','$email','$password')");
+                            if($qr){
+                            echo "<img id='bg2' src=''>";
+                            ?>
+                                <style>
+                                    .whole-body-custom {
+                                        /* The image used */
+                                        display: none;
+                                    }
+                                    #bg2 bg{
+                                        background-repeat: no-repeat;
+                                        width: 100%;
+                                        height: 100%;
+                                        size: auto;
+                                    }
+                                </style>
+                                <script type="text/javascript">
+                                    swal("Admin Added",'Admin added successfully','success',{
+                                            buttons:{
+                                                cancel: 'Dashboard',
+                                            },
+                                            closeOnClickOutside: false,
+                                        },
+                                    ).then((value) =>{
+                                        switch (value){
+                                            default:
+                                                // swal("Clicked");
+                                                window.location.href="index.php";
+                                        }
+                                    });
+                                </script>
+                                <?php
+                            }
+                            else{
+                                ?>
+                                <!--                        <script type="text/javascript">alert("Car add error in database"); window.location.href="../add_cars.php";</script>-->
+                                <?php
+                            }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- ============================================================== -->
         </div>

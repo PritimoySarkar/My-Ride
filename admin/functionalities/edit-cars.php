@@ -1,9 +1,9 @@
-<?php include("php/connection.php");
+<?php include("../php/connection.php");
     if(!isset($_SESSION['admin'])){
 //        var_dump($_SESSION['admin']);
         ?>
             <script type="text/javascript">
-                window.location.href = "admin_login.php";
+                window.location.href = "../php/admin_login.php";
             </script>
         <?php
     }
@@ -34,7 +34,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/my-ride-logo-small.png">
-    <title>My Ride | Admin Drivers</title>
+    <title>My Ride | Admin Edit Drivers</title>
     <!-- Custom CSS -->
     <link href="../assets/libs/flot/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -48,6 +48,8 @@
     <![endif]-->
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
+    <style>.swal-overlay {background-image: url("../../assets/img/error/drifting-by.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 </head>
 
 <body>
@@ -315,7 +317,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Dashboard</h4>
+<!--                    <h4 class="page-title">Dashboard</h4>-->
                     <!--                        <div class="ml-auto text-right">-->
                     <!--                            <nav aria-label="breadcrumb">-->
                     <!--                                <ol class="breadcrumb">-->
@@ -335,118 +337,21 @@
         <!-- ============================================================== -->
         <div class="container-fluid">
             <!-- ============================================================== -->
-            <!-- Floating buttons start  -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='index.php';">
-                        <div class="box bg-cyan text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-format-list-bulleted-type"></i></h1>
-                            <h6 class="text-white">Dashboard</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-4 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='cars.php';">
-                        <div class="box bg-success text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-car"></i></h1>
-                            <h6 class="text-white">Cars</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='add_cars.php';">
-                        <div class="box bg-warning text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-plus-circle"></i></h1>
-                            <h6 class="text-white">Add Cars</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='remove_cars.php';">
-                        <div class="box bg-danger text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-delete-circle"></i></h1>
-                            <h6 class="text-white">Remove Cars</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='drivers.php';">
-                        <div class="box bg-info text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-account"></i></h1>
-                            <h6 class="text-white">Drivers</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <!-- Column -->
-                <div class="col-md-6 col-lg-4 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='add_drivers.php';">
-                        <div class="box bg-danger text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-account-plus"></i></h1>
-                            <h6 class="text-white">Add Drivers</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='remove_drivers.php';">
-                        <div class="box bg-info text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-account-off"></i></h1>
-                            <h6 class="text-white">Remove Drivers</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='routes.php';">
-                        <div class="box bg-cyan text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-road-variant"></i></h1>
-                            <h6 class="text-white">Routes</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='add_routes.php';">
-                        <div class="box bg-success text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-plus-circle"></i></h1>
-                            <h6 class="text-white">Add Routes</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <div class="card card-hover" onclick="window.location='remove_routes.php';">
-                        <div class="box bg-warning text-center">
-                            <h1 class="font-light text-white"><i class="mdi mdi-delete-circle"></i></h1>
-                            <h6 class="text-white">Remove Routes</h6>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-            </div>
-            <style>
-                .card-hover{cursor: pointer}
-            </style>
-            <!--                Floating buttons End-->
-            <!-- ============================================================== -->
             <div>
                 <?php
-                    if(isset($_POST['cid'])){
-                    $cid=$_POST['cid'];
+                    //var_dump($_POST);
+                    if(isset($_POST['data'])){
+                        $deserialized=unserialize($_POST['data']);
+                        //var_dump($deserialized);
+                    $getDid=mysqli_query($conn,"select did from driver where did not in (select did from car)");
+                    $cid=$deserialized['cid'];
                     $car_qr=mysqli_query($conn,"select * from car where cid=$cid");
                     $car=mysqli_fetch_array($car_qr);
                     extract($car);
                 ?>
-                <div style="overflow-x:auto;width: 400px; margin: 0 auto;">
+                <div style="overflow-x:auto;width: 800px; margin: 0 auto;">
                     <form method="post" style="font-weight: bold;align-items: center" enctype="multipart/form-data">
-                        <table cellpadding="15%" class="table-responsive" style="align-content: center">
+                        <table cellpadding="15%" class="table-responsive" style="align-content: center;">
                             <tr>
                                 <td>Car Brand</td>
                                 <td>
@@ -473,24 +378,65 @@
                                     Car Category:
                                 </td>
                                 <td>
-                                    <input type="radio" id="male" name="type" value="Private" required>
-                                    <label for="Private">Private</label>
-                                    <input type="radio" id="female" name="type" value="Commercial">
-                                    <label for="Commercial">Commercial</label>
-
+                                    <?php
+                                        if($ctype=='Private'){
+                                            ?>
+                                            <input checked type="radio" name="type" value="Private" required>
+                                            <label for="Private">Private</label>
+                                            <input type="radio" name="type" value="Commercial">
+                                            <label for="Commercial">Commercial</label>
+                                            <?php
+                                        }
+                                        else{
+                                            ?>
+                                            <input type="radio" id="male" name="type" value="Private" required>
+                                            <label for="Private">Private</label>
+                                            <input checked type="radio" id="female" name="type" value="Commercial">
+                                            <label for="Commercial">Commercial</label>
+                                            <?php
+                                        }
+                                    ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Car type:
                                 </td>
-                                <td class="boking-datepicker">
+                                <td>
                                     <select id="type" name="category" required>
                                         <option value="" selected>Select Car Type</option>
-                                        <option value="Hatchback">Hatchback</option>
-                                        <option value="Sedan">Sedan</option>
-                                        <option value="SUV">SUV</option>
-                                        <option value="Van">Van</option>
+                                        <?php
+                                            if($category=='Hatchback'){
+                                                ?>
+                                                <option selected value="Hatchback">Hatchback</option>
+                                                <option value="Sedan">Sedan</option>
+                                                <option value="SUV">SUV</option>
+                                                <option value="Van">Van</option>
+                                                <?php
+                                            }elseif ($category=='Sedan'){
+                                                ?>
+                                                <option value="Hatchback">Hatchback</option>
+                                                <option selected value="Sedan">Sedan</option>
+                                                <option value="SUV">SUV</option>
+                                                <option value="Van">Van</option>
+                                                <?php
+                                            }
+                                            elseif ($category=='SUV'){
+                                                ?>
+                                                <option value="Hatchback">Hatchback</option>
+                                                <option value="Sedan">Sedan</option>
+                                                <option selected value="SUV">SUV</option>
+                                                <option value="Van">Van</option>
+                                                <?php
+                                            }else{
+                                                ?>
+                                                <option value="Hatchback">Hatchback</option>
+                                                <option value="Sedan">Sedan</option>
+                                                <option value="SUV">SUV</option>
+                                                <option selected value="Van">Van</option>
+                                                <?php
+                                            }
+                                        ?>
                                     </select>
                                 </td>
                             </tr>
@@ -499,7 +445,7 @@
                                     Car Color:
                                 </td>
                                 <td>
-                                    <input type="text" name="color" placeholder="Enter Car color" required>
+                                    <input type="text" name="color" placeholder="Enter Car color" value="<?php echo $ccolor?>" required>
                                 </td>
                             </tr>
                             <tr>
@@ -507,7 +453,7 @@
                                     Car Passenger Capacity:
                                 </td>
                                 <td>
-                                    <input type="number" name="seat" placeholder="Enter passenger capacity" required>
+                                    <input type="number" name="seat" placeholder="Enter passenger capacity" value="<?php echo $cseat?>" required>
                                 </td>
                             </tr>
                             <tr>
@@ -517,6 +463,7 @@
                                 <td>
                                     <select name="did" required>
                                         <option value="">SELECT DRIVER</option>
+                                        <option selected value="<?php echo $did?>"><?php echo $did?></option>
                                         <?php while($driver=mysqli_fetch_array($getDid)){ ?>
                                             <option value="<?php echo $driver['did']?>"><?php echo $driver['did']?></option>
                                         <?php } ?>
@@ -528,7 +475,7 @@
                                     Fare per Kilometer:
                                 </td>
                                 <td>
-                                    <input type="number" name="farepk" placeholder="Enter car's Fare/kilometer" required>
+                                    <input type="number" name="farepk" placeholder="Enter car's Fare/kilometer" value="<?php echo $farepkm?>" required>
                                 </td>
                             </tr>
                             <tr>
@@ -536,21 +483,30 @@
                                     Fare per Day:
                                 </td>
                                 <td>
-                                    <input type="number" name="farepd" placeholder="Enter car's Fare/Day">
+                                    <input type="number" name="farepd" placeholder="Enter car's Fare/Day" value="<?php echo $farepd?>" required>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    Profile Picture
+                                    Car Picture
                                 </td>
                                 <td>
-                                    <input type="file" name="pic" required>
+                                    <?php
+                                    if($pic==''){
+                                        $snd='no val';
+                                    }
+                                    else{
+                                        $snd=$pic;
+                                    }
+                                    ?>
+                                    <input type="hidden" name="old_pic" value="<?php echo $snd;?>">
+                                    <input type="file" name="pic">
                                 </td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td align="center">
-                                    <input type="submit" name="ok" value="Add Car">
+                                    <input type="submit" name="ok" value="Save Changes">
                                 </td>
                             </tr>
                         </table>
@@ -558,58 +514,110 @@
                     <?php
                     }
                     else{
-                    if(isset($_POST['ok'])){
-                    foreach ($_POST as $key => $value){
-                    if(empty($value)) {
-                        ?>
-                        <script type="text/javascript">alert("All fields are mandatory"); window.location.href="../add_cars.php";</script>
-                    <?php
-                    }
-                    }
-
-                    $image_path='uploaded/cars/'.date('d-m-Y_H-i-sa').$_FILES['pic']['name'];
-                    if($_FILES['pic']['type']=='image/jpg' || $_FILES['pic']['type']=='image/jpeg' || $_FILES['pic']['type']=='image/JPG' || $_FILES['pic']['type']=='image/JPEG' || $_FILES['pic']['type']=='image/png' || $_FILES['pic']['type']=='image/PMG'){
-                    if(!move_uploaded_file($_FILES['pic']['tmp_name'],$image_path)){
-                    //                            var_dump($_FILES['pic']);
-                    //                            echo $image_path;
-                    ?>
-                        <script type="text/javascript">alert("Image upload error"); window.location.href="../add_cars.php";</script>
-                    <?php
-                    }
-                    else{
-                    $brand=$_POST['brand'];
-                    $model=$_POST['model'];
-                    $registrationNo=$_POST['registrationNo'];
-                    $type=$_POST['type'];
-                    $category=$_POST['category'];
-                    $color=$_POST['color'];
-                    $seat=$_POST['seat'];
-                    $did=$_POST['did'];
-                    $farepkm=$_POST['farepk'];
-                    $farepd=$_POST['farepd'];
-                    $datetime=date("d/m/Y h:i:sa");
-                    $qr=mysqli_query($conn,"insert into car (registrationNo,brand,cname,ctype,category,ccolor,cseat,did,farepkm,farepd,pic,datetime) values('$registrationNo','$brand','$model','$type','$category','$color','$seat','$did','$farepkm','$farepd','$image_path','$datetime')");
-                    if($qr){
-                    ?>
-                        <script type="text/javascript">
-                            alert("Car added to the database successfully");
-                            window.location.href='add_cars.php';
-                        </script>
-                    <?php
-                    }
-                    else{
-                    ?>
-                        <script type="text/javascript">alert("Car add error in database"); window.location.href="../add_cars.php";</script>
-                    <?php
-                    }
-                    }
-                    }
-                    else{
-                    ?>
-                        <script type="text/javascript">alert("Invalid image file format"); window.location.href="../add_cars.php";</script>
+                        var_dump($_POST);
+                        extract($_POST);
+                        $destination='';
+                        if(!empty($_FILES['pic']['name'])){
+                            $file_type = $_FILES['pic']['type'];
+                            $exten=pathinfo($_FILES['pic']['name'],PATHINFO_EXTENSION);
+                            $destination = "uploaded/cars/".date('d-m-Y_H-i-sa').$cid.".".$exten;
+                        if($file_type=="image/jpg" || $file_type=="image/png" || $file_type=="image/JPG" || $file_type=="image/jpeg" || $file_type=="image/JPEG" || $file_type=="image/PNG"){
+                        var_dump($_FILES);
+                            //echo $_FILES['pic']['tmp_name'];
+                            echo $destination;
+                            if(!move_uploaded_file($_FILES['pic']['tmp_name'],'../'.$destination)){
+                            ?>
+                            <script>
+                                swal('File error','some error occurred during uploading the file','error',{buttons: {
+                                        catch: {
+                                            text: 'Go to Cars',
+                                            value: 'catch',
+                                        },
+                                    },closeOnClickOutside: false,
+                                },).then((value) => {
+                                    switch (value) {
+                                        case 'catch':
+                                            window.location.href='../cars.php';
+                                            break;
+                                    }
+                                });
+                            </script>
                         <?php
-                    }
-                    }
+                        }
+                        else{
+                        if($old_pic!='no val'){
+                            unlink('../'.$old_pic);
+                        }
+                        if($edit=mysqli_query($conn,"UPDATE `car` SET `registrationNo`='$registrationNo',`brand`='$brand',`cname`='$model',`ctype`='$type',`category`='$category',`ccolor`='$color',`cseat`=$seat,`did`=$did,`farepkm`=$farepk,`farepd`=$farepd,`pic`='$destination' WHERE cid=$cid")){
+                        ?>
+                            <script>
+                                swal('Car details Updated','Car details updated successfully','success',{buttons: {
+                                        catch: {
+                                            text: 'Go to Cars',
+                                            value: 'catch',
+                                        },
+                                    },closeOnClickOutside: false,
+                                },).then((value) => {
+                                    switch (value) {
+                                        case 'catch':
+                                            window.location.href='../cars.php';
+                                            break;
+                                    }
+                                });
+                            </script>
+                        <?php
+                        }
+                        else{
+                            echo "Database insert error";
+                        }
+                        }
+                        }
+                        else{
+                        ?>
+                            <script>
+                                swal('Invalid file','only jpg, jpeg ang png file supported','error',{buttons: {
+                                        catch: {
+                                            text: 'Go to Cars',
+                                            value: 'catch',
+                                        },
+                                    },closeOnClickOutside: false,
+                                },).then((value) => {
+                                    switch (value) {
+                                        case 'catch':
+                                            window.location.href='../cars.php';
+                                            break;
+                                    }
+                                });
+                            </script>
+                        <?php
+                        }
+                        }
+                        else{
+                        //echo "pic not uploaded";
+                        extract($_POST);
+                        if($edit=mysqli_query($conn,"UPDATE `car` SET `registrationNo`='$registrationNo',`brand`='$brand',`cname`='$model',`ctype`='$type',`category`='$category',`ccolor`='$color',`cseat`=$seat,`did`=$did,`farepkm`=$farepk,`farepd`=$farepd WHERE cid=$cid")){
+                        ?>
+                            <script>
+                                swal('Car details Updated','Car details updated successfully','success',{buttons: {
+                                        catch: {
+                                            text: 'Go to Cars',
+                                            value: 'catch',
+                                        },
+                                    },closeOnClickOutside: false,
+                                },).then((value) => {
+                                    switch (value) {
+                                        case 'catch':
+                                            window.location.href='../cars.php';
+                                            break;
+                                    }
+                                });
+                            </script>
+                            <?php
+                        }
+                        else{
+                            echo "Database insert error";
+                        }
+                        }
                     }
                     ?>
                 </div>

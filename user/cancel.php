@@ -2,9 +2,8 @@
 include ("../php/connection.php");
 ?>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        swal("Alert");
-    </script>
+    <style>.swal-modal {background-color: rgba(255, 255, 255, 0.70);}</style>
+    <style>.swal-overlay {background-image: url("../assets/img/error/drifting-by.gif");background-repeat: no-repeat;width: 100%;height: 100%;background-size: cover;background-position: center;}</style>
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $decoded = unserialize($_POST['data']);
@@ -30,7 +29,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <script>
             //alert("Ride cancellation successful");
             //window.location.href='profile.php';
-            swal('Booking Canceled','Booking cancelled successfully','success',{buttons: {
+            swal('Booking Canceled','Booking cancelled successfully','error',{buttons: {
                     catch: {
                         text: 'Go to Home',
                         value: 'home',

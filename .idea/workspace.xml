@@ -20,19 +20,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="407e96ea-3f5d-488a-b7d1-4b1be6bd0b5f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/functionalities/edit-cars.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/layout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/functionalities/complete.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/functionalities/edit-drivers.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/functionalities/edit-profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/about.php" beforeDir="false" afterPath="$PROJECT_DIR$/about.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/add_admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/add_cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_cars.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/add_drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_drivers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/add_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/approved.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/approved.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cars.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/drivers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/functionalities/approve.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/functionalities/approve.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/functionalities/edit-cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/functionalities/edit-cars.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/functionalities/edit-routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/functionalities/edit-routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/php/search_car.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/functionalities/edit_car.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/functionalities/edit_car.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/functionalities/reject.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/functionalities/reject.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/functionalities/remove-cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/functionalities/remove-cars.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/functionalities/remove-driver.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/functionalities/remove-driver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/functionalities/remove-route.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/functionalities/remove-route.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/history.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/history.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/overview.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/overview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pending.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pending.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/php/admin-logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/php/admin-logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/rejected.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/rejected.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/remove_cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/remove_cars.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/booking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/remove_drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/remove_drivers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/remove_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/remove_routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/uploaded/cars/01-11-2020_19-27-22pmbreeze blue Eeco color shot-1 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/uploaded/cars/01-11-2020_19-43-28pmEECO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/uploaded/drivers/02-11-2020_02-46-39amAditi-passport.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blank.html" beforeDir="false" afterPath="$PROJECT_DIR$/blank.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/book.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/carselect.php" beforeDir="false" afterPath="$PROJECT_DIR$/carselect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carview.php" beforeDir="false" afterPath="$PROJECT_DIR$/carview.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/checkuser.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/checkuser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploaded/users/13-11-2020_16-52-45pm85233385_1253986774810933_8559917026913550336_o.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/cancel.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/cancel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user_logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user_register.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,20 +89,21 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin/functionalities" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\MyRide\admin" />
-      <recent name="C:\wamp64\www\MyRide\user" />
-      <recent name="C:\wamp64\www\MyRide" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\MyRide\admin\functionalities" />
       <recent name="C:\wamp64\www\MyRide\user" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\MyRide\admin\functionalities" />
+      <recent name="C:\wamp64\www\MyRide\admin" />
+      <recent name="C:\wamp64\www\MyRide\user" />
+      <recent name="C:\wamp64\www\MyRide" />
     </key>
   </component>
   <component name="ShelveChangesManager" show_recycled="true" />
@@ -108,6 +140,7 @@
       <workItem from="1605408665393" duration="49942000" />
       <workItem from="1605518790676" duration="41073000" />
       <workItem from="1605637806861" duration="11978000" />
+      <workItem from="1605670744616" duration="40615000" />
     </task>
     <servers />
   </component>
