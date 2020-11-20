@@ -457,11 +457,18 @@ $getDid=mysqli_query($conn,"select did from driver where did not in (select did 
                             </td>
                             <td class="boking-datepicker">
                                 <select id="type" name="category" required>
-                                    <option value="" selected>Select Car Type</option>
-                                    <option value="Hatchback">Hatchback</option>
-                                    <option value="Sedan">Sedan</option>
-                                    <option value="SUV">SUV</option>
-                                    <option value="Van">Van</option>
+                                        <option value="" selected>Select Car Type</option>
+                                    <optgroup label="Private">
+                                        <option value="Hatchback">Hatchback</option>
+                                        <option value="Sedan">Sedan</option>
+                                        <option value="SUV">SUV</option>
+                                        <option value="Van">Van</option>
+                                    </optgroup>
+                                    <optgroup label="Commercial">
+                                        <option value="Heavy Truck">Heavy Truck</option>
+                                        <option value="Medium Truck">Medium Truck</option>
+                                        <option value="Light Truck">Light Truck</option>
+                                    </optgroup>
                                 </select>
                             </td>
                         </tr>

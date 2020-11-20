@@ -408,32 +408,105 @@
                                         <?php
                                             if($category=='Hatchback'){
                                                 ?>
-                                                <option selected value="Hatchback">Hatchback</option>
-                                                <option value="Sedan">Sedan</option>
-                                                <option value="SUV">SUV</option>
-                                                <option value="Van">Van</option>
+                                                <optgroup label="Private">
+                                                    <option selected value="Hatchback">Hatchback</option>
+                                                    <option value="Sedan">Sedan</option>
+                                                    <option value="SUV">SUV</option>
+                                                    <option value="Van">Van</option>
+                                                </optgroup>
+                                                <optgroup label="Commercial">
+                                                    <option value="Heavy Truck">Heavy Truck</option>
+                                                    <option value="Medium Truck">Medium Truck</option>
+                                                    <option value="Light Truck">Light Truck</option>
+                                                </optgroup>
                                                 <?php
                                             }elseif ($category=='Sedan'){
                                                 ?>
-                                                <option value="Hatchback">Hatchback</option>
-                                                <option selected value="Sedan">Sedan</option>
-                                                <option value="SUV">SUV</option>
-                                                <option value="Van">Van</option>
+                                                <optgroup label="Private">
+                                                    <option value="Hatchback">Hatchback</option>
+                                                    <option selected value="Sedan">Sedan</option>
+                                                    <option value="SUV">SUV</option>
+                                                    <option value="Van">Van</option>
+                                                </optgroup>
+                                                <optgroup label="Commercial">
+                                                    <option value="Heavy Truck">Heavy Truck</option>
+                                                    <option value="Medium Truck">Medium Truck</option>
+                                                    <option value="Light Truck">Light Truck</option>
+                                                </optgroup>
                                                 <?php
                                             }
                                             elseif ($category=='SUV'){
                                                 ?>
-                                                <option value="Hatchback">Hatchback</option>
-                                                <option value="Sedan">Sedan</option>
-                                                <option selected value="SUV">SUV</option>
-                                                <option value="Van">Van</option>
+                                                <optgroup label="Private">
+                                                    <option value="Hatchback">Hatchback</option>
+                                                    <option value="Sedan">Sedan</option>
+                                                    <option selected value="SUV">SUV</option>
+                                                    <option value="Van">Van</option>
+                                                </optgroup>
+                                                <optgroup label="Commercial">
+                                                    <option value="Heavy Truck">Heavy Truck</option>
+                                                    <option value="Medium Truck">Medium Truck</option>
+                                                    <option value="Light Truck">Light Truck</option>
+                                                </optgroup>
                                                 <?php
-                                            }else{
+                                            }elseif($category=='Van'){
                                                 ?>
-                                                <option value="Hatchback">Hatchback</option>
-                                                <option value="Sedan">Sedan</option>
-                                                <option value="SUV">SUV</option>
-                                                <option selected value="Van">Van</option>
+                                                <optgroup label="Private">
+                                                    <option value="Hatchback">Hatchback</option>
+                                                    <option value="Sedan">Sedan</option>
+                                                    <option value="SUV">SUV</option>
+                                                    <option selected value="Van">Van</option>
+                                                </optgroup>
+                                                <optgroup label="Commercial">
+                                                    <option value="Heavy Truck">Heavy Truck</option>
+                                                    <option value="Medium Truck">Medium Truck</option>
+                                                    <option value="Light Truck">Light Truck</option>
+                                                </optgroup>
+                                                <?php
+                                            }
+                                            elseif($category=='Heavy Truck'){
+                                                ?>
+                                                <optgroup label="Private">
+                                                    <option value="Hatchback">Hatchback</option>
+                                                    <option value="Sedan">Sedan</option>
+                                                    <option value="SUV">SUV</option>
+                                                    <option value="Van">Van</option>
+                                                </optgroup>
+                                                <optgroup label="Commercial">
+                                                    <option selected value="Heavy Truck">Heavy Truck</option>
+                                                    <option value="Medium Truck">Medium Truck</option>
+                                                    <option value="Light Truck">Light Truck</option>
+                                                </optgroup>
+                                                <?php
+                                            }
+                                            elseif($category=='Medium Truck'){
+                                                ?>
+                                                <optgroup label="Private">
+                                                    <option value="Hatchback">Hatchback</option>
+                                                    <option value="Sedan">Sedan</option>
+                                                    <option value="SUV">SUV</option>
+                                                    <option selected value="Van">Van</option>
+                                                </optgroup>
+                                                <optgroup label="Commercial">
+                                                    <option value="Heavy Truck">Heavy Truck</option>
+                                                    <option selected value="Medium Truck">Medium Truck</option>
+                                                    <option value="Light Truck">Light Truck</option>
+                                                </optgroup>
+                                                <?php
+                                            }
+                                            elseif($category=='Light Truck'){
+                                                ?>
+                                                <optgroup label="Private">
+                                                    <option value="Hatchback">Hatchback</option>
+                                                    <option value="Sedan">Sedan</option>
+                                                    <option value="SUV">SUV</option>
+                                                    <option selected value="Van">Van</option>
+                                                </optgroup>
+                                                <optgroup label="Commercial">
+                                                    <option value="Heavy Truck">Heavy Truck</option>
+                                                    <option value="Medium Truck">Medium Truck</option>
+                                                    <option selected value="Light Truck">Light Truck</option>
+                                                </optgroup>
                                                 <?php
                                             }
                                         ?>
