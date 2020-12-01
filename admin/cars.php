@@ -502,7 +502,10 @@
                 </div>
                 <?php
             }
-            if($_SERVER['REQUEST_METHOD']==="POST"){
+            if($_SERVER['REQUEST_METHOD']==="GET"){
+                $final_qr='select * from car';
+            }
+            elseif($_SERVER['REQUEST_METHOD']==="POST"){
                 $qr=array("","","","","");
                 if(!empty($_POST['cars'])){ $qr[0]="and brand ='".$_POST['cars']."'"; }
                 if(!empty($_POST['color'])){ $qr[1]="and ccolor ='".$_POST['color']."'"; }
@@ -513,7 +516,8 @@
 //        echo $add_qr;
                 if(empty($add_qr)){ $final_qr = "select * from car where 1"; }
                 else{ $final_qr = "select * from car where 1 ".$add_qr; }
-//                echo $final_qr;
+                //echo $final_qr;
+                }
                 $res=mysqli_query($conn,$final_qr);
                 if($res){
                     if(mysqli_num_rows($res)>0){
@@ -672,7 +676,7 @@
                 else{
                     echo "DB Error";
                 }
-            }
+
             ?>
 
 <!--            Show Cars End-->

@@ -438,7 +438,10 @@
                 ?>
                 <br>
                 <?php
-                if($_SERVER['REQUEST_METHOD']=="POST"){
+                if($_SERVER['REQUEST_METHOD']=="GET"){
+                    $qr=mysqli_query($conn,"select * from route");
+                }
+                elseif($_SERVER['REQUEST_METHOD']=="POST"){
                     if($_POST['loc']==''){
                         $qr=mysqli_query($conn,"select * from route");
                     }
@@ -446,6 +449,7 @@
                         $loc=$_POST['loc'];
                         $qr=mysqli_query($conn,"select * from route where source='$loc' or destination='$loc'");
                     }
+                }
                     if($qr){
                         if(mysqli_num_rows($qr)){
                             ?>
@@ -583,7 +587,7 @@
                     else{
                         echo "Data fetch Error";
                     }
-                }
+                
                 ?>
 
             </div>

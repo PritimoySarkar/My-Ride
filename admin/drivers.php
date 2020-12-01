@@ -463,7 +463,10 @@
                     </form>
                 </div>
                 <?php
-                    if($_SERVER['REQUEST_METHOD']=='POST'){
+                    if($_SERVER['REQUEST_METHOD']=='GET'){
+                        $final_qr="select * from driver where 1";
+                    }
+                    elseif($_SERVER['REQUEST_METHOD']=='POST'){
                         $qr=array("","","","","");
                         if(!empty($_POST['did'])){ $qr[0]="and did =".$_POST['did']; }
                         if(!empty($_POST['name'])){ $qr[1]="and dname like '%".$_POST['color']."%'"; }
@@ -471,6 +474,7 @@
                         if(!empty($_POST['address'])){ $qr[3]="and address like '%".$_POST['address']."%'"; }
                         $add_qr = implode(" ", $qr);
                         $final_qr="select * from driver where 1".$add_qr;
+                    }
                         if($drivers=mysqli_query($conn,$final_qr)){
                             if(mysqli_num_rows($drivers)){
                                 ?>
@@ -607,13 +611,15 @@
 //                                var_dump($res);
                             }
                             else{
-                                echo "No Drivers found with these details";
+                                ?>
+                                    <h1 align="center">No Driver found with these details</h1>
+                                <?php
                             }
                         }
                         else{
                             echo "Data Fetch error";
                         }
-                    }
+                    
                 ?>
             </div>
             <!-- ============================================================== -->
