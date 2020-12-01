@@ -234,13 +234,13 @@ if(isset($_SESSION['user'])){
                     <div class="col-md-12">
                         <div class="gallery-active owl-carousel">
                             <div class="gallery-img">
-                                <a href="#"><img src="assets/img/gallery/gallery1.jpg" alt=""></a>
+                                <a href="#"><img style='height: 500px' src="assets/img/banner/start.jpg" alt=""></a>
                             </div>
                             <div class="gallery-img">
-                                <a href="#"><img src="assets/img/gallery/gallery2.jpg" alt=""></a>
+                                <a href="#"><img style='height: 500px' src="assets/IMG/banner/start2.jpEg" alt=""></a>
                             </div>
                             <div class="gallery-img">
-                                <a href="#"><img src="assets/img/gallery/gallery3.jpg" alt=""></a>
+                                <a href="#"><img style='height: 500px' src="assets/img/banner/start3.jpg" alt=""></a>
                             </div>
                         </div>
                     </div>
